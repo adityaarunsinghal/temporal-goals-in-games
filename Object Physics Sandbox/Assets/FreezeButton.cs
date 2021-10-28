@@ -6,10 +6,13 @@ public class FreezeButton : MonoBehaviour
 {
     public void onButtonPress()
     {
-        if (DragDrop3.LastTouchedObject)
+        if (DragDrop3.LastTouchedObject && DragDrop3.LastTouchedObject.constraints != RigidbodyConstraints2D.FreezeAll)
         {
-            DragDrop3.LastTouchedObject.constraints = RigidbodyConstraints2D.FreezePosition;
-            DragDrop3.LastTouchedObject.constraints = RigidbodyConstraints2D.FreezeRotation;
+            DragDrop3.LastTouchedObject.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else if (DragDrop3.LastTouchedObject && DragDrop3.LastTouchedObject.constraints == RigidbodyConstraints2D.FreezeAll)
+        {
+            DragDrop3.LastTouchedObject.constraints = RigidbodyConstraints2D.None;
         }
     }
 }

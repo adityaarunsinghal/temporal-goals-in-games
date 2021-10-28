@@ -6,7 +6,7 @@ public class DragDrop3 : MonoBehaviour
 {
     public Rigidbody2D selectedObject;
     public static Rigidbody2D LastTouchedObject;
-     private Rigidbody2D lastTouchedObject;
+    private Rigidbody2D lastTouchedObject;
     Vector3 mousePosition;
     public float maxSpeed = 20;
     public float dragSpeed = 8;
