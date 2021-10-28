@@ -24,14 +24,14 @@ public class FreezeButton : MonoBehaviour
     {
         obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         obj.tag = "frozen"; // TODO: make `isFrozen` a property of the gameObject itself?
-        obj.GetComponent<SpriteRenderer>().material.color -= new Color(0, 0, 0, discoloration);
+        obj.GetComponent<SpriteRenderer>().material.color -= new Color(0.1f, 0.1f, 0.1f, discoloration);
     }
 
     public void unfreeze(GameObject obj)
     {
         obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         obj.tag = "notFrozen";
-        obj.GetComponent<SpriteRenderer>().material.color += new Color(0, 0, 0, discoloration);
+        obj.GetComponent<SpriteRenderer>().material.color += new Color(0.1f, 0.1f, 0.1f, discoloration);
     }
 }
 

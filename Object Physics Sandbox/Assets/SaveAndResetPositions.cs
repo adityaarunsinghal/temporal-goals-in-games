@@ -28,7 +28,7 @@ public class SaveAndResetPositions : MonoBehaviour
                     // FreezeButton.unfreeze(saveableObjects[i].transform.gameObject); // TODO: wish this would work 
                     saveableObjects[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                     saveableObjects[i].tag = "notFrozen";
-                    saveableObjects[i].GetComponent<SpriteRenderer>().material.color += new Color(0, 0, 0, FreezeButton.discoloration);
+                    saveableObjects[i].GetComponent<SpriteRenderer>().material.color += new Color(0.1f, 0.1f, 0.1f, FreezeButton.discoloration);
                 }
                 saveableObjects[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 saveableObjects[i].transform.position = objectPositions[i];
