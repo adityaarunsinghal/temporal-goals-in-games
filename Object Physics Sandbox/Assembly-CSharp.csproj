@@ -36,13 +36,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/SaveAndResetPositions.cs" />
+     <Compile Include="Assets/FreezeButton.cs" />
+     <Compile Include="Assets/Restart.cs" />
      <Compile Include="Assets/DragDrop2.cs" />
      <Compile Include="Assets/DragDrop.cs" />
-     <Compile Include="Assets/DragDrop3.cs" />
-     <Compile Include="Assets/FreezeButton.cs" />
-     <Compile Include="Assets/SaveAndResetPositions.cs" />
-     <Compile Include="Assets/Restart.cs" />
      <Compile Include="Assets/SaveAndResetPositionsDestructive.cs" />
+     <Compile Include="Assets/DragDrop3.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
