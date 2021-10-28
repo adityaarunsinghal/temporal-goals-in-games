@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class FreezeButton : MonoBehaviour
 {
+    public float discoloration = 1f;
+
     public void onButtonPress()
     {
-        if (DragDrop3.LastTouchedObject && DragDrop3.LastTouchedObject.constraints != RigidbodyConstraints2D.FreezeAll)
+        if (DragDrop3.LastTouchedObject && DragDrop3.LastTouchedObject.GetComponent<Rigidbody2D>().constraints != RigidbodyConstraints2D.FreezeAll)
         {
-            DragDrop3.LastTouchedObject.constraints = RigidbodyConstraints2D.FreezeAll;
+            DragDrop3.LastTouchedObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            DragDrop3.LastTouchedObject.tag = "frozen";
+            DragDrop3.LastTouchedObject.GetComponent<SpriteRenderer>().color += new Color (0, 0, 0, discoloration);
         }
-        else if (DragDrop3.LastTouchedObject && DragDrop3.LastTouchedObject.constraints == RigidbodyConstraints2D.FreezeAll)
+        else
         {
-            DragDrop3.LastTouchedObject.constraints = RigidbodyConstraints2D.None;
+            DragDrop3.LastTouchedObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            DragDrop3.LastTouchedObject.tag = "notFrozen";
+            DragDrop3.LastTouchedObject.GetComponent<SpriteRenderer>().color -= new Color (0, 0, 0, discoloration);
         }
     }
 }
 
-// add constraints to rigidbody in script 
-// debug this later
-
-// have a list of all objects and cache that (bunch of vector2s) --> return later when going back to setup phase
-// rigidbody use gravity can turn on or off when entering/exiting setup phase

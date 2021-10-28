@@ -5,8 +5,7 @@ using UnityEngine;
 public class DragDrop3 : MonoBehaviour
 {
     public Rigidbody2D selectedObject;
-    public static Rigidbody2D LastTouchedObject;
-    private Rigidbody2D lastTouchedObject;
+    public static GameObject LastTouchedObject;
     Vector3 mousePosition;
     public float maxSpeed = 20;
     public float dragSpeed = 8;
@@ -27,9 +26,9 @@ public class DragDrop3 : MonoBehaviour
             if (targetObject)
             {
                 selectedObject = targetObject.transform.gameObject.GetComponent<Rigidbody2D>();
-                if (selectedObject){
-                    lastTouchedObject = selectedObject;
-                    LastTouchedObject = lastTouchedObject;
+                if (selectedObject)
+                {
+                    LastTouchedObject = targetObject.transform.gameObject;
                 }
             }
         }

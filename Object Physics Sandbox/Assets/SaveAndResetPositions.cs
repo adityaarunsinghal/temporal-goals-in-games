@@ -9,7 +9,7 @@ public class SaveAndResetPositions : MonoBehaviour
     private float[] gravities;
     private DragDrop3[] saveableObjects;
 
-    void Awake()
+    void Start()
     {
         saveableObjects = FindObjectsOfType<DragDrop3>();
         objectPositions = new Vector2[saveableObjects.Length];
@@ -21,8 +21,9 @@ public class SaveAndResetPositions : MonoBehaviour
             // reset positions and turn off gravity
             for (int i = 0; i < saveableObjects.Length; i++)
             {
-                gravities[i] = saveableObjects[i].GetComponent <Rigidbody2D>().gravityScale;
-                saveableObjects[i].GetComponent <Rigidbody2D>().gravityScale = 0.0f;
+                saveableObjects[i].GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+                saveableObjects[i].transform.rotation = Quaternion.Euler(0, 0, 0);
+                saveableObjects[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 saveableObjects[i].transform.position = objectPositions[i];
             }
             inSetupPhase = !inSetupPhase;
@@ -33,7 +34,11 @@ public class SaveAndResetPositions : MonoBehaviour
             // save setup and turn on game play
             for (int i = 0; i < objectPositions.Length; i++)
             {
-                saveableObjects[i].GetComponent <Rigidbody2D>().gravityScale = gravities[i];
+                saveableObjects[i].GetComponent<Rigidbody2D>().gravityScale = 1f;
+                if (saveableObjects[i].tag=="notFrozen")
+                {
+                    saveableObjects[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                }
                 objectPositions[i] = saveableObjects[i].transform.position;
             }
             inSetupPhase = !inSetupPhase;
