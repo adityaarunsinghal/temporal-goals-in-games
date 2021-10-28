@@ -58,4 +58,9 @@ public class DragDrop3 : MonoBehaviour
         }
 
     }
+
+    public void addDragDrop1()
+    {
+        
+    }
 }
