@@ -4,22 +4,34 @@ using UnityEngine;
 
 public class FreezeButton : MonoBehaviour
 {
-    public float discoloration = 1f;
+    public static float discoloration = 0.5f;
 
     public void onButtonPress()
     {
-        if (DragDrop3.LastTouchedObject && DragDrop3.LastTouchedObject.GetComponent<Rigidbody2D>().constraints != RigidbodyConstraints2D.FreezeAll)
+        GameObject lastTouchedObject = DragDrop3.LastTouchedObject;
+
+        if (lastTouchedObject && lastTouchedObject.GetComponent<Rigidbody2D>().constraints != RigidbodyConstraints2D.FreezeAll)
         {
-            DragDrop3.LastTouchedObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            DragDrop3.LastTouchedObject.tag = "frozen";
-            DragDrop3.LastTouchedObject.GetComponent<SpriteRenderer>().color += new Color (0, 0, 0, discoloration);
+            freeze(lastTouchedObject);
         }
         else
         {
-            DragDrop3.LastTouchedObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            DragDrop3.LastTouchedObject.tag = "notFrozen";
-            DragDrop3.LastTouchedObject.GetComponent<SpriteRenderer>().color -= new Color (0, 0, 0, discoloration);
+            unfreeze(lastTouchedObject);
         }
+    }
+
+    public void freeze(GameObject obj)
+    {
+        obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        obj.tag = "frozen"; // TODO: make `isFrozen` a property of the gameObject itself?
+        obj.GetComponent<SpriteRenderer>().material.color -= new Color(0, 0, 0, discoloration);
+    }
+
+    public void unfreeze(GameObject obj)
+    {
+        obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        obj.tag = "notFrozen";
+        obj.GetComponent<SpriteRenderer>().material.color += new Color(0, 0, 0, discoloration);
     }
 }
 
