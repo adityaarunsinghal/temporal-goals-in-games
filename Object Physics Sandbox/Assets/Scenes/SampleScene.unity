@@ -418,6 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 187279151}
   - component: {fileID: 187279150}
+  - component: {fileID: 187279154}
   - component: {fileID: 187279149}
   - component: {fileID: 187279148}
   - component: {fileID: 187279153}
@@ -592,6 +593,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &187279154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187279146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &249261461
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370293563}
   - component: {fileID: 370293562}
+  - component: {fileID: 370293569}
   - component: {fileID: 370293565}
   - component: {fileID: 370293564}
   - component: {fileID: 370293568}
@@ -892,6 +906,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &370293569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370293561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &389415427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197706951}
   - component: {fileID: 1197706950}
+  - component: {fileID: 1197706954}
   - component: {fileID: 1197706949}
   - component: {fileID: 1197706953}
   - component: {fileID: 1197706952}
@@ -1482,6 +1509,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &1197706954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197706946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1215748998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1535,7 @@ GameObject:
   - component: {fileID: 1215749002}
   - component: {fileID: 1215749005}
   - component: {fileID: 1215749001}
+  - component: {fileID: 1215749006}
   - component: {fileID: 1215749003}
   m_Layer: 0
   m_Name: Bucket
@@ -1668,6 +1708,18 @@ PolygonCollider2D:
       - {x: -0.39423746, y: -0.5976881}
       - {x: 0.43452108, y: -0.5778091}
       - {x: 0.68008995, y: 0.541799}
+--- !u!114 &1215749006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215748998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1312543068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,6 +1730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1312543073}
   - component: {fileID: 1312543072}
+  - component: {fileID: 1312543076}
   - component: {fileID: 1312543071}
   - component: {fileID: 1312543075}
   - component: {fileID: 1312543069}
@@ -1850,6 +1903,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &1312543076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312543068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1455115037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,6 +2797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955112076}
   - component: {fileID: 1955112075}
+  - component: {fileID: 1955112079}
   - component: {fileID: 1955112073}
   - component: {fileID: 1955112074}
   - component: {fileID: 1955112078}
@@ -2898,6 +2964,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &1955112079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955112071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2044521734
 GameObject:
   m_ObjectHideFlags: 0
