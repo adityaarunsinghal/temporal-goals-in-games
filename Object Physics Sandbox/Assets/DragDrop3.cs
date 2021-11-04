@@ -58,9 +58,10 @@ public class DragDrop3 : MonoBehaviour
         }
 
     }
-
-    public void addDragDrop1()
-    {
-        
-    }
 }
+
+
+// objects shouldnt move when setting up  --> finite state machine 
+// freeze and unfreeze should apply to object touched AFTER the button is toggled --> 
+// have inventory of objects so people can put it in/out upto a certain number 
+// --> show brain it on, other physics game from android

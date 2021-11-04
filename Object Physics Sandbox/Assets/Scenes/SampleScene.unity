@@ -241,7 +241,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 96246909}
-  - component: {fileID: 96246908}
   - component: {fileID: 96246910}
   m_Layer: 0
   m_Name: SetupButtonScriptHolder
@@ -250,18 +249,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &96246908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96246907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78a0b2f286be4ebc915fee485377637, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &96246909
 Transform:
   m_ObjectHideFlags: 0
@@ -283,7 +270,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96246907}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aeaba215103cd4717be1a7313667e576, type: 3}
   m_Name: 
@@ -434,6 +421,7 @@ GameObject:
   - component: {fileID: 187279149}
   - component: {fileID: 187279148}
   - component: {fileID: 187279152}
+  - component: {fileID: 187279147}
   m_Layer: 0
   m_Name: Corner
   m_TagString: notFrozen
@@ -441,6 +429,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &187279147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187279146}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedObject: {fileID: 0}
 --- !u!50 &187279148
 Rigidbody2D:
   serializedVersion: 4
@@ -725,6 +726,7 @@ GameObject:
   - component: {fileID: 370293564}
   - component: {fileID: 370293568}
   - component: {fileID: 370293566}
+  - component: {fileID: 370293567}
   m_Layer: 0
   m_Name: Ball
   m_TagString: notFrozen
@@ -850,6 +852,19 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &370293567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370293561}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedObject: {fileID: 0}
 --- !u!114 &370293568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,6 +1318,7 @@ GameObject:
   - component: {fileID: 1197706949}
   - component: {fileID: 1197706952}
   - component: {fileID: 1197706948}
+  - component: {fileID: 1197706947}
   m_Layer: 0
   m_Name: Gear
   m_TagString: notFrozen
@@ -1310,6 +1326,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1197706947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197706946}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedObject: {fileID: 0}
 --- !u!58 &1197706948
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1441,6 +1470,7 @@ GameObject:
   - component: {fileID: 1215749002}
   - component: {fileID: 1215749005}
   - component: {fileID: 1215749001}
+  - component: {fileID: 1215749003}
   m_Layer: 0
   m_Name: Bucket
   m_TagString: notFrozen
@@ -1553,6 +1583,19 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &1215749003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215748998}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedObject: {fileID: 0}
 --- !u!60 &1215749005
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1599,6 +1642,7 @@ GameObject:
   - component: {fileID: 1312543071}
   - component: {fileID: 1312543069}
   - component: {fileID: 1312543070}
+  - component: {fileID: 1312543074}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: notFrozen
@@ -1740,6 +1784,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.976}
+--- !u!114 &1312543074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312543068}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedObject: {fileID: 0}
 --- !u!1 &1455115037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,7 +1880,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 96246908}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SaveAndResetPositions, Assembly-CSharp
         m_MethodName: onButtonPress
         m_Mode: 1
@@ -2623,6 +2680,7 @@ GameObject:
   - component: {fileID: 1955112073}
   - component: {fileID: 1955112074}
   - component: {fileID: 1955112077}
+  - component: {fileID: 1955112072}
   m_Layer: 0
   m_Name: Crate
   m_TagString: notFrozen
@@ -2630,6 +2688,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1955112072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955112071}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedObject: {fileID: 0}
 --- !u!61 &1955112073
 BoxCollider2D:
   m_ObjectHideFlags: 0
