@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragDrop3 : MonoBehaviour
+public class DragDrop4 : MonoBehaviour
 {
     public Rigidbody2D selectedObject;
     Vector3 mousePosition;
@@ -25,10 +25,6 @@ public class DragDrop3 : MonoBehaviour
             if (targetObject)
             {
                 selectedObject = targetObject.transform.gameObject.GetComponent<Rigidbody2D>();
-                if (selectedObject)
-                {
-                    LastTouchedObject = targetObject.transform.gameObject;
-                }
             }
         }
 

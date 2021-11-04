@@ -21,8 +21,8 @@ public class SaveAndResetPositions2 : MonoBehaviour
             for (int i = 0; i < saveableObjects.Length; i++)
             {
                 saveableObjects[i].transform.rotation = Quaternion.Euler(0, 0, 0);
-                saveableObjects[i].GetComponent<DragDropManager>.offDragDrop4();
-                saveableObjects[i].GetComponent<DragDropManager>.onDragDrop1();
+                saveableObjects[i].GetComponent<DragDropManager>().offDragDrop4();
+                saveableObjects[i].GetComponent<DragDropManager>().onDragDrop1();
                 saveableObjects[i].transform.position = objectPositions[i];
             }
         }
@@ -32,8 +32,8 @@ public class SaveAndResetPositions2 : MonoBehaviour
             // save setup and turn on game play
             for (int i = 0; i < objectPositions.Length; i++)
             {
-                saveableObjects[i].GetComponent<DragDropManager>.onDragDrop4();
-                saveableObjects[i].GetComponent<DragDropManager>.offDragDrop1();
+                saveableObjects[i].GetComponent<DragDropManager>().onDragDrop4();
+                saveableObjects[i].GetComponent<DragDropManager>().offDragDrop1();
                 objectPositions[i] = saveableObjects[i].transform.position;
             }
         }
