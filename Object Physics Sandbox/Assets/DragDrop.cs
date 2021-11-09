@@ -18,12 +18,16 @@ public class DragDrop : MonoBehaviour
         {
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
 
-            if (targetObject==targetObject.transform.GetComponent<Rigidbody2D>())
+            if (targetObject)
             {
-                targetPosition = selectedObject.transform.position;
+                if (selectedObject == targetObject.transform.GetComponent<Rigidbody2D>())
+                {
+                    targetPosition = mousePosition;
+                }
             }
         }
 
-        selectedObject.MovePosition(targetPosition);
+        // selectedObject.MovePosition(targetPosition);
+        selectedObject.transform.position = targetPosition;
     }
 }
