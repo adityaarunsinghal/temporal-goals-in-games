@@ -418,12 +418,10 @@ GameObject:
   m_Component:
   - component: {fileID: 187279151}
   - component: {fileID: 187279150}
-  - component: {fileID: 187279154}
   - component: {fileID: 187279149}
   - component: {fileID: 187279148}
   - component: {fileID: 187279153}
   - component: {fileID: 187279152}
-  - component: {fileID: 187279147}
   m_Layer: 0
   m_Name: Corner
   m_TagString: notFrozen
@@ -431,19 +429,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &187279147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187279146}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedObject: {fileID: 0}
 --- !u!50 &187279148
 Rigidbody2D:
   serializedVersion: 4
@@ -593,18 +578,6 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
---- !u!114 &187279154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187279146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &249261461
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,12 +722,10 @@ GameObject:
   m_Component:
   - component: {fileID: 370293563}
   - component: {fileID: 370293562}
-  - component: {fileID: 370293569}
   - component: {fileID: 370293565}
   - component: {fileID: 370293564}
   - component: {fileID: 370293568}
   - component: {fileID: 370293566}
-  - component: {fileID: 370293567}
   m_Layer: 0
   m_Name: Ball
   m_TagString: notFrozen
@@ -877,19 +848,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFrozen: 0
---- !u!114 &370293567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370293561}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedObject: {fileID: 0}
 --- !u!114 &370293568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,18 +864,6 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
---- !u!114 &370293569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370293561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &389415427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,12 +1298,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1197706951}
   - component: {fileID: 1197706950}
-  - component: {fileID: 1197706954}
   - component: {fileID: 1197706949}
   - component: {fileID: 1197706953}
   - component: {fileID: 1197706952}
   - component: {fileID: 1197706948}
-  - component: {fileID: 1197706947}
   m_Layer: 0
   m_Name: Gear
   m_TagString: notFrozen
@@ -1365,19 +1309,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1197706947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197706946}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedObject: {fileID: 0}
 --- !u!58 &1197706948
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1509,18 +1440,6 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
---- !u!114 &1197706954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197706946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1215748998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,8 +1454,6 @@ GameObject:
   - component: {fileID: 1215749002}
   - component: {fileID: 1215749005}
   - component: {fileID: 1215749001}
-  - component: {fileID: 1215749006}
-  - component: {fileID: 1215749003}
   m_Layer: 0
   m_Name: Bucket
   m_TagString: notFrozen
@@ -1646,19 +1563,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFrozen: 0
---- !u!114 &1215749003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215748998}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedObject: {fileID: 0}
 --- !u!114 &1215749004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,18 +1612,6 @@ PolygonCollider2D:
       - {x: -0.39423746, y: -0.5976881}
       - {x: 0.43452108, y: -0.5778091}
       - {x: 0.68008995, y: 0.541799}
---- !u!114 &1215749006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215748998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1312543068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,12 +1622,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1312543073}
   - component: {fileID: 1312543072}
-  - component: {fileID: 1312543076}
   - component: {fileID: 1312543071}
   - component: {fileID: 1312543075}
   - component: {fileID: 1312543069}
   - component: {fileID: 1312543070}
-  - component: {fileID: 1312543074}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: notFrozen
@@ -1874,19 +1764,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.976}
---- !u!114 &1312543074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312543068}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedObject: {fileID: 0}
 --- !u!114 &1312543075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1903,18 +1780,6 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
---- !u!114 &1312543076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312543068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1455115037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2671,6 +2536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 0}
   toggled: 0
+  targetObject: {fileID: 0}
 --- !u!4 &1763524004
 Transform:
   m_ObjectHideFlags: 0
@@ -2797,12 +2663,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1955112076}
   - component: {fileID: 1955112075}
-  - component: {fileID: 1955112079}
   - component: {fileID: 1955112073}
   - component: {fileID: 1955112074}
   - component: {fileID: 1955112078}
   - component: {fileID: 1955112077}
-  - component: {fileID: 1955112072}
   m_Layer: 0
   m_Name: Crate
   m_TagString: notFrozen
@@ -2810,19 +2674,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1955112072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955112071}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7748061fdcfcc449c95eae1816973c69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedObject: {fileID: 0}
 --- !u!61 &1955112073
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2964,18 +2815,6 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
---- !u!114 &1955112079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955112071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2044521734
 GameObject:
   m_ObjectHideFlags: 0

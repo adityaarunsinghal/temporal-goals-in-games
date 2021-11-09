@@ -8,6 +8,7 @@ public class FreezeButton2 : MonoBehaviour
     public GameObject selectedObject;
     public static float discoloration = 0.5f;
     public bool toggled = false;
+    public Collider targetObject;
 
     public void onButtonPress()
     {
@@ -22,7 +23,14 @@ public class FreezeButton2 : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+                // Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                   targetObject = hit.collider;
+                }
+
                 if (targetObject)
                 {
                     selectedObject = targetObject.transform.gameObject;
@@ -46,14 +54,14 @@ public class FreezeButton2 : MonoBehaviour
     public void freeze(GameObject obj)
     {
         obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        obj.GetComponent<customProperties>().isFrozen = true; 
+        obj.GetComponent<customProperties>().isFrozen = true;
         obj.GetComponent<SpriteRenderer>().material.color -= new Color(0.1f, 0.1f, 0.1f, discoloration);
     }
 
     public void unfreeze(GameObject obj)
     {
         obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        obj.GetComponent<customProperties>().isFrozen = false; 
+        obj.GetComponent<customProperties>().isFrozen = false;
         obj.GetComponent<SpriteRenderer>().material.color += new Color(0.1f, 0.1f, 0.1f, discoloration);
     }
 }

@@ -8,15 +8,23 @@ public class DragDrop : MonoBehaviour
     Vector3 offset;
     Vector3 mousePosition;
     Vector3 targetPosition;
+    public Collider targetObject;
 
     void Update()
     {
         selectedObject = GetComponent<Rigidbody2D>();
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        selectedObject.velocity = Vector3.zero;
 
         if (Input.GetMouseButtonDown(0))
         {
-            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+            // targetObject = Physics2D.OverlapPoint(mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                   targetObject = hit.collider;
+                }
 
             if (targetObject)
             {
@@ -26,8 +34,11 @@ public class DragDrop : MonoBehaviour
                 }
             }
         }
+    }
 
-        // selectedObject.MovePosition(targetPosition);
-        selectedObject.transform.position = targetPosition;
+    void LateUpdate()
+    {
+        selectedObject.MovePosition(targetPosition);
+        // selectedObject.transform.position = targetPosition;
     }
 }

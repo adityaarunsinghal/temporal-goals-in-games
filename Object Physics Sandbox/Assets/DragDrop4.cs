@@ -12,7 +12,7 @@ public class DragDrop4 : MonoBehaviour
     Vector2 mouseForce;
     Vector3 lastPosition;
 
-    void FixedUpdate()
+    void Update()
     {
         // track mouse
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
