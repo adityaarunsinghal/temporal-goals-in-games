@@ -7,11 +7,11 @@ public class SaveAndResetPositions2 : MonoBehaviour
     bool inSetupPhase = true;
     private Vector2[] objectPositions;
     private float[] gravities;
-    private DragDrop4[] saveableObjects;
+    private DragDropManager[] saveableObjects;
 
     void Start()
     {
-        saveableObjects = FindObjectsOfType<DragDrop4>();
+        saveableObjects = FindObjectsOfType<DragDropManager>();
         objectPositions = new Vector2[saveableObjects.Length];
     }
     public void onButtonPress()

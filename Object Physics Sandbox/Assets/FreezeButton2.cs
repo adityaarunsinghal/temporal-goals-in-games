@@ -30,11 +30,11 @@ public class FreezeButton2 : MonoBehaviour
                     {
                         if (selectedObject.GetComponent<customProperties>().isFrozen)
                         {
-                            unfreeze(selectedObject.gameObject);
+                            unfreeze(selectedObject);
                         }
                         else
                         {
-                            freeze(selectedObject.gameObject);
+                            freeze(selectedObject);
                         }
                     }
                 }
