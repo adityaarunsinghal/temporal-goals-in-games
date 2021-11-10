@@ -13,6 +13,10 @@ public class FreezeButton2 : MonoBehaviour
     public void onButtonPress()
     {
         toggled = !toggled;
+        {
+            DuplicateButton.toggled = false;
+            RemoveButton.toggled = false;
+        }
     }
 
     void Update()
@@ -43,14 +47,14 @@ public class FreezeButton2 : MonoBehaviour
         }
     }
 
-    public void freeze(GameObject obj)
+    public static void freeze(GameObject obj)
     {
         obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         obj.GetComponent<customProperties>().isFrozen = true;
         obj.GetComponent<SpriteRenderer>().color -= new Color(0.1f, 0.1f, 0.1f, discoloration);
     }
 
-    public void unfreeze(GameObject obj)
+    public static void unfreeze(GameObject obj)
     {
         obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         obj.GetComponent<customProperties>().isFrozen = false;

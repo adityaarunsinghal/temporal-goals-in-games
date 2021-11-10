@@ -3,9 +3,13 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - DragDrop4
     - DragDropManager
+    - DuplicateButton
+    - DuplicateButtonNameChanger
     - FreezeButton2
     - FreezeButtonNameChanger
     - MatchParentColor
+    - RemoveButton
+    - RemoveButtonNameChanger
     - Restart
     - SaveAndResetPositions2
     - customProperties
@@ -84,8 +88,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2372}
     - Class: 114
-      Script: {instanceID: 2392}
-    - Class: 114
       Script: {instanceID: 2646}
     - Class: 114
       Script: {instanceID: 2664}
@@ -100,17 +102,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3384}
     - Class: 114
-      Script: {instanceID: 3522}
-    - Class: 114
-      Script: {instanceID: 4512}
-    - Class: 114
       Script: {instanceID: 4720}
     - Class: 114
-      Script: {instanceID: 4870}
+      Script: {instanceID: 5100}
     - Class: 114
-      Script: {instanceID: 5098}
+      Script: {instanceID: 23528}
     - Class: 114
-      Script: {instanceID: 23662}
+      Script: {instanceID: 23530}
+    - Class: 114
+      Script: {instanceID: 23532}
+    - Class: 114
+      Script: {instanceID: 23536}
+    - Class: 114
+      Script: {instanceID: 23538}
+    - Class: 114
+      Script: {instanceID: 23540}
+    - Class: 114
+      Script: {instanceID: 23546}
+    - Class: 114
+      Script: {instanceID: 23548}
+    - Class: 114
+      Script: {instanceID: 23550}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -264,12 +276,6 @@ ScriptsOnlyBuild:
     className: SaveAndResetPositions2
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DragDropManager
-  - hash:
-      serializedVersion: 2
       Hash: c1d728126ff1918728036c59106d32b2
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -298,12 +304,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FreezeButton1
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -432,12 +432,6 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Restart
-  - hash:
-      serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -456,12 +450,6 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: eea28e12f488fbbae07da1f2b66d49e7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DragDrop2
-  - hash:
-      serializedVersion: 2
       Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -478,12 +466,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: BaseInput
-  - hash:
-      serializedVersion: 2
-      Hash: 3b860ff163f2897162af1947dc9187ff
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DragDrop
   - hash:
       serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
@@ -576,12 +558,6 @@ ScriptsOnlyBuild:
     className: SpriteShapeGeometryCache
   - hash:
       serializedVersion: 2
-      Hash: eea28e12f488fbbae07da1f2b66d49e7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DragDrop4
-  - hash:
-      serializedVersion: 2
       Hash: b424b4eeb810aecb0ff91c62639241e9
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.Experimental.U2D.Animation
@@ -642,12 +618,6 @@ ScriptsOnlyBuild:
     className: SpriteSkinEntity
   - hash:
       serializedVersion: 2
-      Hash: 07654f17487d278a77fa03b132857288
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FreezeButton2
-  - hash:
-      serializedVersion: 2
       Hash: 28cfb4bd305dd11c6326cc3ee7c14138
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.Experimental.U2D.Animation
@@ -702,12 +672,6 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: eea28e12f488fbbae07da1f2b66d49e7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DragDrop3
-  - hash:
-      serializedVersion: 2
       Hash: abf1930d8126d0b2e00e9449129a0190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -724,6 +688,78 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FreezeButtonNameChanger
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Restart
+  - hash:
+      serializedVersion: 2
+      Hash: 07654f17487d278a77fa03b132857288
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DuplicateButton
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FreezeButton1
+  - hash:
+      serializedVersion: 2
+      Hash: e0766a0e8938b34dbdc572ce4b274d5c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DuplicateButtonNameChanger
+  - hash:
+      serializedVersion: 2
+      Hash: e0766a0e8938b34dbdc572ce4b274d5c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RemoveButtonNameChanger
+  - hash:
+      serializedVersion: 2
+      Hash: 07654f17487d278a77fa03b132857288
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FreezeButton2
+  - hash:
+      serializedVersion: 2
+      Hash: eea28e12f488fbbae07da1f2b66d49e7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DragDrop3
+  - hash:
+      serializedVersion: 2
+      Hash: eea28e12f488fbbae07da1f2b66d49e7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DragDrop2
+  - hash:
+      serializedVersion: 2
+      Hash: 07654f17487d278a77fa03b132857288
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RemoveButton
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DragDropManager
+  - hash:
+      serializedVersion: 2
+      Hash: eea28e12f488fbbae07da1f2b66d49e7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DragDrop4
+  - hash:
+      serializedVersion: 2
+      Hash: 3b860ff163f2897162af1947dc9187ff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DragDrop
   platform: 2
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

@@ -12,6 +12,11 @@ public class RemoveButton : MonoBehaviour
     public void onButtonPress()
     {
         toggled = !toggled;
+        if (toggled)
+        {
+            DuplicateButton.toggled = false;
+            FreezeButton2.toggled = false;
+        }
     }
 
     void Update()
@@ -27,6 +32,7 @@ public class RemoveButton : MonoBehaviour
                     selectedObject = targetObject.transform.gameObject;
                     if (selectedObject.GetComponent<Rigidbody2D>())
                     {
+                        objectsCacher.removeObject(selectedObject);
                         Destroy(selectedObject);
                     }
                 }

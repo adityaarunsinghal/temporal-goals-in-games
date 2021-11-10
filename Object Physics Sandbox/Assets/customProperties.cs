@@ -9,8 +9,7 @@ public class customProperties : MonoBehaviour
 
     void OnBecameInvisible()
     {
+        objectsCacher.removeObject(gameObject);
         Destroy(gameObject);
-        Debug.Log("Off screen object destroyed!");
     }
-
 }

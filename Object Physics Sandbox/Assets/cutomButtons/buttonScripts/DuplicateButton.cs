@@ -12,6 +12,11 @@ public class DuplicateButton : MonoBehaviour
     public void onButtonPress()
     {
         toggled = !toggled;
+        if (toggled)
+        {
+            RemoveButton.toggled = false;
+            FreezeButton2.toggled = false;
+        }
     }
 
     void Update()
@@ -29,6 +34,11 @@ public class DuplicateButton : MonoBehaviour
                     {
                         GameObject duplicate = GameObject.Instantiate(selectedObject);
                         duplicate.transform.position = Vector3.zero;
+                        if (duplicate.GetComponent<customProperties>().isFrozen)
+                        {
+                            FreezeButton2.unfreeze(duplicate);
+                        }
+                        objectsCacher.cacheObject(duplicate);
                     }
                 }
 

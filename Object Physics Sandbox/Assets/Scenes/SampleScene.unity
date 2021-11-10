@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 187279152}
   m_Layer: 0
   m_Name: Corner
-  m_TagString: Untagged
+  m_TagString: corner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 370293566}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1850,7 +1850,7 @@ GameObject:
   - component: {fileID: 1197706948}
   m_Layer: 0
   m_Name: Gear
-  m_TagString: Untagged
+  m_TagString: crate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2016,7 +2016,7 @@ GameObject:
   - component: {fileID: 1215749003}
   m_Layer: 0
   m_Name: Bucket
-  m_TagString: Untagged
+  m_TagString: bucket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2214,7 +2214,7 @@ GameObject:
   - component: {fileID: 1312543070}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: triangle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2875,7 +2875,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 389415428}
         m_TargetAssemblyTypeName: Restart, Assembly-CSharp
         m_MethodName: OnButtonPress
         m_Mode: 1
@@ -3416,7 +3416,7 @@ GameObject:
   - component: {fileID: 1955112077}
   m_Layer: 0
   m_Name: Crate
-  m_TagString: Untagged
+  m_TagString: crate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

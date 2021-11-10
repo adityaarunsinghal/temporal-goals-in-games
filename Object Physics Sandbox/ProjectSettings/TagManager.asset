@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - frozen
-  - notFrozen
+  - ball
+  - bucket
+  - crate
+  - gear
+  - triangle
+  - corner
   layers:
   - Default
   - TransparentFX
