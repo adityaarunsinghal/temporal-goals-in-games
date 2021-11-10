@@ -7,16 +7,12 @@ public class FreezeButton2 : MonoBehaviour
     Vector3 mousePosition;
     public GameObject selectedObject;
     public static float discoloration = 0.5f;
-    public bool toggled = false;
+    public static bool toggled = false;
     public Collider2D targetObject;
 
     public void onButtonPress()
     {
         toggled = !toggled;
-        // if (toggled)
-        // {
-        //     Color c = ui_button.GetComponent<FreezeButton>().GetComponent<Image>().color;
-        // }
     }
 
     void Update()
