@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FreezeButton : MonoBehaviour
+public class FreezeButton1 : MonoBehaviour
 {
     public static float discoloration = 0.5f;
 

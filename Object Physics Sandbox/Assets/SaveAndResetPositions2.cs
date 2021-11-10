@@ -13,17 +13,25 @@ public class SaveAndResetPositions2 : MonoBehaviour
     {
         saveableObjects = FindObjectsOfType<DragDropManager>();
         objectPositions = new Vector2[saveableObjects.Length];
+        for (int i = 0; i < objectPositions.Length; i++)
+        {
+            objectPositions[i] = saveableObjects[i].transform.position;
+        }
     }
     public void onButtonPress()
     {
         if (inSetupPhase)
-        {
+        {   
+            // return to positions and pause all objects
             for (int i = 0; i < saveableObjects.Length; i++)
             {
-                saveableObjects[i].transform.rotation = Quaternion.Euler(0, 0, 0);
                 saveableObjects[i].GetComponent<DragDropManager>().offDragDrop4();
                 saveableObjects[i].GetComponent<DragDropManager>().onDragDrop1();
                 saveableObjects[i].transform.position = objectPositions[i];
+                saveableObjects[i].GetComponent<Rigidbody2D>().gravityScale = 0f;
+                saveableObjects[i].GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                saveableObjects[i].GetComponent<Rigidbody2D>().angularVelocity = 0f;
+                saveableObjects[i].transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
 
@@ -35,6 +43,7 @@ public class SaveAndResetPositions2 : MonoBehaviour
                 saveableObjects[i].GetComponent<DragDropManager>().onDragDrop4();
                 saveableObjects[i].GetComponent<DragDropManager>().offDragDrop1();
                 objectPositions[i] = saveableObjects[i].transform.position;
+                saveableObjects[i].GetComponent<Rigidbody2D>().gravityScale = 1f;
             }
         }
 

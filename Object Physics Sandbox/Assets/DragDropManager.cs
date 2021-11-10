@@ -8,8 +8,7 @@ public class DragDropManager : MonoBehaviour
     private DragDrop dragDrop1;
     public void onDragDrop1()
     {
-        dragDrop1 = GetComponent<DragDrop>();
-        dragDrop1.enabled = true;
+        gameObject.AddComponent<DragDrop>();
     }
 
     public void onDragDrop4()
@@ -26,7 +25,6 @@ public class DragDropManager : MonoBehaviour
 
     public void offDragDrop1()
     {
-        dragDrop1 = GetComponent<DragDrop>();
-        dragDrop1.enabled = false;
+        Destroy(GetComponent<DragDrop>());
     }
 }

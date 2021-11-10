@@ -23,12 +23,12 @@ public class SaveAndResetPositions : MonoBehaviour
             {
                 saveableObjects[i].GetComponent<Rigidbody2D>().gravityScale = 0.0f;
                 saveableObjects[i].transform.rotation = Quaternion.Euler(0, 0, 0);
-                if (saveableObjects[i].tag=="frozen")
+                if (saveableObjects[i].tag == "frozen")
                 {
-                    // FreezeButton.unfreeze(saveableObjects[i].transform.gameObject); // TODO: wish this would work 
+                    // FreezeButton1.unfreeze(saveableObjects[i].transform.gameObject); // TODO: wish this would work 
                     saveableObjects[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                     saveableObjects[i].tag = "notFrozen";
-                    saveableObjects[i].GetComponent<SpriteRenderer>().material.color += new Color(0.1f, 0.1f, 0.1f, FreezeButton.discoloration);
+                    saveableObjects[i].GetComponent<SpriteRenderer>().material.color += new Color(0.1f, 0.1f, 0.1f, FreezeButton1.discoloration);
                 }
                 saveableObjects[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 saveableObjects[i].transform.position = objectPositions[i];
@@ -42,7 +42,7 @@ public class SaveAndResetPositions : MonoBehaviour
             for (int i = 0; i < objectPositions.Length; i++)
             {
                 saveableObjects[i].GetComponent<Rigidbody2D>().gravityScale = 1f;
-                if (saveableObjects[i].tag=="notFrozen")
+                if (saveableObjects[i].tag == "notFrozen")
                 {
                     saveableObjects[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 }

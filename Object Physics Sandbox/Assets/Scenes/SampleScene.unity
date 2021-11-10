@@ -420,11 +420,12 @@ GameObject:
   - component: {fileID: 187279150}
   - component: {fileID: 187279149}
   - component: {fileID: 187279148}
+  - component: {fileID: 187279154}
   - component: {fileID: 187279153}
   - component: {fileID: 187279152}
   m_Layer: 0
   m_Name: Corner
-  m_TagString: notFrozen
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,6 +579,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &187279154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187279146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &249261461
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,11 +737,12 @@ GameObject:
   - component: {fileID: 370293562}
   - component: {fileID: 370293565}
   - component: {fileID: 370293564}
+  - component: {fileID: 370293569}
   - component: {fileID: 370293568}
   - component: {fileID: 370293566}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: notFrozen
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -864,6 +878,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &370293569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370293561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &389415427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1088,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 28ded6ff50d2f44a0bba333cbd1b65e7, type: 3}
-  m_Color: {r: 0.8301887, g: 0.8027768, b: 0.8027768, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1144,7 +1170,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 28ded6ff50d2f44a0bba333cbd1b65e7, type: 3}
-  m_Color: {r: 0.8301887, g: 0.8027768, b: 0.8027768, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1299,12 +1325,13 @@ GameObject:
   - component: {fileID: 1197706951}
   - component: {fileID: 1197706950}
   - component: {fileID: 1197706949}
+  - component: {fileID: 1197706954}
   - component: {fileID: 1197706953}
   - component: {fileID: 1197706952}
   - component: {fileID: 1197706948}
   m_Layer: 0
   m_Name: Gear
-  m_TagString: notFrozen
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1440,6 +1467,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &1197706954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197706946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1215748998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,13 +1489,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1215748999}
   - component: {fileID: 1215749000}
+  - component: {fileID: 1215749006}
   - component: {fileID: 1215749004}
   - component: {fileID: 1215749002}
   - component: {fileID: 1215749005}
   - component: {fileID: 1215749001}
+  - component: {fileID: 1215749003}
   m_Layer: 0
   m_Name: Bucket
-  m_TagString: notFrozen
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1540,7 +1581,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.8301887, g: 0.8027768, b: 0.8027768, a: 1}
+  m_Color: {r: 0.30936277, g: 0.77385974, b: 0.8301887, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1563,6 +1604,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFrozen: 0
+--- !u!114 &1215749003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215748998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ab29863747a4d169dde13c8cd92bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1215749004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1612,6 +1666,18 @@ PolygonCollider2D:
       - {x: -0.39423746, y: -0.5976881}
       - {x: 0.43452108, y: -0.5778091}
       - {x: 0.68008995, y: 0.541799}
+--- !u!114 &1215749006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215748998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1312543068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,12 +1689,13 @@ GameObject:
   - component: {fileID: 1312543073}
   - component: {fileID: 1312543072}
   - component: {fileID: 1312543071}
+  - component: {fileID: 1312543076}
   - component: {fileID: 1312543075}
   - component: {fileID: 1312543069}
   - component: {fileID: 1312543070}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: notFrozen
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1780,6 +1847,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &1312543076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312543068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1455115037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,7 +2049,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Freeze/Unfreeze
+  m_text: Freeze Mode
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2386,7 +2465,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 28ded6ff50d2f44a0bba333cbd1b65e7, type: 3}
-  m_Color: {r: 0.8301887, g: 0.8027768, b: 0.8027768, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2665,11 +2744,12 @@ GameObject:
   - component: {fileID: 1955112075}
   - component: {fileID: 1955112073}
   - component: {fileID: 1955112074}
+  - component: {fileID: 1955112079}
   - component: {fileID: 1955112078}
   - component: {fileID: 1955112077}
   m_Layer: 0
   m_Name: Crate
-  m_TagString: notFrozen
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2815,6 +2895,18 @@ MonoBehaviour:
   maxSpeed: 20
   dragSpeed: 8
   throwSpeed: 10
+--- !u!114 &1955112079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955112071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1c4ac5d0b8e41acad33bb85b5b8cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2044521734
 GameObject:
   m_ObjectHideFlags: 0

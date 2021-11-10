@@ -37,16 +37,17 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets/SaveAndResetPositions.cs" />
-     <Compile Include="Assets/FreezeButton.cs" />
+     <Compile Include="Assets/SaveAndResetPositions2.cs" />
+     <Compile Include="Assets/DragDropManager.cs" />
+     <Compile Include="Assets/customProperties.cs" />
      <Compile Include="Assets/Restart.cs" />
      <Compile Include="Assets/DragDrop2.cs" />
      <Compile Include="Assets/DragDrop.cs" />
-     <Compile Include="Assets/DragDrop3.cs" />
-     <Compile Include="Assets/FreezeButton2.cs" />
-     <Compile Include="Assets/customProperties.cs" />
-     <Compile Include="Assets/SaveAndResetPositions2.cs" />
      <Compile Include="Assets/DragDrop4.cs" />
-     <Compile Include="Assets/DragDropManager.cs" />
+     <Compile Include="Assets/FreezeButton2.cs" />
+     <Compile Include="Assets/DragDrop3.cs" />
+     <Compile Include="Assets/FreezeButton1.cs" />
+     <Compile Include="Assets/MatchParentColor.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

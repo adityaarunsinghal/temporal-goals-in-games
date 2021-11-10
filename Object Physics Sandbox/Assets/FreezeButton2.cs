@@ -8,29 +8,25 @@ public class FreezeButton2 : MonoBehaviour
     public GameObject selectedObject;
     public static float discoloration = 0.5f;
     public bool toggled = false;
-    public Collider targetObject;
+    public Collider2D targetObject;
 
     public void onButtonPress()
     {
         toggled = !toggled;
+        // if (toggled)
+        // {
+        //     Color c = ui_button.GetComponent<FreezeButton>().GetComponent<Image>().color;
+        // }
     }
 
-    void update()
+    void Update()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (toggled)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (toggled)
             {
-                // Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-                {
-                   targetObject = hit.collider;
-                }
-
+                mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                targetObject = Physics2D.OverlapPoint(mousePosition);
                 if (targetObject)
                 {
                     selectedObject = targetObject.transform.gameObject;
@@ -46,8 +42,8 @@ public class FreezeButton2 : MonoBehaviour
                         }
                     }
                 }
-            }
 
+            }
         }
     }
 
@@ -55,14 +51,14 @@ public class FreezeButton2 : MonoBehaviour
     {
         obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         obj.GetComponent<customProperties>().isFrozen = true;
-        obj.GetComponent<SpriteRenderer>().material.color -= new Color(0.1f, 0.1f, 0.1f, discoloration);
+        obj.GetComponent<SpriteRenderer>().color -= new Color(0.1f, 0.1f, 0.1f, discoloration);
     }
 
     public void unfreeze(GameObject obj)
     {
         obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         obj.GetComponent<customProperties>().isFrozen = false;
-        obj.GetComponent<SpriteRenderer>().material.color += new Color(0.1f, 0.1f, 0.1f, discoloration);
+        obj.GetComponent<SpriteRenderer>().color += new Color(0.1f, 0.1f, 0.1f, discoloration);
     }
 }
 
