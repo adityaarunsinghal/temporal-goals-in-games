@@ -18,7 +18,7 @@ public class SaveAndResetPositions2 : MonoBehaviour
             // return to positions and pause all objects
             for (int i = 0; i < objectsCacher.top; i++)
             {
-                objectsCacher.saveableObjects[i].GetComponent<DragDropManager>().offDragDrop4();
+                objectsCacher.saveableObjects[i].GetComponent<DragDropManager>().offDragDrop5();
                 objectsCacher.saveableObjects[i].GetComponent<DragDropManager>().onDragDrop1();
                 objectsCacher.saveableObjects[i].transform.position = objectsCacher.objectPositions[i];
                 objectsCacher.saveableObjects[i].GetComponent<Rigidbody2D>().gravityScale = 0f;
@@ -33,7 +33,7 @@ public class SaveAndResetPositions2 : MonoBehaviour
             // save setup and turn on game play
             for (int i = 0; i < objectsCacher.top; i++)
             {
-                objectsCacher.saveableObjects[i].GetComponent<DragDropManager>().onDragDrop4();
+                objectsCacher.saveableObjects[i].GetComponent<DragDropManager>().onDragDrop5();
                 objectsCacher.saveableObjects[i].GetComponent<DragDropManager>().offDragDrop1();
                 objectsCacher.objectPositions[i] = objectsCacher.saveableObjects[i].transform.position;
                 objectsCacher.saveableObjects[i].GetComponent<Rigidbody2D>().gravityScale = 1f;

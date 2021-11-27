@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class DragDropManager : MonoBehaviour
 {
-    private DragDrop4 dragDrop4;
+    private DragDrop5 dragDrop5;
     private DragDrop dragDrop1;
     public void onDragDrop1()
     {
         gameObject.AddComponent<DragDrop>();
     }
 
-    public void onDragDrop4()
+    public void onDragDrop5()
     {
-        dragDrop4 = GetComponent<DragDrop4>();
-        dragDrop4.enabled = true;
+        dragDrop5 = GetComponent<DragDrop5>();
+        dragDrop5.enabled = true;
     }
 
-    public void offDragDrop4()
+    public void offDragDrop5()
     {
-        dragDrop4 = GetComponent<DragDrop4>();
-        dragDrop4.enabled = false;
+        dragDrop5 = GetComponent<DragDrop5>();
+        dragDrop5.enabled = false;
     }
 
     public void offDragDrop1()

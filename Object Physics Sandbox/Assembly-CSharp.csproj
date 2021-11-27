@@ -36,24 +36,25 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/cutomButtons/buttonScripts/Restart.cs" />
+     <Compile Include="Assets/cutomButtons/FreezeButtonNameChanger.cs" />
      <Compile Include="Assets/MatchParentColor.cs" />
+     <Compile Include="Assets/cutomButtons/DuplicateButtonNameChanger.cs" />
+     <Compile Include="Assets/cutomButtons/buttonScripts/RemoveButton.cs" />
      <Compile Include="Assets/SaveAndResetPositions.cs" />
+     <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton2.cs" />
+     <Compile Include="Assets/dragDrop/DragDropManager.cs" />
+     <Compile Include="Assets/cutomButtons/buttonScripts/DuplicateButton.cs" />
+     <Compile Include="Assets/dragDrop/DragDrop2.cs" />
      <Compile Include="Assets/SaveAndResetPositions2.cs" />
      <Compile Include="Assets/customProperties.cs" />
-     <Compile Include="Assets/cutomButtons/FreezeButtonNameChanger.cs" />
-     <Compile Include="Assets/cutomButtons/buttonScripts/Restart.cs" />
-     <Compile Include="Assets/cutomButtons/buttonScripts/DuplicateButton.cs" />
-     <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton1.cs" />
-     <Compile Include="Assets/cutomButtons/DuplicateButtonNameChanger.cs" />
-     <Compile Include="Assets/cutomButtons/RemoveButtonNameChanger.cs" />
-     <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton2.cs" />
-     <Compile Include="Assets/dragDrop/DragDrop3.cs" />
-     <Compile Include="Assets/dragDrop/DragDrop2.cs" />
-     <Compile Include="Assets/cutomButtons/buttonScripts/RemoveButton.cs" />
-     <Compile Include="Assets/dragDrop/DragDropManager.cs" />
      <Compile Include="Assets/dragDrop/DragDrop4.cs" />
-     <Compile Include="Assets/dragDrop/DragDrop.cs" />
+     <Compile Include="Assets/dragDrop/DragDrop3.cs" />
      <Compile Include="Assets/objectsCacher.cs" />
+     <Compile Include="Assets/cutomButtons/RemoveButtonNameChanger.cs" />
+     <Compile Include="Assets/dragDrop/DragDrop.cs" />
+     <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton1.cs" />
+     <Compile Include="Assets/dragDrop/DragDrop5.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
