@@ -14,10 +14,7 @@ public class Restart : MonoBehaviour
         GameObject pedestal_object = GameObject.FindGameObjectsWithTag("pedestal")[0];
         ball = ball_object.GetComponent<Rigidbody2D>();
         pedestal = pedestal_object.GetComponent<Rigidbody2D>();
-        // pedestal.mass = ball.mass;
-        // pedestal.angularDrag = ball.angularDrag;
-        // pedestal.drag = ball.drag;
-        initialPosition = new Vector3(-1.38f, -4.12f, 0.0f);
+        initialPosition = new Vector3(-1.35f, -4.12f, 0.0f);
         putInSetup();
     }
     public static void OnButtonPress()
@@ -28,14 +25,13 @@ public class Restart : MonoBehaviour
     public static void putInSetup()
     {
         ball.transform.position = initialPosition;
-        Vector3 temp = pedestal.transform.position;
-        temp.x = initialPosition.x;
-        pedestal.transform.position = temp;
+        pedestal.transform.position = initialPosition - new Vector3(0.0f, 0.58f, 0.0f);
         stabilize(ball);
         stabilize(pedestal);
         pedestal.transform.parent = ball.transform;
         ball.constraints = RigidbodyConstraints2D.FreezePositionY;
         ball.GetComponent<customProperties>().inSetup = true;
+        ball.GetComponent<customProperties>().makeTouchable();
     }
 
     public static void putOutSetup()
@@ -49,5 +45,6 @@ public class Restart : MonoBehaviour
     {
         obj.velocity = Vector3.zero;
         obj.angularVelocity = 0.0f;
+        obj.transform.rotation = Quaternion.Euler(0, 0, 0); 
     }
 }

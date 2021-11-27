@@ -601,9 +601,8 @@ Transform:
   m_GameObject: {fileID: 370293561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.35, y: -4.12, z: 0}
-  m_LocalScale: {x: 0.5148, y: 0.5148, z: 1}
-  m_Children:
-  - {fileID: 845788669}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -641,9 +640,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.002383491}
+  m_Offset: {x: -0.007926941, y: 0.0023834705}
   serializedVersion: 2
-  m_Radius: 0.61348367
+  m_Radius: 0.6293378
 --- !u!114 &370293566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,8 +735,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.5977082, g: 1, b: 0, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1186,11 +1185,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845788665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01767669, y: -1.1460764, z: 0}
-  m_LocalScale: {x: 0.3584527, y: 0.39102563, z: 1}
+  m_LocalPosition: {x: -1.35, y: -4.7, z: 0}
+  m_LocalScale: {x: 0.18453147, y: 0.2013, z: 1}
   m_Children: []
-  m_Father: {fileID: 370293563}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197706946
 GameObject:

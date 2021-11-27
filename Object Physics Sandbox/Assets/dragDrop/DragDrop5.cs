@@ -8,7 +8,6 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     Vector3 mousePosition;
     public float dragSpeed = 15;
     public float throwSpeed = 10;
-    Vector2 mouseForce;
     Vector3 lastPosition;
     LineRenderer line;
     Vector3[] linePos;
@@ -17,10 +16,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     {
         linePos = new Vector3[2];
         line = GetComponent<LineRenderer>();
-        // line.SetColors(Color.white, Color.red);
-        line.material.color = Color.white;
-        linePos[0] = ball.transform.position;
-        linePos[1] = ball.transform.position;
+        line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
     }
 
     void Update()
@@ -39,7 +35,10 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                 // this script only concerns the ball's behavior
                 if (targetObject.gameObject.tag == "ball")
                 {
-                    ball = targetObject.gameObject.GetComponent<Rigidbody2D>();
+                    if (targetObject.GetComponent<customProperties>().touchable)
+                    {
+                        ball = targetObject.gameObject.GetComponent<Rigidbody2D>();
+                    }
                 }
             }
         }
@@ -72,6 +71,8 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                     Vector2 dir = ball.transform.position - mousePosition;
                     dir *= throwSpeed;
                     ball.velocity = dir;
+                    // player should only be able to shoot once before resetting
+                    ball.GetComponent<customProperties>().makeUntouchable();
                     ball = null;
                 }
             }
