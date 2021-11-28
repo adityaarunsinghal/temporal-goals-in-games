@@ -59,7 +59,6 @@ public static class ActivityLogger
         // name by current time
         string name = string.Format("InteractionLogs/logs_{0}.txt", localDate.ToString("yyyy_MM_dd_HH_mm"));
         string lines = "";
-        lines += "-----START-----\n";
         lines += "\n-----BALL SHOOTS-----\n";
 
         for (int i = 0; i < ballPositions.Count; i++)
@@ -76,8 +75,6 @@ public static class ActivityLogger
             }
         }
 
-        lines += "-----END-----\n";
-        
         // save
         File.WriteAllText(name, lines);
     }
