@@ -17,4 +17,9 @@ public class DragDrop : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         selectedObject.position = mousePosition;
     }
+
+    void OnMouseUp()
+    {
+        selectedObject = null;
+    }
 }

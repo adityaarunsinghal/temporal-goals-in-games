@@ -14,6 +14,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
 
     void Start()
     {
+        ActivityLogger.startLogging();
         linePos = new Vector3[2];
         line = GetComponent<LineRenderer>();
         line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
@@ -71,6 +72,12 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                     Vector2 dir = ball.transform.position - mousePosition;
                     dir *= throwSpeed;
                     ball.velocity = dir;
+
+                    // Save this shoot
+                    ActivityLogger.saveBallPosition(ball.transform.position);
+                    ActivityLogger.saveObjectPositions();
+                    ActivityLogger.saveShootVelocity(dir);
+
                     // player should only be able to shoot once before resetting
                     ball.GetComponent<customProperties>().makeUntouchable();
                     ball = null;
@@ -78,6 +85,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
             }
         }
     }
+
     private void updatePowerLine(Vector3 start, Vector3 end, float width)
     {
         linePos[0] = start;
@@ -86,5 +94,10 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
         line.endWidth = width;
         line.SetPositions(linePos);
         line.useWorldSpace = true;
+    }
+
+    void OnApplicationQuit()
+    {
+        ActivityLogger.saveLogs();
     }
 }
