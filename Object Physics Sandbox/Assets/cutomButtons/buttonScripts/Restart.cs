@@ -22,21 +22,21 @@ public class Restart : MonoBehaviour
         putInSetup();
     }
 
-    public static void putInSetup()
+    public static void putInSetup() // hardcoded settings for pedestal and ball
     {
         ball.transform.position = initialPosition;
         pedestal.transform.position = initialPosition - new Vector3(0.0f, 0.58f, 0.0f);
         stabilize(ball);
         stabilize(pedestal);
-        pedestal.transform.parent = ball.transform;
-        ball.constraints = RigidbodyConstraints2D.FreezePositionY;
+        pedestal.transform.parent = ball.transform; // make pedestal move with ball
+        ball.constraints = RigidbodyConstraints2D.FreezePositionY; // only horizontal movement
         ball.GetComponent<customProperties>().inSetup = true;
         ball.GetComponent<customProperties>().makeTouchable();
     }
 
     public static void putOutSetup()
     {
-        pedestal.transform.parent = null;
+        pedestal.transform.parent = null; // make pedestal independent 
         ball.constraints = RigidbodyConstraints2D.None;
         ball.GetComponent<customProperties>().inSetup = false;
     }

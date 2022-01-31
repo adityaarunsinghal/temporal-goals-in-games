@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class objectsCacher
+public static class objectsCacher // not monobehavior
 {
 
     public static List<Vector2> objectPositions;
@@ -10,7 +10,7 @@ public static class objectsCacher
     private static DragDropManager[] foundObjects;
     public static int top;
 
-    public static void scan()
+    public static void scan() // resets the scanner and finds all existing objects
     {
         foundObjects = GameObject.FindObjectsOfType<DragDropManager>();
         saveableObjects = new List<DragDropManager>();

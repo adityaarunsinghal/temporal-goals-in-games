@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragDrop2 : MonoBehaviour
+public class DragDrop2 : MonoBehaviour // draggy movement of objects
 {
     public Rigidbody2D selectedObject;
     Vector3 mousePosition;

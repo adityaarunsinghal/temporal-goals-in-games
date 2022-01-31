@@ -8,7 +8,7 @@ public class SaveAndResetPositions2 : MonoBehaviour
 
     void Start()
     {
-        objectsCacher.scan();
+        objectsCacher.scan(); // only need to do once
     }
     
     public void onButtonPress()

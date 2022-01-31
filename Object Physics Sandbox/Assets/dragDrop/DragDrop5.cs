@@ -17,7 +17,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
         ActivityLogger.startLogging();
         linePos = new Vector3[2];
         line = GetComponent<LineRenderer>();
-        line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+        line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply")); // for the green to red effect
     }
 
     void Update()
@@ -36,6 +36,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                 // this script only concerns the ball's behavior
                 if (targetObject.gameObject.tag == "ball")
                 {
+                    // check if ball is in "touchable" node
                     if (targetObject.GetComponent<customProperties>().touchable)
                     {
                         ball = targetObject.gameObject.GetComponent<Rigidbody2D>();
@@ -44,7 +45,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
             }
         }
 
-        if (ball)
+        if (ball) // player is touching the ball
         {
             // move pedestal while the ball is being placed
             if (ball.GetComponent<customProperties>().inSetup)
@@ -87,6 +88,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     }
 
     private void updatePowerLine(Vector3 start, Vector3 end, float width)
+    // just draws the line over and over
     {
         linePos[0] = start;
         linePos[1] = end;
