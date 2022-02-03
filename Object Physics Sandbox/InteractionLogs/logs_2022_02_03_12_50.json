@@ -1,0 +1,14 @@
+{
+    "velocities": [],
+    "ballPositions": [],
+    "velocitiesCT": [],
+    "ballPositionsCT": [],
+    "objectPositionsCT": [],
+    "foundObjectsTags": [
+        "corner",
+        "triangle",
+        "bucket",
+        "gear",
+        "crate"
+    ]
+}

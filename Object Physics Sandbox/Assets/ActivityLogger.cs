@@ -41,15 +41,14 @@ public static class ActivityLogger
 
     public static void saveObjectPositions()
     {
-        int top = save.foundObjectsTags.Count;
-        Vector3[] positions = new Vector3[top];
-        for (int i = 0; i < top; i++)
+        // cannot make multi-array because cannot JSON serialize
+        int objectsCount = save.foundObjectsTags.Count;
+        for (int objectNum = 0; objectNum < objectsCount; objectNum++)
         {
             // it is essential for each object to have a 
             // unique tag for this saving mechanism to work
-            positions[i] = GameObject.FindGameObjectsWithTag(save.foundObjectsTags[i])[0].transform.position;
+            save.objectPositions.Add(GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0].transform.position);
         }
-        save.objectPositions.Add(positions);
         save.objectPositionsCT.Add(timer.ElapsedTicks);
     }
 
@@ -66,27 +65,23 @@ public static class ActivityLogger
 
         string readableLines = "";
         readableLines += "\n-----BALL SHOOTS-----\n";
-        for (int i = 0; i < save.ballPositions.Count; i++)
+        int objectsCount = save.foundObjectsTags.Count;
+        int shootsCount = save.ballPositions.Count;
+        for (int shootNum = 0; shootNum < shootsCount; shootNum++)
         {
-            readableLines += save.ballPositions[i] + "\t" + save.ballPositionsCT[i] + "\tVelocity:\t" + save.velocities[i] + "\n";
+            readableLines += save.ballPositions[shootNum] + "\t" + save.ballPositionsCT[shootNum] + "\tVelocity:\t" + save.velocities[shootNum] + "\n";
         }
         readableLines += "\n-----OBJECT POSITIONS-----\n";
-        for (int i = 0; i < save.objectPositions.Count; i++)
+        for (int shootNum = 0; shootNum < shootsCount; shootNum++)
         {
-            for (int j = 0; j < save.objectPositions[i].Length; j++)
+            for (int objectNum = 0; objectNum < objectsCount; objectNum++)
             {
-                readableLines += save.foundObjectsTags[j] + ":\t" + save.objectPositions[i][j] + "\t" + save.objectPositionsCT[i] + "\n";
+                readableLines += save.foundObjectsTags[objectNum] + ":\t" + save.objectPositions[(shootNum * objectsCount) + objectNum] + "\t" + save.objectPositionsCT[shootNum] + "\n";
             }
         }
 
         // save
-
-        // BinaryFormatter bf = new BinaryFormatter();
-        // FileStream file = File.Create(savePath);
-        // bf.Serialize(file, save);
-        // file.Close();
-        
-        File.WriteAllText(savePath, JsonUtility.ToJson(save));
+        File.WriteAllText(savePath, JsonUtility.ToJson(save, true));
         File.WriteAllText(readableLogsPath, readableLines);
         UnityEngine.Debug.Log("Run Saved");
     }

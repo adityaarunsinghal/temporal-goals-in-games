@@ -6,26 +6,25 @@ using UnityEngine;
 using System.Diagnostics;
 using System.IO;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayPrevious : MonoBehaviour
 {
     public string absPath;
-    private static Stopwatch timer;
-    public static Text timeText;
-    private static Save save;
+    private Stopwatch timer;
+    public TMP_Text timeText;
+    private Save save;
 
-    public void Start()
+    private void Start()
     {
+        timeText.text = "Playback Elapsed Ticks: N/A";
+        timer = new Stopwatch();
         loadLogs(absPath);
     }
-    public static void loadLogs(string absPath)
+    private void loadLogs(string absPath)
     {
         if (File.Exists(absPath))
         {
-            // BinaryFormatter bf = new BinaryFormatter();
-            // FileStream file = File.Open(absPath, FileMode.Open);
-            // save = (Save)bf.Deserialize(file);
-            // file.Close();
             save = JsonUtility.FromJson<Save>(File.ReadAllText(absPath));
             UnityEngine.Debug.Log("Game Loaded");
         }
@@ -34,31 +33,48 @@ public class PlayPrevious : MonoBehaviour
             UnityEngine.Debug.Log("Provided Absolute Path does not exist");
         }
     }
-    public static void OnButtonPress()
+    public void OnButtonPress()
     {
         startPlaying();
     }
-    public static void startPlaying() // hardcoded settings for pedestal and ball
+    public void startPlaying()
     {
-        timer = new Stopwatch();
         timer.Start();
-        for (int i=0; i<save.ballPositions.Count; i++)
-        {
-            while (timer.ElapsedTicks < save.ballPositionsCT[i])
-                {
-                    continue;
-                }
-            for (int j=0; j<save.foundObjectsTags.Count; j++)
-            {
-                // FindGameObjectsWithTag(save.foundObjectsTags[i])[0]
-                UnityEngine.Debug.Log(save.foundObjectsTags[j]); // temporary - no placing
-            }
-            // place ball at this point and shoot it
-        }
-    }
+        int shootsCount = save.ballPositions.Count;
+        int objectsCount = save.foundObjectsTags.Count;
 
-    public static void Update()
-    {
-        timeText.text = timer.ElapsedTicks.ToString();
+        for (int shootNum = 0; shootNum < shootsCount; shootNum++)
+        {
+            // wait for time to match live play
+            while (timer.ElapsedTicks < save.ballPositionsCT[shootNum])
+            {
+                timeText.text = "Playback Elapsed Ticks: " + timer.ElapsedTicks.ToString();
+                continue;
+            }
+            // place all objects where they were during shoot
+            for (int objectNum = 0; objectNum < objectsCount; objectNum++)
+            {
+                GameObject obj = GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0];
+                if (obj)
+                {
+                    obj.transform.position = save.objectPositions[(shootNum * objectsCount) + objectNum];
+                }
+                else
+                {
+                    UnityEngine.Debug.Log("Object with tag not found: " + save.foundObjectsTags[objectNum]);
+                }
+            }
+            // place ball and shoot it
+            GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
+            if (ball)
+            {
+                ball.transform.position = save.ballPositions[shootNum];
+                ball.GetComponent<Rigidbody2D>().velocity = save.velocities[shootNum];
+            }
+            else
+            {
+                UnityEngine.Debug.Log("Object with tag not found: ball");
+            }
+        }
     }
 }
