@@ -39,12 +39,14 @@ public class PlayPrevious : MonoBehaviour
     }
     public void startPlaying()
     {
+        UnityEngine.Debug.Log("Playing back from logs in Real Time");
         timer.Start();
         int shootsCount = save.ballPositions.Count;
         int objectsCount = save.foundObjectsTags.Count;
 
         for (int shootNum = 0; shootNum < shootsCount; shootNum++)
         {
+            UnityEngine.Debug.Log("Preparing for Shoot " + shootNum + " of " + shootsCount);
             // wait for time to match live play
             while (timer.ElapsedTicks < save.ballPositionsCT[shootNum])
             {
@@ -69,6 +71,8 @@ public class PlayPrevious : MonoBehaviour
             if (ball)
             {
                 ball.transform.position = save.ballPositions[shootNum];
+                // detach from pedestal
+                Restart.putOutSetup();
                 ball.GetComponent<Rigidbody2D>().velocity = save.velocities[shootNum];
             }
             else
