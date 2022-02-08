@@ -75,8 +75,6 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                     ball.velocity = dir;
 
                     // Save this shoot
-                    ActivityLogger.saveBallPosition(ball.transform.position);
-                    ActivityLogger.saveObjectPositions();
                     ActivityLogger.saveShootVelocity(dir);
 
                     // player should only be able to shoot once before resetting
@@ -85,6 +83,18 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                 }
             }
         }
+    }
+
+    void FixedUpdate()
+    {
+        if (ball) 
+        {
+            // save ball position for replay
+            ActivityLogger.saveBallPosition(ball.transform.position);
+        }
+
+        // always save where objects are
+        ActivityLogger.saveObjectPositions();
     }
 
     private void updatePowerLine(Vector3 start, Vector3 end, float width)

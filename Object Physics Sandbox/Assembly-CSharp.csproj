@@ -44,8 +44,10 @@
      <Compile Include="Assets/SaveAndResetPositions.cs" />
      <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton2.cs" />
      <Compile Include="Assets/dragDrop/DragDropManager.cs" />
+     <Compile Include="Assets/VectorSer.cs" />
      <Compile Include="Assets/cutomButtons/buttonScripts/DuplicateButton.cs" />
      <Compile Include="Assets/dragDrop/DragDrop2.cs" />
+     <Compile Include="Assets/Save.cs" />
      <Compile Include="Assets/SaveAndResetPositions2.cs" />
      <Compile Include="Assets/dragDrop/DragDrop5.cs" />
      <Compile Include="Assets/customProperties.cs" />
@@ -53,12 +55,11 @@
      <Compile Include="Assets/dragDrop/DragDrop3.cs" />
      <Compile Include="Assets/objectsCacher.cs" />
      <Compile Include="Assets/cutomButtons/RemoveButtonNameChanger.cs" />
+     <Compile Include="Assets/cutomButtons/buttonScripts/PlayPrevious.cs" />
      <Compile Include="Assets/dragDrop/DragDrop.cs" />
      <Compile Include="Assets/ActivityLogger.cs" />
      <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton1.cs" />
-     <Compile Include="Assets/cutomButtons/buttonScripts/PlayPrevious.cs" />
-     <Compile Include="Assets/Save.cs" />
-     <Compile Include="Assets/VectorSer.cs" />
+     <Compile Include="Assets/PausableStopwatch.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

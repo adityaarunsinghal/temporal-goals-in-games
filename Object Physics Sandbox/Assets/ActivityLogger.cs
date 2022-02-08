@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class ActivityLogger
 {
-    private static Stopwatch timer;
+    private static PausableStopwatch timer;
     private static System.DateTime localDate;
     private static Save save;
     private static DragDrop[] foundObjects;
@@ -23,20 +23,20 @@ public static class ActivityLogger
         }
 
         localDate = System.DateTime.Now;
-        timer = new Stopwatch();
+        timer = new PausableStopwatch();
         timer.Start();
     }
 
     public static void saveBallPosition(Vector3 ballPosition)
     {
         save.ballPositions.Add(ballPosition);
-        save.ballPositionsCT.Add(timer.ElapsedTicks);
+        save.ballPositionsCT.Add(timer.time);
     }
 
     public static void saveShootVelocity(Vector3 shootVelocity)
     {
         save.velocities.Add(shootVelocity);
-        save.velocitiesCT.Add(timer.ElapsedTicks);
+        save.velocitiesCT.Add(timer.time);
     }
 
     public static void saveObjectPositions()
@@ -49,40 +49,17 @@ public static class ActivityLogger
             // unique tag for this saving mechanism to work
             save.objectPositions.Add(GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0].transform.position);
         }
-        save.objectPositionsCT.Add(timer.ElapsedTicks);
+        save.objectPositionsCT.Add(timer.time);
     }
 
     public static void saveLogs()
     {
         // name by current time
         string name = string.Format("InteractionLogs/logs_{0}", localDate.ToString("yyyy_MM_dd_HH_mm"));
-
-        // string savePath = Path.Combine(Application.persistentDataPath, name + ".save");
-        // string readableLogsPath = Path.Combine(Application.persistentDataPath, name + "_readable.txt");
-
         string savePath = name + ".json";
-        string readableLogsPath = name + "_readable.txt";
-
-        string readableLines = "";
-        readableLines += "\n-----BALL SHOOTS-----\n";
-        int objectsCount = save.foundObjectsTags.Count;
-        int shootsCount = save.ballPositions.Count;
-        for (int shootNum = 0; shootNum < shootsCount; shootNum++)
-        {
-            readableLines += save.ballPositions[shootNum] + "\t" + save.ballPositionsCT[shootNum] + "\tVelocity:\t" + save.velocities[shootNum] + "\n";
-        }
-        readableLines += "\n-----OBJECT POSITIONS-----\n";
-        for (int shootNum = 0; shootNum < shootsCount; shootNum++)
-        {
-            for (int objectNum = 0; objectNum < objectsCount; objectNum++)
-            {
-                readableLines += save.foundObjectsTags[objectNum] + ":\t" + save.objectPositions[(shootNum * objectsCount) + objectNum] + "\t" + save.objectPositionsCT[shootNum] + "\n";
-            }
-        }
-
+        
         // save
         File.WriteAllText(savePath, JsonUtility.ToJson(save, true));
-        File.WriteAllText(readableLogsPath, readableLines);
         UnityEngine.Debug.Log("Run Saved");
     }
 }
