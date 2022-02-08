@@ -955,8 +955,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584339154}
   m_LocalRotation: {x: -0, y: -0, z: -0.7010729, w: 0.7130897}
-  m_LocalPosition: {x: 0.04, y: -0.56, z: 0.102772005}
-  m_LocalScale: {x: 0.10496001, y: 0.85, z: 1}
+  m_LocalPosition: {x: 5.38, y: 1.29, z: 0.102772005}
+  m_LocalScale: {x: 0.104960024, y: 0.85000014, z: 1}
   m_Children: []
   m_Father: {fileID: 1215748999}
   m_RootOrder: 0
@@ -1171,8 +1171,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621719144}
   m_LocalRotation: {x: -0, y: -0, z: -0.090819314, w: 0.99586743}
-  m_LocalPosition: {x: 0.53000003, y: -0.02000004, z: 0.102772005}
-  m_LocalScale: {x: 0.10496, y: 1.1, z: 1}
+  m_LocalPosition: {x: 5.8700004, y: 1.8299999, z: 0.102772005}
+  m_LocalScale: {x: 0.104959995, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1215748999}
   m_RootOrder: 1
@@ -2137,7 +2137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94757af1676b94eef874c078835edecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  absPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/InteractionLogs/logs_2022_02_03_13_23.json
+  absPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/InteractionLogs/logs_2022_02_03_17_38.json
   timeText: {fileID: 596991675}
 --- !u!4 &1548056932
 Transform:
@@ -2445,8 +2445,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622959775}
   m_LocalRotation: {x: -0, y: -0, z: 0.13253006, w: 0.991179}
-  m_LocalPosition: {x: -0.49751228, y: -0.048667252, z: 0.102772005}
-  m_LocalScale: {x: 0.10496001, y: 1.1, z: 1}
+  m_LocalPosition: {x: 4.842488, y: 1.8013327, z: 0.102772005}
+  m_LocalScale: {x: 0.10496002, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1215748999}
   m_RootOrder: 2
