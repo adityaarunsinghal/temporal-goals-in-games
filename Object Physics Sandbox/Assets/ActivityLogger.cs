@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class ActivityLogger
 {
-    private static PausableStopwatch timer;
+    private static Stopwatch timer;
     private static System.DateTime localDate;
     private static Save save;
     private static DragDrop[] foundObjects;
@@ -23,20 +23,20 @@ public static class ActivityLogger
         }
 
         localDate = System.DateTime.Now;
-        timer = new PausableStopwatch();
+        timer = new Stopwatch();
         timer.Start();
     }
 
     public static void saveBallPosition(Vector3 ballPosition)
     {
         save.ballPositions.Add(ballPosition);
-        save.ballPositionsCT.Add(timer.time);
+        save.ballPositionsCT.Add(timer.ElapsedTicks);
     }
 
     public static void saveShootVelocity(Vector3 shootVelocity)
     {
         save.velocities.Add(shootVelocity);
-        save.velocitiesCT.Add(timer.time);
+        save.velocitiesCT.Add(timer.ElapsedTicks);
     }
 
     public static void saveObjectPositions()
@@ -49,7 +49,7 @@ public static class ActivityLogger
             // unique tag for this saving mechanism to work
             save.objectPositions.Add(GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0].transform.position);
         }
-        save.objectPositionsCT.Add(timer.time);
+        save.objectPositionsCT.Add(timer.ElapsedTicks);
     }
 
     public static void saveLogs()

@@ -11,14 +11,14 @@ using TMPro;
 public class PlayPrevious : MonoBehaviour
 {
     public string absPath;
-    private PausableStopwatch timer;
+    private Stopwatch timer;
     public TMP_Text timeText;
     private Save save;
 
     private void Start()
     {
         timeText.text = "Playback Time: N/A";
-        timer = new PausableStopwatch();
+        timer = new Stopwatch();
         loadLogs(absPath);
     }
     private void loadLogs(string absPath)
@@ -50,12 +50,12 @@ public class PlayPrevious : MonoBehaviour
         int ballSnapNum = 0;
         int shootNum = 0;
 
-        while ((objectSnapNum < objectSnapsCount) | (ballSnapNum < ballSnapsCount))
+        while ((objectSnapNum < objectSnapsCount))
         {
-            timeText.text = timer.time.ToString();
-            if (timer.time >= save.objectPositionsCT[objectSnapNum])
+            timeText.text = "Playback Time: " + timer.ElapsedTicks.ToString();
+            if (timer.ElapsedTicks >= save.objectPositionsCT[objectSnapNum])
             {
-                timer.Pause();
+                Time.timeScale = 0;
                 objectSnapNum++;
 
                 // place all objects 
@@ -72,31 +72,34 @@ public class PlayPrevious : MonoBehaviour
                     }
                 }
 
-                timer.Unpause();
+                Time.timeScale = 1;
             }
 
-            if (timer.time >= save.ballPositionsCT[ballSnapNum])
+            if (timer.ElapsedTicks >= save.ballPositionsCT[ballSnapNum])
             {
-                timer.Pause();
-                ballSnapNum++;
-                // attach to pedestal
-                Restart.putInSetup();
-
-                // place ball
-                GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
-                if (ball)
+                if (ballSnapNum < ballSnapsCount)
                 {
-                    ball.transform.position = save.ballPositions[ballSnapNum];
-                }
-                else
-                {
-                    UnityEngine.Debug.Log("Object with tag not found: ball");
-                }
+                    Time.timeScale = 0;
+                    ballSnapNum++;
+                    // attach to pedestal
+                    Restart.putInSetup();
 
-                timer.Unpause();
+                    // place ball
+                    GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
+                    if (ball)
+                    {
+                        ball.transform.position = save.ballPositions[ballSnapNum];
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("Object with tag not found: ball");
+                    }
+
+                    Time.timeScale = 1;
+                }
             }
 
-            if (timer.time >= save.velocitiesCT[shootNum])
+            if (timer.ElapsedTicks >= save.velocitiesCT[shootNum])
             {
                 shootNum++;
 
