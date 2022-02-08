@@ -53,6 +53,10 @@ public class PlayPrevious : MonoBehaviour
                 timeText.text = "Playback Elapsed Ticks: " + timer.ElapsedTicks.ToString();
                 continue;
             }
+            
+            // get ball back to base
+            Restart.putInSetup();
+
             // place all objects where they were during shoot
             for (int objectNum = 0; objectNum < objectsCount; objectNum++)
             {
