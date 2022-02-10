@@ -15,7 +15,7 @@ public class PlayPrevious : MonoBehaviour
     public TMP_Text timeText;
     private Save save;
 
-    private void Start()
+    private void setup()
     {
         timeText.text = "Playback Time: N/A";
         timer = new Stopwatch();
@@ -35,6 +35,7 @@ public class PlayPrevious : MonoBehaviour
     }
     public void OnButtonPress()
     {
+        setup();
         startPlaying();
     }
     public void startPlaying()
@@ -50,36 +51,42 @@ public class PlayPrevious : MonoBehaviour
         int ballSnapNum = 0;
         int shootNum = 0;
 
-        while ((objectSnapNum < objectSnapsCount))
+        while ((objectSnapNum < objectSnapsCount - 1))
         {
             timeText.text = "Playback Time: " + timer.ElapsedTicks.ToString();
-            if (timer.ElapsedTicks >= save.objectPositionsCT[objectSnapNum])
+            // UnityEngine.Debug.Log("Object Snap Num: " + objectSnapNum + " of " + objectSnapsCount);
+            while (timer.ElapsedTicks < save.objectPositionsCT[objectSnapNum])
             {
-                Time.timeScale = 0;
-                objectSnapNum++;
+                // let timer run until its time
+                continue;
+            }
 
-                // place all objects 
-                for (int objectNum = 0; objectNum < objectsCount; objectNum++)
+            // pause timer while objects are being moved
+            Time.timeScale = 0;
+            objectSnapNum++;
+
+            // place all objects 
+            for (int objectNum = 0; objectNum < objectsCount; objectNum++)
+            {
+                GameObject obj = GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0];
+                if (obj)
                 {
-                    GameObject obj = GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0];
-                    if (obj)
-                    {
-                        obj.transform.position = save.objectPositions[(objectSnapNum * objectsCount) + objectNum];
-                    }
-                    else
-                    {
-                        UnityEngine.Debug.Log("Object with tag not found: " + save.foundObjectsTags[objectNum]);
-                    }
+                    obj.transform.position = save.objectPositions[(objectSnapNum * objectsCount) + objectNum];
+                }
+                else
+                {
+                    UnityEngine.Debug.Log("Object with tag not found: " + save.foundObjectsTags[objectNum]);
                 }
 
+                // continue timer
                 Time.timeScale = 1;
             }
 
-            if (timer.ElapsedTicks >= save.ballPositionsCT[ballSnapNum])
+            if (ballSnapNum < ballSnapsCount - 1)
             {
-                if (ballSnapNum < ballSnapsCount)
+                if (timer.ElapsedTicks >= save.ballPositionsCT[ballSnapNum])
                 {
-                    Time.timeScale = 0;
+                    // Time.timeScale = 0;
                     ballSnapNum++;
                     // attach to pedestal
                     Restart.putInSetup();
@@ -95,25 +102,28 @@ public class PlayPrevious : MonoBehaviour
                         UnityEngine.Debug.Log("Object with tag not found: ball");
                     }
 
-                    Time.timeScale = 1;
+                    // Time.timeScale = 1;
                 }
             }
 
-            if (timer.ElapsedTicks >= save.velocitiesCT[shootNum])
+            if (shootNum < shootsCount - 1)
             {
-                shootNum++;
-
-                // detach from pedestal
-                Restart.putOutSetup();
-
-                GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
-                if (ball)
+                if (timer.ElapsedTicks >= save.velocitiesCT[shootNum])
                 {
-                    ball.GetComponent<Rigidbody2D>().velocity = save.velocities[shootNum];
-                }
-                else
-                {
-                    UnityEngine.Debug.Log("Object with tag not found: ball");
+                    shootNum++;
+
+                    // detach from pedestal
+                    Restart.putOutSetup();
+
+                    GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
+                    if (ball)
+                    {
+                        ball.GetComponent<Rigidbody2D>().velocity = save.velocities[shootNum];
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("Object with tag not found: ball");
+                    }
                 }
             }
         }
