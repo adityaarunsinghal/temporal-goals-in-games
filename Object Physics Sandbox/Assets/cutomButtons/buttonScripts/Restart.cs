@@ -8,6 +8,7 @@ public class Restart : MonoBehaviour
     public static Rigidbody2D ball;
     public static Rigidbody2D pedestal;
     public static Vector3 initialPosition;
+    public static bool isInSetup;
     public void Start()
     {
         GameObject ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
@@ -24,6 +25,7 @@ public class Restart : MonoBehaviour
 
     public static void putInSetup() // hardcoded settings for pedestal and ball
     {
+        isInSetup = true;
         ball.transform.position = initialPosition;
         pedestal.transform.position = initialPosition - new Vector3(0.0f, 0.58f, 0.0f);
         stabilize(ball);
@@ -36,6 +38,7 @@ public class Restart : MonoBehaviour
 
     public static void putOutSetup()
     {
+        isInSetup = false;
         pedestal.transform.parent = null; // make pedestal independent 
         ball.constraints = RigidbodyConstraints2D.None;
         ball.GetComponent<customProperties>().inSetup = false;

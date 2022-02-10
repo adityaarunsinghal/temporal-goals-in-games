@@ -54,32 +54,28 @@ public class PlayPrevious : MonoBehaviour
         while ((objectSnapNum < objectSnapsCount - 1))
         {
             timeText.text = "Playback Time: " + timer.ElapsedTicks.ToString();
-            // UnityEngine.Debug.Log("Object Snap Num: " + objectSnapNum + " of " + objectSnapsCount);
-            while (timer.ElapsedTicks < save.objectPositionsCT[objectSnapNum])
+            if (timer.ElapsedTicks > save.objectPositionsCT[objectSnapNum])
             {
-                // let timer run until its time
-                continue;
-            }
+                // pause timer while objects are being moved
+                // Time.timeScale = 0;
+                objectSnapNum++;
 
-            // pause timer while objects are being moved
-            Time.timeScale = 0;
-            objectSnapNum++;
-
-            // place all objects 
-            for (int objectNum = 0; objectNum < objectsCount; objectNum++)
-            {
-                GameObject obj = GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0];
-                if (obj)
+                // place all objects 
+                for (int objectNum = 0; objectNum < objectsCount; objectNum++)
                 {
-                    obj.transform.position = save.objectPositions[(objectSnapNum * objectsCount) + objectNum];
-                }
-                else
-                {
-                    UnityEngine.Debug.Log("Object with tag not found: " + save.foundObjectsTags[objectNum]);
-                }
+                    GameObject obj = GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0];
+                    if (obj)
+                    {
+                        obj.transform.position = save.objectPositions[(objectSnapNum * objectsCount) + objectNum];
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("Object with tag not found: " + save.foundObjectsTags[objectNum]);
+                    }
 
-                // continue timer
-                Time.timeScale = 1;
+                    // continue timer
+                    // Time.timeScale = 1;
+                }
             }
 
             if (ballSnapNum < ballSnapsCount - 1)

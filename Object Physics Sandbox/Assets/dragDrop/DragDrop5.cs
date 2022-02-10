@@ -14,6 +14,9 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
 
     void Start()
     {
+        // make the system work on a clock cycle for easier replay?
+        // Time.captureFramerate = 50; 
+
         ActivityLogger.startLogging();
         linePos = new Vector3[2];
         line = GetComponent<LineRenderer>();
@@ -89,8 +92,11 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     {
         if (ball) 
         {
-            // save ball position for replay
-            ActivityLogger.saveBallPosition(ball.transform.position);
+            if (Restart.isInSetup)
+            {
+                // save non-shoot ball positions for replay
+                ActivityLogger.saveBallPosition(ball.transform.position);
+            }
         }
 
         // always save where objects are
