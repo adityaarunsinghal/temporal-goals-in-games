@@ -57,7 +57,7 @@ public class PlayPrevious : MonoBehaviour
             if (timer.ElapsedTicks > save.objectPositionsCT[objectSnapNum])
             {
                 // pause timer while objects are being moved
-                // Time.timeScale = 0;
+                Time.timeScale = 0;
                 objectSnapNum++;
 
                 // place all objects 
@@ -74,7 +74,7 @@ public class PlayPrevious : MonoBehaviour
                     }
 
                     // continue timer
-                    // Time.timeScale = 1;
+                    Time.timeScale = 1;
                 }
             }
 
@@ -82,7 +82,7 @@ public class PlayPrevious : MonoBehaviour
             {
                 if (timer.ElapsedTicks >= save.ballPositionsCT[ballSnapNum])
                 {
-                    // Time.timeScale = 0;
+                    Time.timeScale = 0;
                     ballSnapNum++;
                     // attach to pedestal
                     Restart.putInSetup();
@@ -98,7 +98,7 @@ public class PlayPrevious : MonoBehaviour
                         UnityEngine.Debug.Log("Object with tag not found: ball");
                     }
 
-                    // Time.timeScale = 1;
+                    Time.timeScale = 1;
                 }
             }
 
