@@ -11,16 +11,18 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     Vector3 lastPosition;
     LineRenderer line;
     Vector3[] linePos;
+    public long captureNum;
 
     void Start()
     {
         // make the system work on a clock cycle for easier replay?
         // Time.captureFramerate = 50; 
-
+        captureNum = 0;
         ActivityLogger.startLogging();
         linePos = new Vector3[2];
         line = GetComponent<LineRenderer>();
-        line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply")); // for the green to red effect
+        // for the green to red effect
+        line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
     }
 
     void Update()
@@ -90,7 +92,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
 
     void FixedUpdate()
     {
-        if (ball) 
+        if (ball)
         {
             if (Restart.isInSetup)
             {

@@ -5,9 +5,9 @@ using System.IO;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public static class ActivityLogger
+public class ActivityLogger : MonoBehaviour
 {
-    private static Stopwatch timer;
+    private static long captureNum = 0;
     private static System.DateTime localDate;
     private static Save save;
     private static DragDrop[] foundObjects;
@@ -23,20 +23,19 @@ public static class ActivityLogger
         }
 
         localDate = System.DateTime.Now;
-        timer = new Stopwatch();
-        timer.Start();
+        captureNum = 0;
     }
 
     public static void saveBallPosition(Vector3 ballPosition)
     {
         save.ballPositions.Add(ballPosition);
-        save.ballPositionsCT.Add(timer.ElapsedTicks);
+        save.ballPositionsCT.Add(captureNum);
     }
 
     public static void saveShootVelocity(Vector3 shootVelocity)
     {
         save.velocities.Add(shootVelocity);
-        save.velocitiesCT.Add(timer.ElapsedTicks);
+        save.velocitiesCT.Add(captureNum);
     }
 
     public static void saveObjectPositions()
@@ -49,7 +48,7 @@ public static class ActivityLogger
             // unique tag for this saving mechanism to work
             save.objectPositions.Add(GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0].transform.position);
         }
-        save.objectPositionsCT.Add(timer.ElapsedTicks);
+        save.objectPositionsCT.Add(captureNum);
     }
 
     public static void saveLogs()
@@ -57,9 +56,17 @@ public static class ActivityLogger
         // name by current time
         string name = string.Format("InteractionLogs/logs_{0}", localDate.ToString("yyyy_MM_dd_HH_mm"));
         string savePath = name + ".json";
-        
+
+        // mark end of recording
+        save.lastStepNum = captureNum;
+
         // save
         File.WriteAllText(savePath, JsonUtility.ToJson(save, true));
         UnityEngine.Debug.Log("Run Saved");
+    }
+
+    void FixedUpdate()
+    {
+        captureNum++;
     }
 }

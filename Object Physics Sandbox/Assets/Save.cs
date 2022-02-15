@@ -12,5 +12,6 @@ public class Save
     public List<long> ballPositionsCT = new List<long>();
     public List<long> objectPositionsCT = new List<long>();
     public List<string> foundObjectsTags = new List<string>();
+    public long lastStepNum = 0;
 
 }
