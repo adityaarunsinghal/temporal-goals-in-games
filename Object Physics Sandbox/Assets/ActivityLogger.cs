@@ -58,9 +58,17 @@ public class ActivityLogger : MonoBehaviour
     public static void saveLogs()
     {
         // name by current time
-        string name = string.Format("InteractionLogs/logs_{0}_{1}.json", localDate.ToString("yyyy_MM_dd_HH_mm"), runNameInput.text.Replace(" ", "_"));
+        string name = string.Format("logs_{0}_{1}.json", localDate.ToString("yyyy_MM_dd_HH_mm"), runNameInput.text.Replace(" ", "_"));
 
-        string savePath = name;
+        string dir_path = $"{Application.dataPath}/InteractionLogs/";
+        //check if directory doesn't exit
+        if (!Directory.Exists(dir_path))
+        {
+            //if it doesn't, create it
+            Directory.CreateDirectory(dir_path);
+        }
+
+        string savePath = dir_path + name;
 
         // mark end of recording
         save.lastStepNum = captureNum;

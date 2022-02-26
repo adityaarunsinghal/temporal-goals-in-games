@@ -11,6 +11,8 @@ TagManager:
   - triangle
   - corner
   - pedestal
+  - runNameInput
+  - canvas
   layers:
   - Default
   - TransparentFX
