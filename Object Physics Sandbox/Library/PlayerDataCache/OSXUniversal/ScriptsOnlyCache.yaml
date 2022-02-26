@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - ActivityLogger
     - DragDrop
     - DragDrop5
+    - Exit
     - MatchParentColor
     - PlayPrevious
     - Restart
@@ -12,10 +13,13 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -24,6 +28,7 @@ ScriptsOnlyBuild:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
+    - TMPro.TMP_InputField
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
@@ -39,6 +44,8 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.LayoutElement
+    - UnityEngine.UI.RectMask2D
   sceneClasses:
     Assets/Scenes/ShootGame.unity:
     - Class: 1
@@ -74,7 +81,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1538}
     - Class: 114
+      Script: {instanceID: 1568}
+    - Class: 114
       Script: {instanceID: 1590}
+    - Class: 114
+      Script: {instanceID: 1684}
     - Class: 114
       Script: {instanceID: 1852}
     - Class: 114
@@ -98,6 +109,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4506}
     - Class: 114
+      Script: {instanceID: 4714}
+    - Class: 114
       Script: {instanceID: 4716}
     - Class: 114
       Script: {instanceID: 4720}
@@ -105,6 +118,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4744}
     - Class: 114
       Script: {instanceID: 5120}
+    - Class: 114
+      Script: {instanceID: 23234}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -762,7 +777,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.IK.Runtime.dll
     namespaceName: UnityEngine.U2D.IK
     className: FabrikSolver2D
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Exit
   platform: 2
   scenePathNames:
   - Assets/Scenes/ShootGame.unity
-  playerPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/TemporalGoalsGame_15Feb22.app
+  playerPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/TemporalGoalsGame_26Feb22.app
