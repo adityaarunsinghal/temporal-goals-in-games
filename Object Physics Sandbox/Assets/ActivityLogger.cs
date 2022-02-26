@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.UI;
+using TMPro;
 
 public class ActivityLogger : MonoBehaviour
 {
@@ -11,11 +13,13 @@ public class ActivityLogger : MonoBehaviour
     private static System.DateTime localDate;
     private static Save save;
     private static DragDrop[] foundObjects;
+    private static TMP_InputField runNameInput;
 
     public static void startLogging()
     {
         foundObjects = GameObject.FindObjectsOfType<DragDrop>();
         save = new Save();
+        runNameInput = GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>();
 
         for (int i = 0; i < foundObjects.Length; i++)
         {
@@ -54,15 +58,16 @@ public class ActivityLogger : MonoBehaviour
     public static void saveLogs()
     {
         // name by current time
-        string name = string.Format("InteractionLogs/logs_{0}", localDate.ToString("yyyy_MM_dd_HH_mm"));
-        string savePath = name + ".json";
+        string name = string.Format("InteractionLogs/logs_{0}_{1}.json", localDate.ToString("yyyy_MM_dd_HH_mm"), runNameInput.text.Replace(" ", "_"));
+
+        string savePath = name;
 
         // mark end of recording
         save.lastStepNum = captureNum;
 
         // save
         File.WriteAllText(savePath, JsonUtility.ToJson(save, true));
-        UnityEngine.Debug.Log("Run Saved");
+        UnityEngine.Debug.Log("Run Saved!");
     }
 
     void FixedUpdate()
