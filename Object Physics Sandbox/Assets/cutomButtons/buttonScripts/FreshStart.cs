@@ -11,11 +11,10 @@ public class FreshStart : MonoBehaviour
     public void OnButtonPress()
     {
         // keep the entered name
-        TMP_InputField runNameInputField = GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>();
-        lastSavedRunName = runNameInputField.text;
+        lastSavedRunName = GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>().text;
 
         // save run so far and start new one
-        ActivityLogger.saveLogs();
+        ActivityLogger.makeImportantSaves();
 
         // hard reset
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);

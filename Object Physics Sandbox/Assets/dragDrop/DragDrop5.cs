@@ -115,9 +115,4 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
         line.SetPositions(linePos);
         line.useWorldSpace = true;
     }
-
-    void OnApplicationQuit()
-    {
-        ActivityLogger.saveLogs();
-    }
 }

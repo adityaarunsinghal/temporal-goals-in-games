@@ -20,7 +20,7 @@ public class ActivityLogger : MonoBehaviour
         foundObjects = GameObject.FindObjectsOfType<DragDrop>();
         save = new Save();
         runNameInput = GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>();
-        
+
         // keep last runName if applicable
         runNameInput.text = FreshStart.lastSavedRunName;
 
@@ -58,6 +58,17 @@ public class ActivityLogger : MonoBehaviour
         save.objectPositionsCT.Add(captureNum);
     }
 
+    public static void saveNote(string note)
+    {
+        save.notes.Add(note);
+        save.notesCT.Add(captureNum);
+    }
+
+    public static List<string> getNotesList()
+    {
+        return save.notes;
+    }
+
     public static void saveLogs()
     {
         // name by current time
@@ -84,5 +95,16 @@ public class ActivityLogger : MonoBehaviour
     void FixedUpdate()
     {
         captureNum++;
+    }
+
+    void OnApplicationQuit()
+    {
+        makeImportantSaves();
+    }
+
+    public static void makeImportantSaves()
+    {
+        NoteSystem.grabNote();
+        ActivityLogger.saveLogs();
     }
 }
