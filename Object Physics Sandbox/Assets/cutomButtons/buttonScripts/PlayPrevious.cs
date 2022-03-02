@@ -40,7 +40,7 @@ public class PlayPrevious : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("replayPathInput"))
         {
-            if (GameObject.FindGameObjectWithTag("replayPathInput").GetComponent<TMP_InputField>().text != null)
+            if (GameObject.FindGameObjectWithTag("replayPathInput").GetComponent<TMP_InputField>().text != "")
             {
                 absPath = GameObject.FindGameObjectWithTag("replayPathInput").GetComponent<TMP_InputField>().text;
                 startPlaying();
