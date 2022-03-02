@@ -5,9 +5,10 @@ ScriptsOnlyBuild:
     - DragDrop
     - DragDrop5
     - Exit
+    - FreshStart
     - MatchParentColor
     - PlayPrevious
-    - Restart
+    - Retry
     - customProperties
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -77,8 +78,6 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1486}
-    - Class: 114
       Script: {instanceID: 1538}
     - Class: 114
       Script: {instanceID: 1568}
@@ -117,9 +116,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4744}
     - Class: 114
-      Script: {instanceID: 5120}
+      Script: {instanceID: 4996}
     - Class: 114
-      Script: {instanceID: 23234}
+      Script: {instanceID: 5122}
+    - Class: 114
+      Script: {instanceID: 17772}
+    - Class: 114
+      Script: {instanceID: 17774}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -141,12 +144,6 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Restart
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -629,7 +626,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeGeometryCache
   - hash:
       serializedVersion: 2
-      Hash: b91b79cd1a44382dd154b9fdfc9c6181
+      Hash: 1fd442acec8184a350a95bd8584f577b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayPrevious
@@ -725,6 +722,12 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Exit
+  - hash:
+      serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -782,8 +785,14 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Exit
+    className: FreshStart
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Retry
   platform: 2
   scenePathNames:
   - Assets/Scenes/ShootGame.unity
-  playerPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/TemporalGoalsGame_26Feb22.app
+  playerPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/TemporalGoalsGame_2March22.app
