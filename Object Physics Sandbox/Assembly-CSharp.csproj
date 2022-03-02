@@ -36,7 +36,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets/cutomButtons/buttonScripts/Restart.cs" />
      <Compile Include="Assets/cutomButtons/FreezeButtonNameChanger.cs" />
      <Compile Include="Assets/MatchParentColor.cs" />
      <Compile Include="Assets/cutomButtons/DuplicateButtonNameChanger.cs" />
@@ -58,9 +57,11 @@
      <Compile Include="Assets/cutomButtons/buttonScripts/PlayPrevious.cs" />
      <Compile Include="Assets/dragDrop/DragDrop.cs" />
      <Compile Include="Assets/ActivityLogger.cs" />
+     <Compile Include="Assets/cutomButtons/buttonScripts/Exit.cs" />
      <Compile Include="Assets/PausableStopwatch.cs" />
      <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton1.cs" />
-     <Compile Include="Assets/cutomButtons/buttonScripts/Exit.cs" />
+     <Compile Include="Assets/cutomButtons/buttonScripts/FreshStart.cs" />
+     <Compile Include="Assets/cutomButtons/buttonScripts/Retry.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

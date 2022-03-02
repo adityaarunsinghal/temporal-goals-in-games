@@ -10,7 +10,7 @@ using TMPro;
 
 public class PlayPrevious : MonoBehaviour
 {
-    public string absPath;
+    private string absPath;
     private long captureNum = 0;
     public TMP_Text timeText;
     private Save save;
@@ -38,7 +38,22 @@ public class PlayPrevious : MonoBehaviour
     }
     public void OnButtonPress()
     {
-        startPlaying();
+        if (GameObject.FindGameObjectWithTag("replayPathInput"))
+        {
+            if (GameObject.FindGameObjectWithTag("replayPathInput").GetComponent<TMP_InputField>().text != null)
+            {
+                absPath = GameObject.FindGameObjectWithTag("replayPathInput").GetComponent<TMP_InputField>().text;
+                startPlaying();
+            }
+            else
+            {
+                UnityEngine.Debug.Log("Please enter replay absolute path in text field");
+            }
+        }
+        else
+        {
+            UnityEngine.Debug.Log("Did not find input field with correct tag");
+        }
     }
     public void startPlaying()
     {
@@ -100,7 +115,7 @@ public class PlayPrevious : MonoBehaviour
             if (stepNum == save.ballPositionsCT[ballSnapNum])
             {
                 // attach to pedestal
-                Restart.putInSetup();
+                Retry.putInSetup();
 
                 // place ball
                 GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
@@ -124,7 +139,7 @@ public class PlayPrevious : MonoBehaviour
             {
 
                 // detach from pedestal
-                Restart.putOutSetup();
+                Retry.putOutSetup();
 
                 GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
                 if (ball)

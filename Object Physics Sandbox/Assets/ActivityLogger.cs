@@ -9,7 +9,7 @@ using TMPro;
 
 public class ActivityLogger : MonoBehaviour
 {
-    private static long captureNum = 0;
+    private static long captureNum = 0; // custom timing method
     private static System.DateTime localDate;
     private static Save save;
     private static DragDrop[] foundObjects;
@@ -20,6 +20,9 @@ public class ActivityLogger : MonoBehaviour
         foundObjects = GameObject.FindObjectsOfType<DragDrop>();
         save = new Save();
         runNameInput = GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>();
+        
+        // keep last runName if applicable
+        runNameInput.text = FreshStart.lastSavedRunName;
 
         for (int i = 0; i < foundObjects.Length; i++)
         {
@@ -58,7 +61,7 @@ public class ActivityLogger : MonoBehaviour
     public static void saveLogs()
     {
         // name by current time
-        string name = string.Format("logs_{0}_{1}.json", localDate.ToString("yyyy_MM_dd_HH_mm"), runNameInput.text.Replace(" ", "_"));
+        string name = string.Format("logs_{0}_{1}.json", localDate.ToString("yyyy_MM_dd_HH_mm_ss"), runNameInput.text.Replace(" ", "_"));
 
         string dir_path = Path.Combine($"{Application.dataPath}", "InteractionLogs/");
         //check if directory doesn't exit

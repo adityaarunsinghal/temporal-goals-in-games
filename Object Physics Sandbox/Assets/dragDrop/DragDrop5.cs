@@ -64,7 +64,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                 {
                     ball.velocity = Vector2.zero;
                     ball = null;
-                    Restart.putOutSetup();
+                    Retry.putOutSetup();
                 }
             }
             else
@@ -94,7 +94,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     {
         if (ball)
         {
-            if (Restart.isInSetup)
+            if (Retry.isInSetup)
             {
                 // save non-shoot ball positions for replay
                 ActivityLogger.saveBallPosition(ball.transform.position);
