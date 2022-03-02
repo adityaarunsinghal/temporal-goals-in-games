@@ -30,13 +30,13 @@ public class NoteSystem : MonoBehaviour
         {
             ActivityLogger.saveNote(noteInputField.text);
             noteInputField.text = "";
-            updateOutNotes();
+            updateOutNotes(ActivityLogger.getNotesList());
         }
     }
 
-    public static void updateOutNotes()
+    // can also be updated during playback
+    public static void updateOutNotes(List<string> notesList)
     {
-        List<string> notesList = ActivityLogger.getNotesList();
         notesOutput = "";
         for (int i = 0; i < notesList.Count; i++)
         {

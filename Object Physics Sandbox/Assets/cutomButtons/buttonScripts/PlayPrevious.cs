@@ -16,11 +16,14 @@ public class PlayPrevious : MonoBehaviour
     private Save save;
     private int shootsCount;
     private int objectsCount;
+    private int notesCount;
     private int ballSnapsCount;
     private int objectSnapsCount;
     private int objectSnapNum;
     private int ballSnapNum;
     private int shootNum;
+    private int noteNum;
+    private List<string> printNotes;
     private bool inPlayback = false;
 
 
@@ -43,6 +46,7 @@ public class PlayPrevious : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("replayPathInput").GetComponent<TMP_InputField>().text != "")
             {
                 absPath = GameObject.FindGameObjectWithTag("replayPathInput").GetComponent<TMP_InputField>().text;
+                UnityEngine.Debug.Log("Found path");
                 startPlaying();
             }
             else
@@ -58,21 +62,23 @@ public class PlayPrevious : MonoBehaviour
     public void startPlaying()
     {
         timeText.text = "Playback Step: N/A";
+        printNotes = new List<string>();
         loadLogs(absPath);
 
         UnityEngine.Debug.Log("Playing back from logs in Real Time");
 
         shootsCount = save.velocities.Count;
         objectsCount = save.foundObjectsTags.Count;
+        notesCount = save.notes.Count;
         ballSnapsCount = save.ballPositions.Count;
         objectSnapsCount = save.objectPositions.Count / objectsCount;
         objectSnapNum = 0;
         ballSnapNum = 0;
         shootNum = 0;
+        noteNum = 0;
 
         captureNum = 0;
         inPlayback = true;
-
     }
 
     public void stopPlaying()
@@ -152,6 +158,16 @@ public class PlayPrevious : MonoBehaviour
                 }
 
                 shootNum++;
+            }
+        }
+
+        if (noteNum < notesCount)
+        {
+            if (stepNum == save.notesCT[noteNum])
+            {
+                printNotes.Add(save.notes[noteNum]);
+                NoteSystem.updateOutNotes(printNotes);
+                noteNum++;
             }
         }
     }
