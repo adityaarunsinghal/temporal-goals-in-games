@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - Exit
     - FreshStart
     - MatchParentColor
+    - ModeDescription
     - NoteSystem
     - PlayPrevious
     - Retry
@@ -104,43 +105,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2828}
+      Script: {instanceID: 2782}
     - Class: 114
-      Script: {instanceID: 2876}
+      Script: {instanceID: 2830}
     - Class: 114
-      Script: {instanceID: 3048}
+      Script: {instanceID: 2878}
     - Class: 114
-      Script: {instanceID: 3294}
+      Script: {instanceID: 3050}
     - Class: 114
-      Script: {instanceID: 3304}
+      Script: {instanceID: 3296}
     - Class: 114
-      Script: {instanceID: 3408}
+      Script: {instanceID: 3306}
     - Class: 114
-      Script: {instanceID: 3630}
+      Script: {instanceID: 3410}
     - Class: 114
-      Script: {instanceID: 3790}
+      Script: {instanceID: 3632}
     - Class: 114
-      Script: {instanceID: 4410}
+      Script: {instanceID: 3792}
     - Class: 114
-      Script: {instanceID: 4416}
+      Script: {instanceID: 4412}
     - Class: 114
-      Script: {instanceID: 4508}
+      Script: {instanceID: 4418}
     - Class: 114
-      Script: {instanceID: 4610}
+      Script: {instanceID: 4510}
     - Class: 114
-      Script: {instanceID: 4716}
+      Script: {instanceID: 4612}
     - Class: 114
       Script: {instanceID: 4718}
     - Class: 114
-      Script: {instanceID: 4722}
+      Script: {instanceID: 4720}
     - Class: 114
-      Script: {instanceID: 4746}
+      Script: {instanceID: 4724}
     - Class: 114
-      Script: {instanceID: 4998}
+      Script: {instanceID: 4748}
     - Class: 114
-      Script: {instanceID: 5124}
+      Script: {instanceID: 5000}
     - Class: 114
-      Script: {instanceID: 19630}
+      Script: {instanceID: 5126}
+    - Class: 114
+      Script: {instanceID: 36042}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -372,6 +375,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: customProperties
+  - hash:
+      serializedVersion: 2
+      Hash: 1865df9ead06a999037b7f98abe16ce6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NoteSystem
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -812,11 +821,11 @@ ScriptsOnlyBuild:
     className: FabrikSolver2D
   - hash:
       serializedVersion: 2
-      Hash: 1865df9ead06a999037b7f98abe16ce6
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: NoteSystem
+    className: ModeDescription
   platform: 2
   scenePathNames:
   - Assets/Scenes/CompleteView.unity
-  playerPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/ExperimenterView_2March22.app
+  playerPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/ParticipantView_2March22.app

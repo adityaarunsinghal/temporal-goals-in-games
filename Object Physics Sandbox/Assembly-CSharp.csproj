@@ -51,6 +51,7 @@
      <Compile Include="Assets/SaveAndResetPositions2.cs" />
      <Compile Include="Assets/dragDrop/DragDrop5.cs" />
      <Compile Include="Assets/customProperties.cs" />
+     <Compile Include="Assets/NoteSystem.cs" />
      <Compile Include="Assets/dragDrop/DragDrop4.cs" />
      <Compile Include="Assets/dragDrop/DragDrop3.cs" />
      <Compile Include="Assets/objectsCacher.cs" />
@@ -62,7 +63,7 @@
      <Compile Include="Assets/cutomButtons/buttonScripts/Exit.cs" />
      <Compile Include="Assets/PausableStopwatch.cs" />
      <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton1.cs" />
-     <Compile Include="Assets/NoteSystem.cs" />
+     <Compile Include="Assets/ModeDescription.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
