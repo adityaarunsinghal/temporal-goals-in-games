@@ -828,4 +828,4 @@ ScriptsOnlyBuild:
   platform: 2
   scenePathNames:
   - Assets/Scenes/CompleteView.unity
-  playerPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/ParticipantView_2March22.app
+  playerPath: /Users/aditya/Documents/GitHub/guy-research/Object Physics Sandbox/ExperimenterView_2March22.app

@@ -19,11 +19,12 @@ public class NoteSystem : MonoBehaviour
     }
     void Update()
     {
+        // what goes out
+        printNotes.text = notesOutput;
+        
         if (Input.GetKeyUp(KeyCode.Return))
         {
             grabNote();
-            // what goes out
-            printNotes.text = notesOutput;
         }
     }
 
