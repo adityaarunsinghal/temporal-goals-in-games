@@ -302,3 +302,128 @@
     )
     (:scoring maximize (count-once-per-objects touchedObjectSuccessfulThrow))
 )
+
+;------------------------------------------------------------------------------------------------------
+; 10. three-wall-touch-shoot
+;------------------------------------------------------------------------------------------------------
+
+(define (game three-wall-touch-shoot) (:domain standard-five-objects)
+    (:setup
+        (exists (?b - ball ?U - bucket)
+           (game-optional (position ?U bottom-left))
+        )
+    )
+    (:constraints
+        (preference successfulThrow
+            (exists (?b - ball ?U - bucket)
+                (then
+                    (once (ball_shot ?b))
+                    ; does this hold while imply order in predicates? 
+                    ; only want "at least one state to satisfy the following predicates"
+                    (hold-while (in_motion ?b) 
+                        (touch left_wall ?b)
+                        (touch roof ?b)
+                        (touch right_wall ?b))
+                    (once (and (not (in_motion ?b)) (in ?U ?b)))
+                )
+            )
+        )
+    )
+    (:scoring maximize (count-nonoverlapping successfulThrow))
+)
+
+
+;------------------------------------------------------------------------------------------------------
+; 11. count-wall-touches
+;------------------------------------------------------------------------------------------------------
+
+(define (game count-wall-touches) (:domain standard-five-objects)
+    (:setup
+    )
+    (:constraints
+        (preference countTouches
+            (exists (?b - ball)
+                (then
+                    (once (ball_shot ?b))
+                    ; count only when left or right wall is touched
+                    (hold-while (and (in_motion ?b) (not (touch floor ?b)))
+                        (touch left_wall ?b)
+                        (touch right_wall ?b))
+                    ; end on floor touch
+                    (once (touch floor ?b))
+                )
+            )
+        )
+    )
+    ; touches don't count as objects... 
+    ; so we count every non-overlapping instance of the whole preference
+    ; but how do we keep track of the touches INSIDE each preference? 
+    (:scoring maximize (count-nonoverlapping countTouches))
+)
+
+
+;------------------------------------------------------------------------------------------------------
+; 12. balance-ball-into-bucket
+;------------------------------------------------------------------------------------------------------
+
+(define (game balance-ball-into-bucket) (:domain standard-five-objects)
+    (:setup
+    ; TODO: bucket is placed somewhere high up
+    )
+    (:constraints (and
+        ; does putting this preference here imply it should be executed at least once?
+        (preference freeBall
+            ; maybe the ball_shot predicate doesn't even need an arg because there is only one ball...
+            ; is the 'exists' even needed here? 
+            (once ball_shot)
+        )
+        (preference balanceBall
+            (exists (?b - ball ?g - gear ?o - (either gear corner triangle))
+                (then
+                ; ball doesn't need to be shot for the game itself. It only needs to be 
+                ; in shoot mode aka free to move.
+                ; player only needs to free it once, right in the start...
+                    (once (touch ?g ?b))
+                    ; this is tricky because its not required to ALWAYS touch the ball with the gear - 
+                    ; it can also be in free fall
+                    ; maybe this hold requirement is enough constraint?
+                    (hold (not (touch ?o ?b)))
+                    (once (and (in ?U ?b) (not (in_motion ?b))))
+                )
+            )
+        )
+        )
+    )
+    ; touches don't count as objects... 
+    ; so we count every non-overlapping instance of the whole preference
+    ; but how do we keep track of the touches INSIDE each preference? 
+    (:scoring maximize (count-nonoverlapping balanceBall))
+)
+
+
+;------------------------------------------------------------------------------------------------------
+; 12. constant-interaction-no-fall
+;------------------------------------------------------------------------------------------------------
+
+(define (game constant-interaction-no-fall) (:domain standard-five-objects)
+    (:setup
+    ; TODO: objects are placed around the pedestal
+    )
+    (:constraints 
+        (preference noBallFall
+            (exists (?b - ball ?o - game-object)
+                (then
+                    (once (ball_shot ?b))
+                    ; added no touching of floor inside the hold condition
+                    (hold-while (and (in_motion ?b) (not (touch floor ?b)))
+                        ; touch any other object
+                        (touch ?o ?b)
+                    )
+                    (once (touch floor ?b))
+                )
+            )
+        )
+    )
+    ; player would get points even if they did not keep interacting with objects and made a good shot...
+    (:scoring maximize (count-once-per-objects noBallFall))
+)
