@@ -14,8 +14,9 @@
         )        
     )
     (:constraints
+    ; right now no upper case for names in ebnf
         (preference deflectedThrow
-            ; use 3 args in either?
+            ; use 3 args in either? - yes you can!
             (exists (?b - ball ?x - box ?U - bucket ?o - (either gear triangle corner))
                 (then
                     (once (ball_shot ?b))
@@ -41,7 +42,7 @@
             (game-conserved
                 (and
                     (position ?t top-left)
-                    ; right order
+                    ; correct order
                     (below ?t ?c)
                     (below ?c ?x)
                     ; in line
@@ -58,6 +59,7 @@
     )
     (:constraints
         (and
+        ; could squish the mechanics of passing between things into a single mechanic
             (preference topThrow
                 (exists (?b - ball ?U - bucket ?t - triangle)
                     (then
@@ -138,7 +140,12 @@
         ; same problem definition?
         (exists (?x - box ?c - corner ?b - ball)
             (game-conserved 
-                ; trying positions as x-y positions on a unit scale in the environment squared area 
+                ; trying positions as x-y positions on a unit scale in the environment squared area
+                ; problem - this will usually be imprecise unless you give the model a binary checker of perfection
+                ; OR give a penalty on delta of perfect vs real
+                ; maybe snapping mechanism with rounding for the env itself - maybe upto 2 places?
+
+                ; make sure to choose between grid system or this precise method and not double use the same predicate
                 (position ?x 0.9375 0.6)
                 (position ?c 1 0.6)
             )
@@ -152,6 +159,7 @@
                     (hold (in_motion ?b)) 
                     (once   
                         (and 
+                        ; what about being in the middle? - still works
                             (or (on ?x ?b) (on ?c ?b)) 
                             (not (in_motion ?b))
                         )
@@ -187,6 +195,7 @@
             (game-conserved
                 (and
                     ; use floor as a domain-wide variable somehow or use it as a typed object??
+                    ; since mine are singletons, we could just NEVER use variables...
                     (touch ?t floor)
                     ; just because game-conserved in setup, doesn't mean applies to every state?
                     (< (x_position ?t) (x_position ?b))
@@ -266,6 +275,7 @@
         )
     )
     ; how does this function know which object to count and maximize for? will it count the ball?
+    ; ans - it would count any pair of objects that satisfy this preference
     (:scoring maximize (/
                             (*  (count-once-per-objects touchedObject) 
                                 (+ (count-once-per-objects touchedObject) 1)
@@ -290,6 +300,7 @@
     (:constraints
         (preference touchedObjectSuccessfulThrow
             ; walls should not count as game objects...
+            ; be specific in the variable then...
             (exists (?o - game_object ?b - ball ?U - bucket)
                 (then
                     (once (ball_shot ?b))
@@ -320,6 +331,11 @@
                     (once (ball_shot ?b))
                     ; does this hold while imply order in predicates? 
                     ; only want "at least one state to satisfy the following predicates"
+                    ; ans - yes its like 'then', but we need to work around that for this use-case
+
+                    ; if each object mapped to exactly one variable and did not apply to many, then
+                    ; (exists (?w1 ?w2 ?w3 - (either left_wall roof right_wall) ?b - ball ?U - bucket) could
+                    ; solve it? 
                     (hold-while (in_motion ?b) 
                         (touch left_wall ?b)
                         (touch roof ?b)
@@ -342,6 +358,10 @@
     )
     (:constraints
         (preference countTouches
+        ; common problem with number of instances inside a single preference...
+        ; use touch one and then be in motion trick
+        ; also use terminal condition with touch floor
+        ; could use the same w1 w2 trick with 'either'
             (exists (?b - ball)
                 (then
                     (once (ball_shot ?b))
@@ -375,8 +395,11 @@
         (preference freeBall
             ; maybe the ball_shot predicate doesn't even need an arg because there is only one ball...
             ; is the 'exists' even needed here? 
+
+            ; wouldn't compile because there is no then
             (once ball_shot)
         )
+        ; ans - condition this preference on the ball being free...
         (preference balanceBall
             (exists (?b - ball ?g - gear ?o - (either gear corner triangle))
                 (then
@@ -405,6 +428,10 @@
 ; 12. constant-interaction-no-fall
 ;------------------------------------------------------------------------------------------------------
 
+; if we start allowing for RL model to manipulate objects OTHER than ball direction and magnitude, then action space increases. 
+; first focus on the simple two thing changing games and then lets see about the free moving of objects kinda games... 
+
+
 (define (game constant-interaction-no-fall) (:domain standard-five-objects)
     (:setup
     ; TODO: objects are placed around the pedestal
@@ -417,6 +444,8 @@
                     ; added no touching of floor inside the hold condition
                     (hold-while (and (in_motion ?b) (not (touch floor ?b)))
                         ; touch any other object
+                        ; would be nice to add constraint that it must be different object each time
+                        ; else simple balancing may get user points?
                         (touch ?o ?b)
                     )
                     (once (touch floor ?b))
@@ -425,5 +454,17 @@
         )
     )
     ; player would get points even if they did not keep interacting with objects and made a good shot...
+    ; does count-once-per-objects count different types of objects or only instances of the same one?
     (:scoring maximize (count-once-per-objects noBallFall))
 )
+
+; check out the processing file in guy's repo - see if mine would work - src/dsl_preprocessing.py
+
+- clear up everything and clean it
+- try to run this stuff with the grammar package that guy has
+- collect a few more games
+- python interface to play the unity game
+     - load a level from DSL
+     - reset the game to that level
+     - do actions
+     - and play and get back the state trace 
