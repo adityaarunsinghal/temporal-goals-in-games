@@ -6,8 +6,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637852946890000000
-    m_Hash: 1546770155
+      ticks: 637853053040000000
+    m_Hash: 1199790493
   m_LockFileStatus:
     m_FilePath: /Users/aditya/Documents/GitHub/game_creation_research/Object Physics
       Sandbox/Packages/packages-lock.json
@@ -15,8 +15,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637852946890000000
-    m_Hash: 3658557559
+      ticks: 637853053040000000
+    m_Hash: 2600688496
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -657,6 +657,68 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
+    - packageId: com.unity.barracuda@file:/Users/aditya/Downloads/barracuda-release-3.0.0
+      testable: 0
+      isDirectDependency: 1
+      version: 3.0.0
+      source: 4
+      resolvedPath: /Users/aditya/Downloads/barracuda-release-3.0.0
+      assetPath: Packages/com.unity.barracuda
+      name: com.unity.barracuda
+      displayName: Barracuda
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: Barracuda is lightweight and cross-platform Neural Net inference
+        library. Barracuda supports inference both on GPU and CPU.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 1.0.4
+        compatible:
+        - 1.0.4
+        verified: 1.0.4
+      dependencies:
+      - name: com.unity.burst
+        version: 1.6.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      - name: com.unity.modules.imageconversion
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.burst
+        version: 1.6.0
+      - name: com.unity.mathematics
+        version: 1.2.1
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      - name: com.unity.modules.imageconversion
+        version: 1.0.0
+      keywords: []
+      registry:
+        id: 
+        name: 
+        url: 
+        scopes: []
+        isDefault: 0
+        capabilities: 0
+      hasRegistry: 0
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 0
+      documentationUrl: 
+      hasRepository: 0
+      repository:
+        type: 
+        url: 
+        revision: 
+        path: 
     - packageId: com.unity.collab-proxy@1.9.0
       testable: 0
       isDirectDependency: 1
@@ -1083,13 +1145,13 @@ m_PackageAssets:
         url: https://github.com/Unity-Technologies/com.unity.ide.vscode.git
         revision: b0740c80bfc2440527c317109f7c3d9100132722
         path: 
-    - packageId: com.unity.ml-agents@1.0.8
+    - packageId: com.unity.ml-agents@2.2.1-exp.1
       testable: 0
       isDirectDependency: 1
-      version: 1.0.8
+      version: 2.2.1-exp.1
       source: 1
       resolvedPath: /Users/aditya/Documents/GitHub/game_creation_research/Object
-        Physics Sandbox/Library/PackageCache/com.unity.ml-agents@1.0.8
+        Physics Sandbox/Library/PackageCache/com.unity.ml-agents@2.2.1-exp.1
       assetPath: Packages/com.unity.ml-agents
       name: com.unity.ml-agents
       displayName: ML Agents
@@ -1169,35 +1231,21 @@ m_PackageAssets:
         verified: 1.0.8
       dependencies:
       - name: com.unity.barracuda
-        version: 1.0.4
+        version: 2.3.1-preview
       - name: com.unity.modules.imageconversion
         version: 1.0.0
       - name: com.unity.modules.jsonserialize
-        version: 1.0.0
-      - name: com.unity.modules.physics
-        version: 1.0.0
-      - name: com.unity.modules.physics2d
-        version: 1.0.0
-      - name: com.unity.modules.unityanalytics
         version: 1.0.0
       resolvedDependencies:
       - name: com.unity.barracuda
-        version: 1.0.4
+        version: 3.0.0
       - name: com.unity.burst
-        version: 1.3.4
+        version: 1.6.0
       - name: com.unity.mathematics
         version: 1.2.1
-      - name: com.unity.modules.imageconversion
-        version: 1.0.0
       - name: com.unity.modules.jsonserialize
         version: 1.0.0
-      - name: com.unity.modules.physics
-        version: 1.0.0
-      - name: com.unity.modules.physics2d
-        version: 1.0.0
-      - name: com.unity.modules.unityanalytics
-        version: 1.0.0
-      - name: com.unity.modules.unitywebrequest
+      - name: com.unity.modules.imageconversion
         version: 1.0.0
       keywords: []
       registry:
@@ -1212,13 +1260,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637577177000000000
+      datePublishedTicks: 637826210090000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/ml-agents.git
-        revision: 402b51a6fbdb167113414f66a5eea7807f3e9bb8
+        url: https://github.com/Unity-Technologies/ml-agents.git
+        revision: 68474b92978ac4c6f26a4e170d257c6d8de72025
         path: 
     - packageId: com.unity.test-framework@1.1.29
       testable: 0
@@ -3550,227 +3598,13 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
         revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
         path: 
-    - packageId: com.unity.barracuda@1.0.4
+    - packageId: com.unity.burst@1.6.0
       testable: 0
       isDirectDependency: 0
-      version: 1.0.4
+      version: 1.6.0
       source: 1
       resolvedPath: /Users/aditya/Documents/GitHub/game_creation_research/Object
-        Physics Sandbox/Library/PackageCache/com.unity.barracuda@1.0.4
-      assetPath: Packages/com.unity.barracuda
-      name: com.unity.barracuda
-      displayName: Barracuda
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: Barracuda is lightweight and cross-platform Neural Net inference
-        library. Barracuda supports inference both on GPU and CPU.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.4
-        compatible:
-        - 1.0.4
-        verified: 1.0.4
-      dependencies:
-      - name: com.unity.burst
-        version: 1.3.4
-      resolvedDependencies:
-      - name: com.unity.burst
-        version: 1.3.4
-      - name: com.unity.mathematics
-        version: 1.2.1
-      keywords: []
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 0
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.cds.internal.unity3d.com/unity/UnityInferenceEngine.git
-        revision: e0c35b7a32eeec86709cb14c4006cf12fefae1a8
-        path: 
-    - packageId: com.unity.2d.common@4.0.3
-      testable: 0
-      isDirectDependency: 0
-      version: 4.0.3
-      source: 1
-      resolvedPath: /Users/aditya/Documents/GitHub/game_creation_research/Object
-        Physics Sandbox/Library/PackageCache/com.unity.2d.common@4.0.3
-      assetPath: Packages/com.unity.2d.common
-      name: com.unity.2d.common
-      displayName: 2D Common
-      author:
-        name: 
-        email: 
-        url: 
-      category: 2D
-      type: 
-      description: 2D Common is a package that contains shared functionalities that
-        are used by most of the other 2D packages.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.9-preview.1
-        - 1.0.9-preview.2
-        - 1.0.10-preview
-        - 1.0.11-preview.1
-        - 1.1.0-preview.1
-        - 1.1.0-preview.2
-        - 1.2.0-preview.1
-        - 2.0.1
-        - 2.0.2
-        - 2.1.0
-        - 3.0.0
-        - 3.0.1
-        - 4.0.0
-        - 4.0.1
-        - 4.0.2
-        - 4.0.3
-        - 5.0.0-pre.1
-        - 5.0.0-pre.2
-        - 5.0.0
-        - 6.0.0-pre.2
-        - 6.0.0-pre.3
-        - 6.0.0-pre.4
-        - 6.0.0
-        compatible:
-        - 4.0.3
-        verified: 4.0.3
-      dependencies:
-      - name: com.unity.2d.sprite
-        version: 1.0.0
-      - name: com.unity.modules.uielements
-        version: 1.0.0
-      resolvedDependencies:
-      - name: com.unity.2d.sprite
-        version: 1.0.0
-      - name: com.unity.modules.uielements
-        version: 1.0.0
-      - name: com.unity.modules.ui
-        version: 1.0.0
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      - name: com.unity.modules.jsonserialize
-        version: 1.0.0
-      - name: com.unity.modules.uielementsnative
-        version: 1.0.0
-      keywords:
-      - 2d
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637408843940000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.cds.internal.unity3d.com/unity/2d.git
-        revision: c97def465b1932276762fc13f4cfee58da99d5e9
-        path: 
-    - packageId: com.unity.2d.path@4.0.2
-      testable: 0
-      isDirectDependency: 0
-      version: 4.0.2
-      source: 1
-      resolvedPath: /Users/aditya/Documents/GitHub/game_creation_research/Object
-        Physics Sandbox/Library/PackageCache/com.unity.2d.path@4.0.2
-      assetPath: Packages/com.unity.2d.path
-      name: com.unity.2d.path
-      displayName: 2D Path
-      author:
-        name: 
-        email: 
-        url: 
-      category: 2D
-      type: 
-      description: "2D Path provides tooling to edit shapes (polygons and B\xE9zier
-        splines) in EditorWindows and the SceneView."
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.0-preview.1
-        - 1.0.0-preview.4
-        - 2.0.1
-        - 2.0.2
-        - 2.0.3
-        - 2.0.4
-        - 2.0.5
-        - 2.0.6
-        - 2.1.0
-        - 2.1.1
-        - 3.0.0
-        - 3.0.1
-        - 3.0.2
-        - 4.0.0
-        - 4.0.1
-        - 4.0.2
-        - 5.0.0-pre.1
-        - 5.0.0-pre.2
-        - 5.0.0
-        - 5.0.1
-        - 5.0.2
-        compatible:
-        - 4.0.2
-        verified: 4.0.2
-      dependencies: []
-      resolvedDependencies: []
-      keywords:
-      - 2d
-      - path
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637637511040000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.cds.internal.unity3d.com/unity/2d.git
-        revision: 6f9c488e4d487ead34ee4d516f0a2f4a911a8b25
-        path: 
-    - packageId: com.unity.burst@1.3.4
-      testable: 0
-      isDirectDependency: 0
-      version: 1.3.4
-      source: 1
-      resolvedPath: /Users/aditya/Documents/GitHub/game_creation_research/Object
-        Physics Sandbox/Library/PackageCache/com.unity.burst@1.3.4
+        Physics Sandbox/Library/PackageCache/com.unity.burst@1.6.0
       assetPath: Packages/com.unity.burst
       name: com.unity.burst
       displayName: Burst
@@ -3996,13 +3830,172 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637324087250000000
+      datePublishedTicks: 637661043940000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/burst.git
-        revision: 142be34480be15f14fbf073c350fb08958d80e59
+        revision: 405e9582b7e75a1a9e6f8dcaf4c2dc97d441ae68
+        path: 
+    - packageId: com.unity.2d.common@4.0.3
+      testable: 0
+      isDirectDependency: 0
+      version: 4.0.3
+      source: 1
+      resolvedPath: /Users/aditya/Documents/GitHub/game_creation_research/Object
+        Physics Sandbox/Library/PackageCache/com.unity.2d.common@4.0.3
+      assetPath: Packages/com.unity.2d.common
+      name: com.unity.2d.common
+      displayName: 2D Common
+      author:
+        name: 
+        email: 
+        url: 
+      category: 2D
+      type: 
+      description: 2D Common is a package that contains shared functionalities that
+        are used by most of the other 2D packages.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 1.0.9-preview.1
+        - 1.0.9-preview.2
+        - 1.0.10-preview
+        - 1.0.11-preview.1
+        - 1.1.0-preview.1
+        - 1.1.0-preview.2
+        - 1.2.0-preview.1
+        - 2.0.1
+        - 2.0.2
+        - 2.1.0
+        - 3.0.0
+        - 3.0.1
+        - 4.0.0
+        - 4.0.1
+        - 4.0.2
+        - 4.0.3
+        - 5.0.0-pre.1
+        - 5.0.0-pre.2
+        - 5.0.0
+        - 6.0.0-pre.2
+        - 6.0.0-pre.3
+        - 6.0.0-pre.4
+        - 6.0.0
+        compatible:
+        - 4.0.3
+        verified: 4.0.3
+      dependencies:
+      - name: com.unity.2d.sprite
+        version: 1.0.0
+      - name: com.unity.modules.uielements
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.2d.sprite
+        version: 1.0.0
+      - name: com.unity.modules.uielements
+        version: 1.0.0
+      - name: com.unity.modules.ui
+        version: 1.0.0
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      - name: com.unity.modules.uielementsnative
+        version: 1.0.0
+      keywords:
+      - 2d
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637408843940000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: https://github.cds.internal.unity3d.com/unity/2d.git
+        revision: c97def465b1932276762fc13f4cfee58da99d5e9
+        path: 
+    - packageId: com.unity.2d.path@4.0.2
+      testable: 0
+      isDirectDependency: 0
+      version: 4.0.2
+      source: 1
+      resolvedPath: /Users/aditya/Documents/GitHub/game_creation_research/Object
+        Physics Sandbox/Library/PackageCache/com.unity.2d.path@4.0.2
+      assetPath: Packages/com.unity.2d.path
+      name: com.unity.2d.path
+      displayName: 2D Path
+      author:
+        name: 
+        email: 
+        url: 
+      category: 2D
+      type: 
+      description: "2D Path provides tooling to edit shapes (polygons and B\xE9zier
+        splines) in EditorWindows and the SceneView."
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 1.0.0-preview.1
+        - 1.0.0-preview.4
+        - 2.0.1
+        - 2.0.2
+        - 2.0.3
+        - 2.0.4
+        - 2.0.5
+        - 2.0.6
+        - 2.1.0
+        - 2.1.1
+        - 3.0.0
+        - 3.0.1
+        - 3.0.2
+        - 4.0.0
+        - 4.0.1
+        - 4.0.2
+        - 5.0.0-pre.1
+        - 5.0.0-pre.2
+        - 5.0.0
+        - 5.0.1
+        - 5.0.2
+        compatible:
+        - 4.0.2
+        verified: 4.0.2
+      dependencies: []
+      resolvedDependencies: []
+      keywords:
+      - 2d
+      - path
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637637511040000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: https://github.cds.internal.unity3d.com/unity/2d.git
+        revision: 6f9c488e4d487ead34ee4d516f0a2f4a911a8b25
         path: 
     - packageId: com.unity.mathematics@1.2.1
       testable: 0
@@ -4087,7 +4080,21 @@ m_PackageAssets:
         revision: 71412d94b7a0b0fdbb3195a5e6559bf6a761e91a
         path: 
   m_LocalPackages:
-    m_LocalFileStatus: []
+    m_LocalFileStatus:
+    - m_FilePath: /Users/aditya/Downloads/barracuda-release-3.0.0/package.json
+      m_PathExists: 1
+      m_ContentTrackingEnabled: 1
+      m_ModificationDate:
+        serializedVersion: 2
+        ticks: 637837925890000000
+      m_Hash: 1265455051
+    - m_FilePath: /Users/aditya/Downloads/barracuda-release-3.0.0
+      m_PathExists: 1
+      m_ContentTrackingEnabled: 1
+      m_ModificationDate:
+        serializedVersion: 2
+        ticks: 0
+      m_Hash: 0
 m_ProjectPath: /Users/aditya/Documents/GitHub/game_creation_research/Object Physics
   Sandbox/Packages
 m_EditorVersion: 2020.3.19f1 (68f137dc9bbe)
