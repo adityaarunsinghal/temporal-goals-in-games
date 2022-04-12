@@ -8,6 +8,7 @@ using TMPro;
 public class FreshStart : MonoBehaviour
 {
     public static string lastSavedRunName = null;
+
     public void OnButtonPress()
     {
         // keep the entered name
@@ -18,5 +19,17 @@ public class FreshStart : MonoBehaviour
 
         // hard reset
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public static void softReset()
+    {
+        Retry.putInSetup();
+        DragDrop[] foundObjects = ActivityLogger.getFoundObjects();
+        Vector3[] initPos = ActivityLogger.getInitialObjectPositions();
+        for (int objectNum = 0; objectNum < foundObjects.Length; objectNum++)
+        {
+           foundObjects[objectNum].gameObject.transform.position = initPos[objectNum];
+        }
+        DestroyCounter.reset();
     }
 }

@@ -22,6 +22,7 @@ public class customProperties : MonoBehaviour
     void OnBecameInvisible()
     {
         objectsCacher.removeObject(gameObject);
+        DestroyCounter.addOne();
         Destroy(gameObject);
     }
 }

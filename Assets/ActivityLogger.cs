@@ -43,6 +43,11 @@ public class ActivityLogger : MonoBehaviour
         return foundObjects;
     }
 
+    public static List<string> getFoundObjectTags()
+    {
+        return save.foundObjectsTags;
+    }
+
     public static void saveBallPosition(Vector3 ballPosition)
     {
         save.ballPositions.Add(ballPosition);
@@ -92,6 +97,17 @@ public class ActivityLogger : MonoBehaviour
         for (int objectNum = objectsCount; objectNum > 0; objectNum--)
         {
             positions[objectsCount - objectNum] = (save.objectPositions[save.objectPositions.Count - objectNum]);
+        }
+        return positions;
+    }
+
+    public static Vector3[] getInitialObjectPositions()
+    {
+        int objectsCount = getObjectsCount();
+        Vector3[] positions = new Vector3[objectsCount];
+        for (int objectNum = 0; objectNum < objectsCount; objectNum++)
+        {
+            positions[objectNum] = (save.objectPositions[objectNum]);
         }
         return positions;
     }
