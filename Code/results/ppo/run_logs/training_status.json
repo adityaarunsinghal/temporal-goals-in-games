@@ -2,22 +2,22 @@
     "Place and Shoot": {
         "checkpoints": [
             {
-                "steps": 4480,
-                "file_path": "results/ppo/Place and Shoot/Place and Shoot-4480.onnx",
+                "steps": 9984,
+                "file_path": "results/ppo/Place and Shoot/Place and Shoot-9984.onnx",
                 "reward": null,
-                "creation_time": 1649804875.768214,
+                "creation_time": 1649805340.3142989,
                 "auxillary_file_paths": [
-                    "results/ppo/Place and Shoot/Place and Shoot-4480.pt"
+                    "results/ppo/Place and Shoot/Place and Shoot-9984.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 4480,
+            "steps": 9984,
             "file_path": "results/ppo/Place and Shoot.onnx",
             "reward": null,
-            "creation_time": 1649804875.768214,
+            "creation_time": 1649805340.3142989,
             "auxillary_file_paths": [
-                "results/ppo/Place and Shoot/Place and Shoot-4480.pt"
+                "results/ppo/Place and Shoot/Place and Shoot-9984.pt"
             ]
         }
     },
