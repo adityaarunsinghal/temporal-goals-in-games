@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
 {
-    public Rigidbody2D ball;
+    protected Rigidbody2D ball;
     Vector3 mousePosition;
-    public float dragSpeed = 15;
-    public float throwSpeed = 10;
+    protected float dragSpeed = 8;
+    protected float throwSpeed = 10;
     Vector3 lastPosition;
     LineRenderer line;
     Vector3[] linePos;
-    public long captureNum;
+    protected long captureNum;
 
     void Start()
     {

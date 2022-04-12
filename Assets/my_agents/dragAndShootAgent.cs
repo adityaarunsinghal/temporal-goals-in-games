@@ -7,26 +7,70 @@ using Unity.MLAgents.Sensors;
 
 public class dragAndShootAgent : Agent
 {
+    private DragDrop[] foundObjects;
+    private GameObject ball_object;
+    void Start()
+    {
+        foundObjects = ActivityLogger.getFoundObjects();
+        ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
+    }
+
     public override void OnActionReceived(ActionBuffers actions)
     {
-        UnityEngine.Debug.Log(actions.ContinuousActions[0]);
+        if (actions.ContinuousActions[0]!=0f && actions.ContinuousActions[1]!=0f)
+        {
+            Vector3 placeOrShootBall = new Vector3(actions.ContinuousActions[0], actions.ContinuousActions[1], 0);
+            ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(placeOrShootBall);
+
+        }
+
+        if (actions.DiscreteActions[0]!=-1)
+        {
+            GameObject objectToMove = foundObjects[actions.DiscreteActions[0]].gameObject;
+            Vector3 placeObject = new Vector3(actions.ContinuousActions[2], actions.ContinuousActions[3], 0);
+            objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
+        }
+
+        UnityEngine.Debug.Log((string) actionsToString(actions));
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(transform.position);
-        // also add all object locations here
-
+        int objectsCount = ActivityLogger.getObjectsCount();
+        Vector3[] positions = ActivityLogger.getLatestObjectPositions();
+        for (int objectNum = 0; objectNum < objectsCount; objectNum++)
+        {
+            sensor.AddObservation(positions[objectNum]);
+            // UnityEngine.Debug.Log(objectNum);
+        }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void onTriggerEnter(Collider another)
     {
+        Vector3 ballShotFrom;
+        if (ActivityLogger.getLatestBallPosition()!=null)
+        {
+            ballShotFrom = (Vector3) ActivityLogger.getLatestBallPosition();
+        }
         
+        SetReward(1f);
+        EndEpisode();
     }
 
-    // Update is called once per frame
-    void Update()
+    private string actionsToString(ActionBuffers actions)
     {
-        
+        string ret = "Continuous Actions: ";
+        foreach (float x in actions.ContinuousActions)
+        {
+            ret += x.ToString() + " ";
+        }
+        ret += "\nDiscrete Actions: ";
+        foreach (int x in actions.DiscreteActions)
+        {
+            ret += x.ToString() + " ";
+        }
+        ret += "\n\n";
+
+        return ret;
     }
 }

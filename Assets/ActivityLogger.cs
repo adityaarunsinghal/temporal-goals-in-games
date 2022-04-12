@@ -33,10 +33,32 @@ public class ActivityLogger : MonoBehaviour
         captureNum = 0;
     }
 
+    public static int getObjectsCount()
+    {
+        return save.foundObjectsTags.Count;
+    }
+
+    public static DragDrop[] getFoundObjects()
+    {
+        return foundObjects;
+    }
+
     public static void saveBallPosition(Vector3 ballPosition)
     {
         save.ballPositions.Add(ballPosition);
         save.ballPositionsCT.Add(captureNum);
+    }
+
+    public static Vector3? getLatestBallPosition()
+    {
+        if (save.ballPositions.Count > 0)
+        {
+            return save.ballPositions[save.ballPositions.Count - 1];
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public static void saveShootVelocity(Vector3 shootVelocity)
@@ -45,10 +67,15 @@ public class ActivityLogger : MonoBehaviour
         save.velocitiesCT.Add(captureNum);
     }
 
+    public static Vector3 getLatestShootVelocity()
+    {
+        return save.velocities[save.velocities.Count - 1];
+    }
+
     public static void saveObjectPositions()
     {
         // cannot make multi-array because cannot JSON serialize
-        int objectsCount = save.foundObjectsTags.Count;
+        int objectsCount = getObjectsCount();
         for (int objectNum = 0; objectNum < objectsCount; objectNum++)
         {
             // it is essential for each object to have a 
@@ -56,6 +83,17 @@ public class ActivityLogger : MonoBehaviour
             save.objectPositions.Add(GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0].transform.position);
         }
         save.objectPositionsCT.Add(captureNum);
+    }
+
+    public static Vector3[] getLatestObjectPositions()
+    {
+        int objectsCount = getObjectsCount();
+        Vector3[] positions = new Vector3[objectsCount];
+        for (int objectNum = objectsCount; objectNum > 0; objectNum--)
+        {
+            positions[objectsCount - objectNum] = (save.objectPositions[save.objectPositions.Count - objectNum]);
+        }
+        return positions;
     }
 
     public static void saveNote(string note)
@@ -78,7 +116,7 @@ public class ActivityLogger : MonoBehaviour
         //check if directory doesn't exit
         if (!Directory.Exists(dir_path))
         {
-            //if it doesn't, create it
+            // create it
             Directory.CreateDirectory(dir_path);
         }
 

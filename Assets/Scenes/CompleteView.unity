@@ -1940,6 +1940,7 @@ GameObject:
   - component: {fileID: 711399189}
   - component: {fileID: 711399188}
   - component: {fileID: 711399187}
+  - component: {fileID: 711399192}
   - component: {fileID: 711399186}
   m_Layer: 0
   m_Name: Corner
@@ -2113,6 +2114,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &711399192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711399185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7835110ac7184f54af9d91f29a8dcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &712708323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,6 +2215,7 @@ GameObject:
   - component: {fileID: 777446021}
   - component: {fileID: 777446020}
   - component: {fileID: 777446019}
+  - component: {fileID: 777446025}
   m_Layer: 0
   m_Name: Bucket
   m_TagString: bucket
@@ -2357,6 +2371,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &777446025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777446018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7835110ac7184f54af9d91f29a8dcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &778281698
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,6 +2440,7 @@ GameObject:
   - component: {fileID: 780853702}
   - component: {fileID: 780853701}
   - component: {fileID: 780853700}
+  - component: {fileID: 780853705}
   - component: {fileID: 780853699}
   - component: {fileID: 780853698}
   m_Layer: 0
@@ -2548,10 +2575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635890977991a4bfda27059b5f811375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 0}
-  dragSpeed: 8
-  throwSpeed: 10
-  captureNum: 0
 --- !u!50 &780853701
 Rigidbody2D:
   serializedVersion: 4
@@ -2654,6 +2677,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &780853705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780853697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71dc18c9bf3c54fba978398c190547ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &927655327
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,6 +2970,7 @@ GameObject:
   - component: {fileID: 998387596}
   - component: {fileID: 998387595}
   - component: {fileID: 998387594}
+  - component: {fileID: 998387599}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: triangle
@@ -3073,6 +3109,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.976}
+--- !u!114 &998387599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998387593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7835110ac7184f54af9d91f29a8dcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1016266426
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,6 +3134,7 @@ GameObject:
   - component: {fileID: 1016266430}
   - component: {fileID: 1016266429}
   - component: {fileID: 1016266428}
+  - component: {fileID: 1016266433}
   - component: {fileID: 1016266427}
   m_Layer: 0
   m_Name: Gear
@@ -3235,6 +3284,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1016266433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016266426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7835110ac7184f54af9d91f29a8dcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1053742781
 GameObject:
   m_ObjectHideFlags: 0
@@ -3989,6 +4050,7 @@ GameObject:
   - component: {fileID: 1429323154}
   - component: {fileID: 1429323153}
   - component: {fileID: 1429323152}
+  - component: {fileID: 1429323157}
   m_Layer: 0
   m_Name: Crate
   m_TagString: crate
@@ -4121,6 +4183,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1429323157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429323151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7835110ac7184f54af9d91f29a8dcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1447686736
 GameObject:
   m_ObjectHideFlags: 0
@@ -4853,19 +4927,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 5
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 1
-      BranchSizes: 
-    VectorActionSize: 01000000
+      m_NumContinuousActions: 4
+      BranchSizes: 01000000
+    VectorActionSize: 
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: Placing Ball
+  m_BehaviorName: Place and Shoot
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1

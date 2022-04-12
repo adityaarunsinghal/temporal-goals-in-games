@@ -65,6 +65,8 @@
      <Compile Include="Assets/cutomButtons/buttonScripts/Exit.cs" />
      <Compile Include="Assets/PausableStopwatch.cs" />
      <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton1.cs" />
+     <Compile Include="Assets/dragDrop/AgentDragDrop5.cs" />
+     <Compile Include="Assets/dragDrop/AgentDragDrop.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
@@ -721,6 +723,10 @@
       <Project>{f4de8289-0ad4-1d27-77f4-d6e5edbfea4b}</Project>
       <Name>Unity.InternalAPIEngineBridge.001</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.VSCode.Editor.csproj">
+      <Project>{a65531a4-5dd8-ce7b-24d4-59bc89d21129}</Project>
+      <Name>Unity.VSCode.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.PixelPerfect.csproj">
       <Project>{d4641441-db8d-2503-f5bb-6face903118b}</Project>
       <Name>Unity.2D.PixelPerfect</Name>
@@ -840,10 +846,6 @@
     <ProjectReference Include="Unity.ML-Agents.Editor.csproj">
       <Project>{2997bc3b-b6f7-50a4-8f3f-2d6921111037}</Project>
       <Name>Unity.ML-Agents.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{a65531a4-5dd8-ce7b-24d4-59bc89d21129}</Project>
-      <Name>Unity.VSCode.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
