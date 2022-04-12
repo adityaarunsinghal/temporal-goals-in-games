@@ -2,39 +2,39 @@
     "name": "root",
     "metadata": {
         "timer_format_version": "0.1.0",
-        "start_time_seconds": "1649707361",
+        "start_time_seconds": "1649796920",
         "python_version": "3.8.2 (default, Mar 26 2020, 10:43:30) \n[Clang 4.0.1 (tags/RELEASE_401/final)]",
-        "command_line_arguments": "/opt/anaconda3/envs/introml_conda/bin/mlagents-learn",
+        "command_line_arguments": "/opt/anaconda3/envs/introml_conda/bin/mlagents-learn --force",
         "mlagents_version": "0.28.0",
         "mlagents_envs_version": "0.28.0",
         "communication_protocol_version": "1.5.0",
         "pytorch_version": "1.8.1",
         "numpy_version": "1.20.3",
-        "end_time_seconds": "1649707426"
+        "end_time_seconds": "1649796983"
     },
-    "total": 64.555963217,
+    "total": 62.246885344999995,
     "count": 1,
-    "self": 0.013712800999996944,
+    "self": 0.00858367399999338,
     "children": {
         "run_training.setup": {
-            "total": 0.32017935200000025,
+            "total": 0.3016062719999999,
             "count": 1,
-            "self": 0.32017935200000025
+            "self": 0.3016062719999999
         },
         "TrainerController.start_learning": {
-            "total": 64.222071064,
+            "total": 61.936695399,
             "count": 1,
-            "self": 0.00011925600000495251,
+            "self": 0.0003142939999918326,
             "children": {
                 "TrainerController._reset_env": {
-                    "total": 64.22187801199999,
+                    "total": 61.936300575000004,
                     "count": 1,
-                    "self": 64.22187801199999
+                    "self": 61.936300575000004
                 },
                 "TrainerController._save_models": {
-                    "total": 7.379600000945175e-05,
+                    "total": 8.053000000529664e-05,
                     "count": 1,
-                    "self": 7.379600000945175e-05
+                    "self": 8.053000000529664e-05
                 }
             }
         }

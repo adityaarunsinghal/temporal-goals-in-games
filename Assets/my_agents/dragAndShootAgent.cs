@@ -32,6 +32,19 @@ public class dragAndShootAgent : Agent
         }
 
         UnityEngine.Debug.Log((string) actionsToString(actions));
+
+        // Vector3 ballShotFrom;
+        // if (ActivityLogger.getLatestBallPosition()!=null)
+        // {
+        //     ballShotFrom = (Vector3) ActivityLogger.getLatestBallPosition();
+        // }
+
+        if (ball_object.transform.position == new Vector3(0, 0, 0))
+        {
+            UnityEngine.Debug.Log("Ball is at 0, 0, 0");
+            SetReward(1f);
+            EndEpisode();
+        }
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -43,18 +56,6 @@ public class dragAndShootAgent : Agent
             sensor.AddObservation(positions[objectNum]);
             // UnityEngine.Debug.Log(objectNum);
         }
-    }
-
-    private void onTriggerEnter(Collider another)
-    {
-        Vector3 ballShotFrom;
-        if (ActivityLogger.getLatestBallPosition()!=null)
-        {
-            ballShotFrom = (Vector3) ActivityLogger.getLatestBallPosition();
-        }
-        
-        SetReward(1f);
-        EndEpisode();
     }
 
     private string actionsToString(ActionBuffers actions)
