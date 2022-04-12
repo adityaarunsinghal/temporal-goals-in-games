@@ -118,6 +118,18 @@ public class ActivityLogger : MonoBehaviour
         save.notesCT.Add(captureNum);
     }
 
+    public static string getLatestNote()
+    {
+        if (save.notes.Count > 0)
+        {
+            return save.notes[save.notes.Count - 1];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public static List<string> getNotesList()
     {
         return save.notes;

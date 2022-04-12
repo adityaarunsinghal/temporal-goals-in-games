@@ -35,6 +35,11 @@ public class dragAndShootAgent : Agent
             objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
         }
 
+        if (actions.DiscreteActions[1] == 1)
+        {
+            Retry.OnButtonPress();
+        }
+
         UnityEngine.Debug.Log((string)actionsToString(actions));
 
         // Vector3 ballShotFrom;
@@ -50,27 +55,23 @@ public class dragAndShootAgent : Agent
     {
         ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
         ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
-        continuousActions[0] = Input.GetAxisRaw("Horizontal");
-        continuousActions[1] = Input.GetAxisRaw("Vertical");
-        continuousActions[2] = Input.GetAxisRaw("Horizontal2");
-        continuousActions[3] = Input.GetAxisRaw("Vertical2");
-        KeyCode[] keyCodes = {
-                            KeyCode.Alpha0,
-                            KeyCode.Alpha1,
-                            KeyCode.Alpha2,
-                            KeyCode.Alpha3,
-                            KeyCode.Alpha4,
-                        };
-        int numberPressed = -1;
-        for (int i = 0; i < keyCodes.Length; i++)
+        string latestNote = ActivityLogger.getLatestNote();
+        if (latestNote!=null)
         {
-            if (Input.GetKeyDown(keyCodes[i]))
+            string[] inputs = latestNote.Split(' ');
+            float[] cont = new float[4];
+            for (int i = 0; i<4; i++)
             {
-                numberPressed = i;
+                cont[i] = float.Parse(inputs[i]);
             }
+
+            continuousActions[0] = cont[0];
+            continuousActions[1] = cont[1];
+            continuousActions[2] = cont[2];
+            continuousActions[3] = cont[3];
+            discreteActions[0] = int.Parse(inputs[4]);
+            discreteActions[1] = int.Parse(inputs[5]);
         }
-        UnityEngine.Debug.Log(numberPressed);
-        discreteActions[0] = numberPressed;
     }
 
     public override void CollectObservations(VectorSensor sensor)

@@ -12,31 +12,36 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
     public void artificialBallInteraction(Vector3 mousePosition)
     {
         Rigidbody2D ball = GetComponent<Rigidbody2D>();
-        // move pedestal while the ball is being placed
-        if (ball.GetComponent<customProperties>().inSetup)
+        
+        // don't allow interactions if ball is untouchable
+        if (ball.GetComponent<customProperties>().touchable)
         {
-            Vector2 dir = mousePosition - ball.transform.position;
-            dir *= dragSpeed;
-            ball.velocity = dir;
-
-            // detach pedestal and get ready to shoot
+            // move pedestal while the ball is being placed
+            if (ball.GetComponent<customProperties>().inSetup)
             {
-                ball.velocity = Vector2.zero;
-                Retry.putOutSetup();
+                Vector2 dir = mousePosition - ball.transform.position;
+                dir *= dragSpeed;
+                ball.velocity = dir;
+
+                // detach pedestal and get ready to shoot
+                {
+                    ball.velocity = Vector2.zero;
+                    Retry.putOutSetup();
+                }
             }
-        }
-        else
-        {
-            // not in setup phase, so use mouse distance to shoot ball
-            Vector2 dir = ball.transform.position - mousePosition;
-            dir *= throwSpeed;
-            ball.velocity = dir;
+            else
+            {
+                // not in setup phase, so use mouse distance to shoot ball
+                Vector2 dir = ball.transform.position - mousePosition;
+                dir *= throwSpeed;
+                ball.velocity = dir;
 
-            // Save this shoot
-            ActivityLogger.saveShootVelocity(dir);
+                // Save this shoot
+                ActivityLogger.saveShootVelocity(dir);
 
-            // player should only be able to shoot once before resetting
-            ball.GetComponent<customProperties>().makeUntouchable();
+                // player should only be able to shoot once before resetting
+                ball.GetComponent<customProperties>().makeUntouchable();
+            }
         }
     }
 
