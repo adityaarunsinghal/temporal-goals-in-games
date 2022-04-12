@@ -10,7 +10,7 @@ public class dragAndShootAgent : Agent
     private DragDrop[] foundObjects;
     private GameObject ball_object;
 
-    public float contValueScale = 10f;
+    public float contValueScale = 100f;
     void Start()
     {
         foundObjects = ActivityLogger.getFoundObjects();
