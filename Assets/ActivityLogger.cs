@@ -14,6 +14,7 @@ public class ActivityLogger : MonoBehaviour
     private static Save save;
     private static DragDrop[] foundObjects;
     private static TMP_InputField runNameInput;
+    public static bool saveMode = true;
 
     public static void startLogging()
     {
@@ -148,14 +149,17 @@ public class ActivityLogger : MonoBehaviour
             Directory.CreateDirectory(dir_path);
         }
 
-        string savePath = Path.Combine(dir_path, name);
-
         // mark end of recording
         save.lastStepNum = captureNum;
 
+        string savePath = Path.Combine(dir_path, name);
+
         // save
-        File.WriteAllText(savePath, JsonUtility.ToJson(save, true));
-        UnityEngine.Debug.Log("Run Saved!");
+        if (saveMode)
+        {
+            File.WriteAllText(savePath, JsonUtility.ToJson(save, true));
+            UnityEngine.Debug.Log("Run Saved!");
+        }
     }
 
     void FixedUpdate()

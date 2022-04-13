@@ -11,8 +11,16 @@ public class dragAndShootAgent : Agent
     private GameObject ball_object;
     private GameObject bucket_object;
     private int numActionsTaken;
-
+    public bool saveLogs = false;
     public float contValueScale = 1000f;
+
+    public void Start()
+    {
+        ActivityLogger.saveMode = saveLogs;
+        foundObjects = ActivityLogger.getFoundObjects();
+        ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
+        bucket_object = GameObject.FindGameObjectsWithTag("bucket")[0];
+    }
 
     public override void OnEpisodeBegin()
     {
@@ -26,10 +34,6 @@ public class dragAndShootAgent : Agent
         {
             FreshStart.softReset();
         }
-
-        foundObjects = ActivityLogger.getFoundObjects();
-        ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
-        bucket_object = GameObject.FindGameObjectsWithTag("bucket")[0];
     }
 
     public override void OnActionReceived(ActionBuffers actions)

@@ -19,10 +19,8 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
             // move pedestal while the ball is being placed
             if (ball.GetComponent<customProperties>().inSetup)
             {
-                // directly setup for agent
-                Vector2 dir = mousePosition - ball.transform.position;
-                dir *= 1000000;
-                ball.velocity = dir;
+                // directly moveable for agent
+                ball.MovePosition(ball.transform.position - new Vector3(mousePosition[0], 0, 0));
 
                 // detach pedestal and get ready to shoot
                 {
