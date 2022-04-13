@@ -17,6 +17,7 @@ TagManager:
   - notesInput
   - verticalScrollbar
   - notesOutput
+  - wall
   layers:
   - Default
   - TransparentFX

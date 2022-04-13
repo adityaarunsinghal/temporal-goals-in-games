@@ -1,0 +1,29 @@
+{
+    "Place and Shoot": {
+        "checkpoints": [
+            {
+                "steps": 113,
+                "file_path": "results/test6/Place and Shoot/Place and Shoot-113.onnx",
+                "reward": 431.72797405719757,
+                "creation_time": 1649873793.445793,
+                "auxillary_file_paths": [
+                    "results/test6/Place and Shoot/Place and Shoot-113.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 113,
+            "file_path": "results/test6/Place and Shoot.onnx",
+            "reward": 431.72797405719757,
+            "creation_time": 1649873793.445793,
+            "auxillary_file_paths": [
+                "results/test6/Place and Shoot/Place and Shoot-113.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.8.1"
+    }
+}

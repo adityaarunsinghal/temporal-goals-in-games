@@ -10,6 +10,8 @@ public class dragAndShootAgent : Agent
     private DragDrop[] foundObjects;
     private GameObject ball_object;
     private GameObject bucket_object;
+    private GameObject wall_object;
+    private GameObject bottom_wall_object;
     private int numActionsTaken;
     public bool saveLogs = false;
     public float contValueScale = 1000f;
@@ -20,6 +22,8 @@ public class dragAndShootAgent : Agent
         foundObjects = ActivityLogger.getFoundObjects();
         ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
         bucket_object = GameObject.FindGameObjectsWithTag("bucket")[0];
+        wall_object = GameObject.FindGameObjectsWithTag("wall")[0];
+        bottom_wall_object = GameObject.FindGameObjectsWithTag("bottomWall")[0];
     }
 
     public override void OnEpisodeBegin()
@@ -68,9 +72,16 @@ public class dragAndShootAgent : Agent
 
         if (actions.DiscreteActions[1] == 1)
         {
-            // agent tried to setup and resulting place of ball will determine goodness of episode
-            giveRewards();
+            // agent tried to setup
             Retry.OnButtonPress();
+        }
+
+        if (wall_object.GetComponent<FlagCollision>().collidedWith == ball_object & 
+        wall_object.GetComponent<FlagCollision>().childCollider == bottom_wall_object)
+        {
+            giveRewards();
+            UnityEngine.Debug.Log("Episode Ended!");
+            wall_object.GetComponent<FlagCollision>().reset();
             EndEpisode();
         }
 
@@ -148,7 +159,7 @@ public class dragAndShootAgent : Agent
         reward += dist;
 
         // get there as quickly as possible
-        reward -= numActionsTaken;
+        // reward -= numActionsTaken;
 
         if (DestroyCounter.destroyedCount > 0)
         {

@@ -4623,9 +4623,10 @@ GameObject:
   - component: {fileID: 1497276832}
   - component: {fileID: 1497276831}
   - component: {fileID: 1497276830}
+  - component: {fileID: 1497276834}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4745,6 +4746,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1497276834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497276829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89db5ffa11c044c32bae22e8f47f13ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collidedWith: {fileID: 0}
+  collided: 0
 --- !u!1 &1504420519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4914,7 +4929,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  contValueScale: 10
+  saveLogs: 0
+  contValueScale: 1000
 --- !u!114 &1544951007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4931,8 +4947,8 @@ MonoBehaviour:
     VectorObservationSize: 18
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 4
-      BranchSizes: 0500000002000000
+      m_NumContinuousActions: 6
+      BranchSizes: 0600000002000000
     VectorActionSize: 
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
