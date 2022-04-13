@@ -4914,6 +4914,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  contValueScale: 10
 --- !u!114 &1544951007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4927,11 +4928,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 15
+    VectorObservationSize: 18
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 4
-      BranchSizes: 01000000
+      BranchSizes: 0500000002000000
     VectorActionSize: 
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
@@ -4971,8 +4972,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
-  TakeActionsBetweenDecisions: 1
+  DecisionPeriod: 20
+  TakeActionsBetweenDecisions: 0
 --- !u!1 &1645867765
 GameObject:
   m_ObjectHideFlags: 0

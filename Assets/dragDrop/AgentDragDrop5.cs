@@ -12,17 +12,23 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
     public void artificialBallInteraction(Vector3 mousePosition)
     {
         Rigidbody2D ball = GetComponent<Rigidbody2D>();
-
+        
         // don't allow interactions if ball is untouchable
         if (ball.GetComponent<customProperties>().touchable)
         {
             // move pedestal while the ball is being placed
             if (ball.GetComponent<customProperties>().inSetup)
             {
-                // directly setup ball
-                ball.transform.position = mousePosition;
-                ball.velocity = Vector2.zero;
-                Retry.putOutSetup();
+                // directly setup for agent
+                Vector2 dir = mousePosition - ball.transform.position;
+                dir *= 1000000;
+                ball.velocity = dir;
+
+                // detach pedestal and get ready to shoot
+                {
+                    ball.velocity = Vector2.zero;
+                    Retry.putOutSetup();
+                }
             }
             else
             {

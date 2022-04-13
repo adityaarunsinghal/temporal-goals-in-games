@@ -9,7 +9,7 @@ public class FreshStart : MonoBehaviour
 {
     public static string lastSavedRunName = null;
 
-    public void OnButtonPress()
+    public static void OnButtonPress()
     {
         // keep the entered name
         lastSavedRunName = GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>().text;
@@ -30,6 +30,5 @@ public class FreshStart : MonoBehaviour
         {
            foundObjects[objectNum].gameObject.transform.position = initPos[objectNum];
         }
-        DestroyCounter.reset();
     }
 }
