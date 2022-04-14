@@ -14,12 +14,13 @@ public class dragAndShootAgent : Agent
     private GameObject bottom_wall_object;
     private int numActionsTaken;
     public bool saveLogs = false;
-    public float contValueScale = 1000f;
+    public float contValueScale = 100f;
 
     public void Start()
     {
-        ActivityLogger.saveMode = saveLogs;
         AgentStatus.active = true;
+        UnityEngine.Debug.Log("Agent is Active!");
+        ActivityLogger.saveMode = saveLogs;
         foundObjects = ActivityLogger.getFoundObjects();
         ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
         bucket_object = GameObject.FindGameObjectsWithTag("bucket")[0];
@@ -149,7 +150,7 @@ public class dragAndShootAgent : Agent
         float x2 = ball_object.transform.position[0] * ball_object.transform.position[0];
         float y2 = ball_object.transform.position[1] * ball_object.transform.position[1];
         float dist = Mathf.Sqrt(x2 + y2);
-        reward -= dist;
+        reward -= dist * 5;
 
         // try to be close to bucket
         float x = ball_object.transform.position[0] - bucket_object.transform.position[0];
@@ -157,15 +158,15 @@ public class dragAndShootAgent : Agent
         x2 = x*x;
         y2 = y*y;
         dist = Mathf.Sqrt(x2 + y2);
-        reward += dist;
+        reward -= dist * 10;
 
         // get there as quickly as possible
-        reward -= numActionsTaken / 100f;
+        reward -= numActionsTaken / 10f;
 
         if (DestroyCounter.destroyedCount > 0)
         {
             // penalize destruction
-            reward -= DestroyCounter.destroyedCount;
+            reward -= DestroyCounter.destroyedCount * 100;
             UnityEngine.Debug.Log(string.Format("Destroyed {0} objects", DestroyCounter.destroyedCount));
         }
         SetReward(reward);

@@ -9,15 +9,10 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
 
     void Start()
     {
-        if (!AgentStatus.active)
-        {
-            GetComponent<AgentDragDrop5>().enabled = false;
-        }
-        else
-        {
-            alwaysAccessibleBall = GetComponent<Rigidbody2D>();
-            GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>().text = "Agent";
-        }
+
+        alwaysAccessibleBall = GetComponent<Rigidbody2D>();
+        GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>().text = "Agent";
+
     }
     void Update()
     {
@@ -59,11 +54,14 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
 
     void FixedUpdate()
     {
-        if (Retry.isInSetup)
+        // no need to add to logs if agent is not the one interacting
+        if (AgentStatus.active)
         {
-            // save only setup time ball positions for replay
-            ActivityLogger.saveBallPosition(alwaysAccessibleBall.transform.position);
+            if (Retry.isInSetup)
+            {
+                // save only setup time ball positions for replay
+                ActivityLogger.saveBallPosition(alwaysAccessibleBall.transform.position);
+            }
         }
-
     }
 }
