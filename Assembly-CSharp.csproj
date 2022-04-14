@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/FlagCollision.cs" />
      <Compile Include="Assets/cutomButtons/FreezeButtonNameChanger.cs" />
      <Compile Include="Assets/MatchParentColor.cs" />
      <Compile Include="Assets/cutomButtons/DuplicateButtonNameChanger.cs" />
@@ -57,6 +58,7 @@
      <Compile Include="Assets/dragDrop/DragDrop3.cs" />
      <Compile Include="Assets/objectsCacher.cs" />
      <Compile Include="Assets/dragDrop/AgentDragDrop5.cs" />
+     <Compile Include="Assets/DestroyCounter.cs" />
      <Compile Include="Assets/cutomButtons/RemoveButtonNameChanger.cs" />
      <Compile Include="Assets/cutomButtons/buttonScripts/Retry.cs" />
      <Compile Include="Assets/cutomButtons/buttonScripts/PlayPrevious.cs" />
@@ -67,8 +69,7 @@
      <Compile Include="Assets/PausableStopwatch.cs" />
      <Compile Include="Assets/cutomButtons/buttonScripts/FreezeButton1.cs" />
      <Compile Include="Assets/dragDrop/AgentDragDrop.cs" />
-     <Compile Include="Assets/DestroyCounter.cs" />
-     <Compile Include="Assets/FlagCollision.cs" />
+     <Compile Include="Assets/my_agents/AgentStatus.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

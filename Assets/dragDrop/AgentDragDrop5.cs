@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
 {
@@ -8,7 +9,15 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
 
     void Start()
     {
-        alwaysAccessibleBall = GetComponent<Rigidbody2D>();
+        if (!AgentStatus.active)
+        {
+            GetComponent<AgentDragDrop5>().enabled = false;
+        }
+        else
+        {
+            alwaysAccessibleBall = GetComponent<Rigidbody2D>();
+            GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>().text = "Agent";
+        }
     }
     void Update()
     {

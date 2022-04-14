@@ -6,6 +6,10 @@ public class DragDropManager : MonoBehaviour
 {
     private DragDrop5 dragDrop5;
     private DragDrop dragDrop1;
+
+    void Start()
+    {
+    }
     public void onDragDrop1()
     {
         gameObject.AddComponent<DragDrop>();

@@ -21,9 +21,23 @@ public class ActivityLogger : MonoBehaviour
         foundObjects = GameObject.FindObjectsOfType<DragDrop>();
         save = new Save();
         runNameInput = GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>();
+        captureNum = 0;
 
         // keep last runName if applicable
         runNameInput.text = FreshStart.lastSavedRunName;
+
+        // keep old notes if applicable
+        if (FreshStart.lastSavedNotes != null)
+        {
+            NoteSystem.updateOutNotes(FreshStart.lastSavedNotes);
+            string oldNotes = "";
+            foreach (string note in FreshStart.lastSavedNotes)
+            {
+                oldNotes = note + "\n" + oldNotes;
+            }
+            oldNotes = "OLD NOTES:\n\n" + oldNotes;
+            saveNote(oldNotes);
+        }
 
         for (int i = 0; i < foundObjects.Length; i++)
         {
@@ -31,7 +45,6 @@ public class ActivityLogger : MonoBehaviour
         }
 
         localDate = System.DateTime.Now;
-        captureNum = 0;
     }
 
     public static int getObjectsCount()
@@ -134,6 +147,19 @@ public class ActivityLogger : MonoBehaviour
     public static List<string> getNotesList()
     {
         return save.notes;
+    }
+
+    public static void setNotesList(List<string> notes)
+    {
+        save.notes = notes;
+    }
+
+    public static void addOldNotesCT(int n)
+    {
+        for (int i=0; i<n; i++)
+        {
+            save.notesCT.Add(captureNum);
+        }
     }
 
     public static void saveLogs()

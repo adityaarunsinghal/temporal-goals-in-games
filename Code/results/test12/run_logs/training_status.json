@@ -18,15 +18,33 @@
                 "auxillary_file_paths": [
                     "results/test12/Place and Shoot/Place and Shoot-340.pt"
                 ]
+            },
+            {
+                "steps": 440,
+                "file_path": "results/test12/Place and Shoot/Place and Shoot-440.onnx",
+                "reward": 9.165385072881525,
+                "creation_time": 1649948501.807733,
+                "auxillary_file_paths": [
+                    "results/test12/Place and Shoot/Place and Shoot-440.pt"
+                ]
+            },
+            {
+                "steps": 555,
+                "file_path": "results/test12/Place and Shoot/Place and Shoot-555.onnx",
+                "reward": 11.26762612660726,
+                "creation_time": 1649949932.142833,
+                "auxillary_file_paths": [
+                    "results/test12/Place and Shoot/Place and Shoot-555.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 340,
+            "steps": 555,
             "file_path": "results/test12/Place and Shoot.onnx",
-            "reward": 14.276578267415365,
-            "creation_time": 1649948163.0781598,
+            "reward": 11.26762612660726,
+            "creation_time": 1649949932.142833,
             "auxillary_file_paths": [
-                "results/test12/Place and Shoot/Place and Shoot-340.pt"
+                "results/test12/Place and Shoot/Place and Shoot-555.pt"
             ]
         }
     },

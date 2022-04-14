@@ -8,11 +8,16 @@ using TMPro;
 public class FreshStart : MonoBehaviour
 {
     public static string lastSavedRunName = null;
+    public static List<string> lastSavedNotes = null;
 
     public static void OnButtonPress()
     {
         // keep the entered name
         lastSavedRunName = GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>().text;
+
+        // save notes bank
+        // although there's no point doing this if I can't re-instate it
+        lastSavedNotes = ActivityLogger.getNotesList();
 
         // save run so far and start new one
         ActivityLogger.makeImportantSaves();

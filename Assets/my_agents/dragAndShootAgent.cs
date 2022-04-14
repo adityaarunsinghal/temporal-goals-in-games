@@ -19,6 +19,7 @@ public class dragAndShootAgent : Agent
     public void Start()
     {
         ActivityLogger.saveMode = saveLogs;
+        AgentStatus.active = true;
         foundObjects = ActivityLogger.getFoundObjects();
         ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
         bucket_object = GameObject.FindGameObjectsWithTag("bucket")[0];
