@@ -9,15 +9,24 @@
                 "auxillary_file_paths": [
                     "results/learn_to_bucket/Place and Shoot/Place and Shoot-6827.pt"
                 ]
+            },
+            {
+                "steps": 11336,
+                "file_path": "results/learn_to_bucket/Place and Shoot/Place and Shoot-11336.onnx",
+                "reward": -320.5174245568518,
+                "creation_time": 1649955149.5482671,
+                "auxillary_file_paths": [
+                    "results/learn_to_bucket/Place and Shoot/Place and Shoot-11336.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 6827,
+            "steps": 11336,
             "file_path": "results/learn_to_bucket/Place and Shoot.onnx",
-            "reward": 10.511483543067742,
-            "creation_time": 1649954757.5182679,
+            "reward": -320.5174245568518,
+            "creation_time": 1649955149.5482671,
             "auxillary_file_paths": [
-                "results/learn_to_bucket/Place and Shoot/Place and Shoot-6827.pt"
+                "results/learn_to_bucket/Place and Shoot/Place and Shoot-11336.pt"
             ]
         }
     },
