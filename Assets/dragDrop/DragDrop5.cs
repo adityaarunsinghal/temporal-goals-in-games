@@ -96,12 +96,12 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
         {
             if (Retry.isInSetup)
             {
-                // save non-shoot ball positions for replay
+                // save only setup time ball positions for replay
                 ActivityLogger.saveBallPosition(ball.transform.position);
             }
         }
 
-        // always save where objects are
+        // but always save where objects are
         ActivityLogger.saveObjectPositions();
     }
 
