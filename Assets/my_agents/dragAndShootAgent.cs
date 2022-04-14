@@ -72,6 +72,7 @@ public class dragAndShootAgent : Agent
 
         if (actions.DiscreteActions[1] == 1)
         {
+            giveRewards();
             // agent tried to setup
             Retry.OnButtonPress();
         }
@@ -79,7 +80,6 @@ public class dragAndShootAgent : Agent
         if (wall_object.GetComponent<FlagCollision>().collidedWith == ball_object & 
         wall_object.GetComponent<FlagCollision>().childCollider == bottom_wall_object)
         {
-            giveRewards();
             UnityEngine.Debug.Log("Episode Ended!");
             wall_object.GetComponent<FlagCollision>().reset();
             EndEpisode();
@@ -159,7 +159,7 @@ public class dragAndShootAgent : Agent
         reward += dist;
 
         // get there as quickly as possible
-        // reward -= numActionsTaken;
+        reward -= numActionsTaken / 100f;
 
         if (DestroyCounter.destroyedCount > 0)
         {

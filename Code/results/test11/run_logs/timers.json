@@ -1,0 +1,49 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1649947214",
+        "python_version": "3.8.2 (default, Mar 26 2020, 10:43:30) \n[Clang 4.0.1 (tags/RELEASE_401/final)]",
+        "command_line_arguments": "/opt/anaconda3/envs/introml_conda/bin/mlagents-learn --run-id test11 --time-scale 0.1 --resume",
+        "mlagents_version": "0.28.0",
+        "mlagents_envs_version": "0.28.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.8.1",
+        "numpy_version": "1.20.3",
+        "end_time_seconds": "1649947223"
+    },
+    "total": 9.219065294,
+    "count": 1,
+    "self": 0.008548717000000039,
+    "children": {
+        "run_training.setup": {
+            "total": 0.29857714599999996,
+            "count": 1,
+            "self": 0.29857714599999996
+        },
+        "TrainerController.start_learning": {
+            "total": 8.911939431,
+            "count": 1,
+            "self": 0.00013716700000188098,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 8.73936212,
+                    "count": 1,
+                    "self": 8.73936212
+                },
+                "TrainerController._save_models": {
+                    "total": 0.1724401439999994,
+                    "count": 1,
+                    "self": 0.0010480069999996289,
+                    "children": {
+                        "RLTrainer._checkpoint": {
+                            "total": 0.17139213699999978,
+                            "count": 1,
+                            "self": 0.17139213699999978
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
