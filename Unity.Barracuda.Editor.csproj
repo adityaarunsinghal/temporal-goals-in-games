@@ -668,6 +668,12 @@
     <Reference Include="UnityEngine.UI">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Barracuda.csproj">
@@ -677,14 +683,6 @@
     <ProjectReference Include="Unity.Barracuda.ONNX.csproj">
       <Project>{8284d27c-4b8b-19dd-cdb9-38e15f3779ad}</Project>
       <Name>Unity.Barracuda.ONNX</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{064ecc47-56ae-5635-818b-a1ab09642e5a}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{04ca62ea-5fa4-2007-c1b1-ef5ff7407594}</Project>
-      <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

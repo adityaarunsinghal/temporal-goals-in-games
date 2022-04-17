@@ -653,6 +653,9 @@
     <Reference Include="mscorlib">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
@@ -664,10 +667,6 @@
     <ProjectReference Include="Unity.Barracuda.csproj">
       <Project>{4275c424-7f8b-fc7e-108c-d29c87d3a494}</Project>
       <Name>Unity.Barracuda</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{0202ab2c-e940-b020-35de-4fbaf3b64c87}</Project>
-      <Name>Unity.Burst</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -812,6 +812,12 @@
     <Reference Include="mscorlib">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
@@ -820,14 +826,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{0202ab2c-e940-b020-35de-4fbaf3b64c87}</Project>
-      <Name>Unity.Burst</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{954d3455-1a1d-f8f2-02fc-b90d02d05f5a}</Project>
-      <Name>Unity.Mathematics</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
