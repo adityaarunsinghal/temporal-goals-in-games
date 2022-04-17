@@ -1274,7 +1274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 84.795, y: -343.0499}
+  m_AnchoredPosition: {x: 84.795, y: -343.04993}
   m_SizeDelta: {x: 137.59, y: 26.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &564487117
@@ -4943,7 +4943,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 1000
   saveLogs: 0
   contValueScale: 10
 --- !u!114 &1544951007
@@ -4971,7 +4971,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: Place and Shoot
+  m_BehaviorName: PlaceAndShoot
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1

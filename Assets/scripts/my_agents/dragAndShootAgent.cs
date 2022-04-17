@@ -10,9 +10,15 @@ public class dragAndShootAgent : Agent
     private DragDrop[] foundObjects;
     private GameObject ball_object;
     private GameObject bucket_object;
+    private GameObject crate_object;
     private GameObject wall_object;
     private GameObject bottom_wall_object;
     private int numActionsTaken;
+    private float min_X = -5.33f;
+    private float max_X = 2.58f;
+    private float min_Y = -4.52f;
+    private float max_Y = 4.04f;
+    private float reward = 0f;
     public bool saveLogs = false;
     public float contValueScale = 100f;
 
@@ -24,6 +30,7 @@ public class dragAndShootAgent : Agent
         foundObjects = ActivityLogger.getFoundObjects();
         ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
         bucket_object = GameObject.FindGameObjectsWithTag("bucket")[0];
+        crate_object = GameObject.FindGameObjectsWithTag("crate")[0];
         wall_object = GameObject.FindGameObjectsWithTag("wall")[0];
         bottom_wall_object = GameObject.FindGameObjectsWithTag("bottomWall")[0];
     }
@@ -31,6 +38,7 @@ public class dragAndShootAgent : Agent
     public override void OnEpisodeBegin()
     {
         numActionsTaken = 0;
+        reward = 0f;
 
         if (DestroyCounter.destroyedCount > 0)
         {
@@ -40,6 +48,11 @@ public class dragAndShootAgent : Agent
         {
             FreshStart.softReset();
         }
+
+        // randomize crate position
+        crate_object.transform.position = new Vector3(Random.Range(min_X, max_X),
+                                            Random.Range(min_Y, max_Y), 0);
+
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -66,10 +79,22 @@ public class dragAndShootAgent : Agent
         if (actions.DiscreteActions[0] != 5)
         {
             GameObject objectToMove = foundObjects[actions.DiscreteActions[0]].gameObject;
-            Vector3 placeObject = new Vector3(actions.ContinuousActions[4] * contValueScale,
-                                                    actions.ContinuousActions[5] * contValueScale, 0);
-            objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
-            numActionsTaken++;
+
+            // for now, don't move crate
+            if (objectToMove != crate_object)
+            {
+                Vector3 placeObject = new Vector3(actions.ContinuousActions[4] * contValueScale,
+                                                                    actions.ContinuousActions[5] * contValueScale, 0);
+
+                // learn to place things inside box, if placing at all
+                if (isOutOfBox(placeObject))
+                {
+                    reward -= 0.5f;
+                }
+
+                objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
+                numActionsTaken++;
+            }
         }
 
         if (actions.DiscreteActions[1] == 1)
@@ -79,7 +104,7 @@ public class dragAndShootAgent : Agent
             Retry.OnButtonPress();
         }
 
-        if (wall_object.GetComponent<FlagCollision>().collidedWith == ball_object & 
+        if (wall_object.GetComponent<FlagCollision>().collidedWith == ball_object &
         wall_object.GetComponent<FlagCollision>().childCollider == bottom_wall_object)
         {
             UnityEngine.Debug.Log("Episode Ended!");
@@ -144,32 +169,44 @@ public class dragAndShootAgent : Agent
 
     public void giveRewards()
     {
-        float reward = 0f;
+        float dist = 0f;
+        float x2, y2, x, y;
 
-        // arbitrary reward function for now: close to 0, 0 vector
-        float x2 = ball_object.transform.position[0] * ball_object.transform.position[0];
-        float y2 = ball_object.transform.position[1] * ball_object.transform.position[1];
-        float dist = Mathf.Sqrt(x2 + y2);
-        reward -= dist * 5;
-
-        // try to be close to bucket
-        float x = ball_object.transform.position[0] - bucket_object.transform.position[0];
-        float y = ball_object.transform.position[1] - bucket_object.transform.position[1];
-        x2 = x*x;
-        y2 = y*y;
+        // arbitrary reward function for now: close to crate as target
+        x = ball_object.transform.position[0] - crate_object.transform.position[0];
+        y = ball_object.transform.position[1] - crate_object.transform.position[1];
+        x2 = x * x;
+        y2 = y * y;
         dist = Mathf.Sqrt(x2 + y2);
-        reward -= dist * 10;
+        reward -= dist / 10f;
+
+        // try to be close to bucket always
+        x = ball_object.transform.position[0] - bucket_object.transform.position[0];
+        y = ball_object.transform.position[1] - bucket_object.transform.position[1];
+        x2 = x * x;
+        y2 = y * y;
+        dist = Mathf.Sqrt(x2 + y2);
+        reward -= dist / 10f;
 
         // get there as quickly as possible
-        reward -= numActionsTaken / 10f;
+        reward -= numActionsTaken / 100f;
 
         if (DestroyCounter.destroyedCount > 0)
         {
             // penalize destruction
-            reward -= DestroyCounter.destroyedCount * 100;
+            reward -= DestroyCounter.destroyedCount / 10f;
             UnityEngine.Debug.Log(string.Format("Destroyed {0} objects", DestroyCounter.destroyedCount));
         }
         SetReward(reward);
         UnityEngine.Debug.Log(string.Format("Got {0} Reward", reward));
+    }
+
+    public bool isOutOfBox(Vector3 pos)
+    {
+        if (pos[0]<min_X | pos[0]>max_X | pos[1]<min_Y | pos[1]>max_Y)
+        {
+            return true;
+        }
+        return false;
     }
 }

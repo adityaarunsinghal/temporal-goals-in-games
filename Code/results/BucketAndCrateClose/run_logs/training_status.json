@@ -1,0 +1,38 @@
+{
+    "PlaceAndShoot": {
+        "checkpoints": [
+            {
+                "steps": 322,
+                "file_path": "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-322.onnx",
+                "reward": -476.75406710306805,
+                "creation_time": 1650216858.0615911,
+                "auxillary_file_paths": [
+                    "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-322.pt"
+                ]
+            },
+            {
+                "steps": 1009,
+                "file_path": "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-1009.onnx",
+                "reward": -125.77232243464543,
+                "creation_time": 1650216904.369319,
+                "auxillary_file_paths": [
+                    "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-1009.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1009,
+            "file_path": "results/BucketAndCrateClose/PlaceAndShoot.onnx",
+            "reward": -125.77232243464543,
+            "creation_time": 1650216904.369319,
+            "auxillary_file_paths": [
+                "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-1009.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.8.1"
+    }
+}
