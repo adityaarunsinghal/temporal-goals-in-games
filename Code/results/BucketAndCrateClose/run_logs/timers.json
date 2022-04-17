@@ -2,7 +2,7 @@
     "name": "root",
     "metadata": {
         "timer_format_version": "0.1.0",
-        "start_time_seconds": "1650218769",
+        "start_time_seconds": "1650219148",
         "python_version": "3.8.2 (default, Mar 26 2020, 10:43:30) \n[Clang 4.0.1 (tags/RELEASE_401/final)]",
         "command_line_arguments": "/opt/anaconda3/envs/introml_conda/bin/mlagents-learn /Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Code/configs/train.yaml --run-id BucketAndCrateClose --num-envs=1 --resume",
         "mlagents_version": "0.28.0",
@@ -10,41 +10,41 @@
         "communication_protocol_version": "1.5.0",
         "pytorch_version": "1.8.1",
         "numpy_version": "1.20.3",
-        "end_time_seconds": "1650218786"
+        "end_time_seconds": "1650219164"
     },
-    "total": 16.759896125,
+    "total": 16.006133069999997,
     "count": 1,
-    "self": 0.014575416000003116,
+    "self": 0.011114815999995642,
     "children": {
         "run_training.setup": {
-            "total": 0.2921720109999999,
+            "total": 0.28504839400000015,
             "count": 1,
-            "self": 0.2921720109999999
+            "self": 0.28504839400000015
         },
         "TrainerController.start_learning": {
-            "total": 16.453148698,
+            "total": 15.709969860000001,
             "count": 1,
-            "self": 0.00013347800000218513,
+            "self": 0.00012113200000030133,
             "children": {
                 "TrainerController._reset_env": {
-                    "total": 16.240143177,
+                    "total": 15.409330832999999,
                     "count": 1,
-                    "self": 16.240143177
+                    "self": 15.409330832999999
                 },
                 "trainer_threads": {
-                    "total": 1.013999998633608e-06,
+                    "total": 1.1200000002986599e-06,
                     "count": 1,
-                    "self": 1.013999998633608e-06
+                    "self": 1.1200000002986599e-06
                 },
                 "TrainerController._save_models": {
-                    "total": 0.21287102899999866,
+                    "total": 0.30051677500000196,
                     "count": 1,
-                    "self": 0.0015536249999996699,
+                    "self": 0.00016877300000217588,
                     "children": {
                         "RLTrainer._checkpoint": {
-                            "total": 0.211317403999999,
+                            "total": 0.3003480019999998,
                             "count": 1,
-                            "self": 0.211317403999999
+                            "self": 0.3003480019999998
                         }
                     }
                 }
