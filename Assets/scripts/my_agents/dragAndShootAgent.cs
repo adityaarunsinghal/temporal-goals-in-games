@@ -57,15 +57,15 @@ public class dragAndShootAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        // abstain from placing or shooting if place value is 1 in X or Y
-        if (actions.ContinuousActions[0] != 1f | actions.ContinuousActions[1] != 1f)
+        // abstain from placing or shooting if place value is 0 in X or Y
+        if (actions.ContinuousActions[0] != 0f | actions.ContinuousActions[1] != 0f)
         {
             Vector3 placeBall = new Vector3(actions.ContinuousActions[0] * contValueScale,
                                                     actions.ContinuousActions[1] * contValueScale, 0);
             ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(placeBall);
 
-            // abstain from shooting if shoot value is 1 in X or Y
-            if (actions.ContinuousActions[2] != 1f | actions.ContinuousActions[3] != 1f)
+            // abstain from shooting if shoot value is 0 in X or Y
+            if (actions.ContinuousActions[2] != 0f | actions.ContinuousActions[3] != 0f)
             {
                 Vector3 shootBall = new Vector3(actions.ContinuousActions[2] * contValueScale,
                                                         actions.ContinuousActions[3] * contValueScale, 0);
@@ -75,10 +75,10 @@ public class dragAndShootAgent : Agent
             numActionsTaken++;
         }
 
-        // abstain from moving objects if 5
-        if (actions.DiscreteActions[0] != 5)
+        // abstain from moving objects if 0
+        if (actions.DiscreteActions[0] != 0)
         {
-            GameObject objectToMove = foundObjects[actions.DiscreteActions[0]].gameObject;
+            GameObject objectToMove = foundObjects[actions.DiscreteActions[0] - 1].gameObject;
 
             // for now, don't move crate
             if (objectToMove != crate_object)
@@ -86,7 +86,7 @@ public class dragAndShootAgent : Agent
                 Vector3 placeObject = new Vector3(actions.ContinuousActions[4] * contValueScale,
                                                                     actions.ContinuousActions[5] * contValueScale, 0);
 
-                // learn to place things inside box, if placing at all
+                // learn to place things inside the bounds, if placing at all
                 if (isOutOfBox(placeObject))
                 {
                     reward -= 0.5f;
@@ -203,7 +203,7 @@ public class dragAndShootAgent : Agent
 
     public bool isOutOfBox(Vector3 pos)
     {
-        if (pos[0]<min_X | pos[0]>max_X | pos[1]<min_Y | pos[1]>max_Y)
+        if (pos[0] < min_X | pos[0] > max_X | pos[1] < min_Y | pos[1] > max_Y)
         {
             return true;
         }
