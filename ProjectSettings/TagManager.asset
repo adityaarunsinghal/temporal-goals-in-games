@@ -19,6 +19,8 @@ TagManager:
   - notesOutput
   - wall
   - bottomWall
+  - leftWall
+  - rightWall
   layers:
   - Default
   - TransparentFX

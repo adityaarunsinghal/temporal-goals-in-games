@@ -45,8 +45,8 @@ public class dragAndShootAgent : Agent
             FreshStart.softReset();
         }
 
-        // randomize crate position
-        crate_object.transform.position = new Vector3(Random.Range(EnvironmentVariables.minX, EnvironmentVariables.maxX), Random.Range(EnvironmentVariables.minY, EnvironmentVariables.maxY), 0);
+        // randomize bucket position
+        bucket_object.transform.position = new Vector3(Random.Range(EnvironmentVariables.minX, EnvironmentVariables.maxX), Random.Range(EnvironmentVariables.minY, EnvironmentVariables.maxY), 0);
 
     }
 
@@ -55,18 +55,8 @@ public class dragAndShootAgent : Agent
         // abstain from placing or shooting if place value is 0 in X or Y
         if (actions.ContinuousActions[0] != 0f | actions.ContinuousActions[1] != 0f)
         {
-            Vector3 placeOrShootBall = new Vector3(actions.ContinuousActions[0] * contValueScale,
-                                                    actions.ContinuousActions[1] * contValueScale, 0);
-            ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(placeOrShootBall);
-
-            // // abstain from shooting if shoot value is 0 in X or Y
-            // if (actions.ContinuousActions[2] != 0f | actions.ContinuousActions[3] != 0f)
-            // {
-            //     Vector3 shootBall = new Vector3(actions.ContinuousActions[2] * contValueScale,
-            //                                             actions.ContinuousActions[3] * contValueScale, 0);
-            //     ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(shootBall);
-            // }
-
+            Vector3 mousePosition = new Vector3(actions.ContinuousActions[0] * contValueScale, actions.ContinuousActions[1] * contValueScale, 0);
+            ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(mousePosition);
             numActionsTaken++;
         }
 
@@ -76,10 +66,9 @@ public class dragAndShootAgent : Agent
             GameObject objectToMove = foundObjects[actions.DiscreteActions[0] - 1].gameObject;
 
             // for now, don't move crate
-            if (objectToMove != crate_object)
+            if (objectToMove != bucket_object)
             {
-                Vector3 placeObject = new Vector3(actions.ContinuousActions[4] * contValueScale,
-                                                                    actions.ContinuousActions[5] * contValueScale, 0);
+                Vector3 placeObject = new Vector3(actions.ContinuousActions[2] * contValueScale, actions.ContinuousActions[3] * contValueScale, 0);
 
                 // learn to place things inside the bounds, if placing at all
                 if (isOutOfBox(placeObject))
@@ -117,9 +106,9 @@ public class dragAndShootAgent : Agent
         string latestNote = ActivityLogger.getLatestNote();
         if (latestNote != null)
         {
-            string[] inputs = latestNote.Split(' ');
+            string[] inputs = latestNote.Split('_');
             float[] cont = new float[6];
-            for (int i = 0; i <= 5; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 cont[i] = float.Parse(inputs[i]);
             }
@@ -128,10 +117,8 @@ public class dragAndShootAgent : Agent
             continuousActions[1] = cont[1];
             continuousActions[2] = cont[2];
             continuousActions[3] = cont[3];
-            continuousActions[4] = cont[4];
-            continuousActions[5] = cont[5];
-            discreteActions[0] = int.Parse(inputs[6]);
-            discreteActions[1] = int.Parse(inputs[7]);
+            discreteActions[0] = int.Parse(inputs[4]);
+            discreteActions[1] = int.Parse(inputs[5]);
         }
     }
 
@@ -141,9 +128,12 @@ public class dragAndShootAgent : Agent
         Vector3[] positions = ActivityLogger.getLatestObjectPositions();
         for (int objectNum = 0; objectNum < objectsCount; objectNum++)
         {
-            sensor.AddObservation(positions[objectNum]);
+            sensor.AddObservation(positions[objectNum].x);
+            sensor.AddObservation(positions[objectNum].y);
         }
-        sensor.AddObservation(ball_object.transform.position);
+        sensor.AddObservation(ball_object.transform.position.x);
+        sensor.AddObservation(ball_object.transform.position.y);
+        sensor.AddObservation(Retry.isInSetup);
     }
 
     private string actionsToString(ActionBuffers actions)
@@ -167,15 +157,7 @@ public class dragAndShootAgent : Agent
         float dist = 0f;
         float x2, y2, x, y;
 
-        // arbitrary reward function for now: close to crate as target
-        x = ball_object.transform.position[0] - crate_object.transform.position[0];
-        y = ball_object.transform.position[1] - crate_object.transform.position[1];
-        x2 = x * x;
-        y2 = y * y;
-        dist = Mathf.Sqrt(x2 + y2);
-        reward -= dist / 10f;
-
-        // try to be close to bucket always
+        // try to be close to bucket : arbitrary goal
         x = ball_object.transform.position[0] - bucket_object.transform.position[0];
         y = ball_object.transform.position[1] - bucket_object.transform.position[1];
         x2 = x * x;

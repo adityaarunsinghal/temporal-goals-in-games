@@ -1,35 +1,4 @@
 {
-    "PlaceAndShoot": {
-        "checkpoints": [
-            {
-                "steps": 1003,
-                "file_path": "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-1003.onnx",
-                "reward": -0.46464237800011265,
-                "creation_time": 1650219620.913687,
-                "auxillary_file_paths": [
-                    "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-1003.pt"
-                ]
-            },
-            {
-                "steps": 13031,
-                "file_path": "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-13031.onnx",
-                "reward": null,
-                "creation_time": 1650220067.151907,
-                "auxillary_file_paths": [
-                    "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-13031.pt"
-                ]
-            }
-        ],
-        "final_checkpoint": {
-            "steps": 13031,
-            "file_path": "results/BucketAndCrateClose/PlaceAndShoot.onnx",
-            "reward": null,
-            "creation_time": 1650220067.151907,
-            "auxillary_file_paths": [
-                "results/BucketAndCrateClose/PlaceAndShoot/PlaceAndShoot-13031.pt"
-            ]
-        }
-    },
     "metadata": {
         "stats_format_version": "0.3.0",
         "mlagents_version": "0.28.0",

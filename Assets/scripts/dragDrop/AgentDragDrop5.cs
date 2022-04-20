@@ -30,37 +30,34 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
             if (alwaysAccessibleBall.GetComponent<customProperties>().inSetup)
             {
                 UnityEngine.Debug.Log("Ball is in setup mode");
-                // directly moveable for agent
-                Vector3 toMoveTo = alwaysAccessibleBall.transform.position - 
-                                        new Vector3(mousePosition[0], 0, 0);
-                alwaysAccessibleBall.MovePosition(toMoveTo);
-                alwaysAccessibleBall.GetComponentsInChildren<Rigidbody2D>()[0].MovePosition(toMoveTo);
-                UnityEngine.Debug.Log(string.Format("Ball and pedestal are placed at {0}, {1}", 
-                                        toMoveTo[0], toMoveTo[1]));
-
-                // detach pedestal and get ready to shoot
+                float new_x = Mathf.Clamp(mousePosition.x, EnvironmentVariables.minX, EnvironmentVariables.maxX);
+                alwaysAccessibleBall.MovePosition(new Vector2(new_x, 
+                                    alwaysAccessibleBall.position.y));
+                Rigidbody2D pedestal = alwaysAccessibleBall.GetComponentsInChildren<Rigidbody2D>()[0];
+                if (pedestal)
                 {
-                    Retry.stabilize(alwaysAccessibleBall.GetComponent<Rigidbody2D>());
-                    UnityEngine.Debug.Log("Ball velocity turned zero");
-                    Retry.putOutSetup();
-                    UnityEngine.Debug.Log("Ball put out of setup");
+                    UnityEngine.Debug.Log("Placed pedestal");
+                    pedestal.MovePosition(new Vector2(new_x, pedestal.position.y));
                 }
+                Retry.stabilize(alwaysAccessibleBall.GetComponent<Rigidbody2D>());
+                Retry.putOutSetup();
+                UnityEngine.Debug.Log("Ball put out of setup");
             }
-            else
-            {
-                UnityEngine.Debug.Log("Ball not in setup mode");
-                // not in setup mode, so use mouse distance to shoot ball
-                Vector2 dir = alwaysAccessibleBall.transform.position - mousePosition;
-                dir *= throwSpeed;
-                alwaysAccessibleBall.velocity = dir;
+            // else
+            // {
+            //     UnityEngine.Debug.Log("Ball not in setup mode");
+            //     // not in setup mode, so use mouse distance to shoot ball
+            //     Vector2 dir = alwaysAccessibleBall.transform.position - mousePosition;
+            //     dir *= throwSpeed;
+            //     alwaysAccessibleBall.velocity = dir;
 
-                // Save this shoot
-                ActivityLogger.saveShootVelocity(dir);
+            //     // Save this shoot
+            //     ActivityLogger.saveShootVelocity(dir);
 
-                // player should only be able to shoot once before resetting
-                alwaysAccessibleBall.GetComponent<customProperties>().makeUntouchable();
-                UnityEngine.Debug.Log("Ball made untouchable");
-            }
+            //     // player should only be able to shoot once before resetting
+            //     alwaysAccessibleBall.GetComponent<customProperties>().makeUntouchable();
+            //     UnityEngine.Debug.Log("Ball made untouchable");
+            // }
         }
     }
 
