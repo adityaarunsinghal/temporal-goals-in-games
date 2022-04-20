@@ -18,8 +18,10 @@ public class Retry : MonoBehaviour
         pedestal_object = GameObject.FindGameObjectsWithTag("pedestal")[0];
         ball = ball_object.GetComponent<Rigidbody2D>();
         pedestal = pedestal_object.GetComponent<Rigidbody2D>();
-        absolutePositionBall = new Vector3(-1.35f, -4.12f, 0.0f); // initial position of ball on screen
-        relativePositionPedestal = new Vector3(0.0f, -0.58f, 0.0f); // under wherever ball is
+        // initial position of ball on screen
+        absolutePositionBall = new Vector3(-1.35f, -4.12f, 0.0f);
+        // under wherever the ball is
+        relativePositionPedestal = new Vector3(0.0f, -0.58f, 0.0f);
         // makeJoint();
         putInSetup();
     }

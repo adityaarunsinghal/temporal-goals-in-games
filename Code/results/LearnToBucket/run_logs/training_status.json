@@ -1,0 +1,29 @@
+{
+    "PlaceAndShoot": {
+        "checkpoints": [
+            {
+                "steps": 1099,
+                "file_path": "results/LearnToBucket/PlaceAndShoot/PlaceAndShoot-1099.onnx",
+                "reward": null,
+                "creation_time": 1650465313.806143,
+                "auxillary_file_paths": [
+                    "results/LearnToBucket/PlaceAndShoot/PlaceAndShoot-1099.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1099,
+            "file_path": "results/LearnToBucket/PlaceAndShoot.onnx",
+            "reward": null,
+            "creation_time": 1650465313.806143,
+            "auxillary_file_paths": [
+                "results/LearnToBucket/PlaceAndShoot/PlaceAndShoot-1099.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.8.1"
+    }
+}

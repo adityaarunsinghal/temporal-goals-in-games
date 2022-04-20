@@ -84,6 +84,7 @@ public class dragAndShootAgent : Agent
         if (actions.DiscreteActions[1] == 1)
         {
             giveRewards();
+            EndEpisode();
             // agent tried to setup
             Retry.OnButtonPress();
         }

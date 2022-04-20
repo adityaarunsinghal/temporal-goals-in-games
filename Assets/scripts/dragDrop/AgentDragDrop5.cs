@@ -25,18 +25,15 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
         // don't allow interactions if ball is untouchable
         if (alwaysAccessibleBall.GetComponent<customProperties>().touchable)
         {
-            UnityEngine.Debug.Log("Ball is untouchable");
             // move pedestal while the ball is being placed
             if (alwaysAccessibleBall.GetComponent<customProperties>().inSetup)
             {
-                UnityEngine.Debug.Log("Ball is in setup mode");
                 float new_x = Mathf.Clamp(mousePosition.x, EnvironmentVariables.minX, EnvironmentVariables.maxX);
                 alwaysAccessibleBall.MovePosition(new Vector2(new_x, 
                                     alwaysAccessibleBall.position.y));
                 Rigidbody2D pedestal = alwaysAccessibleBall.GetComponentsInChildren<Rigidbody2D>()[0];
                 if (pedestal)
                 {
-                    UnityEngine.Debug.Log("Placed pedestal");
                     pedestal.MovePosition(new Vector2(new_x, pedestal.position.y));
                 }
                 Retry.stabilize(alwaysAccessibleBall.GetComponent<Rigidbody2D>());
