@@ -52,6 +52,13 @@ public class dragAndShootAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        // artificial discrete actions for gym env
+        ActionSegment<int> discrete = new ActionSegment<int>();
+        // between 0 and 5 inclusive for choosing object
+        discrete[0] = Mathf.RoundToInt(actions.ContinuousActions[4] * 5);
+        // 0 or 1 for resetting
+        discrete[1] = Mathf.RoundToInt(actions.ContinuousActions[5]);
+
         // abstain from placing or shooting if place value is 0 in X or Y
         if (actions.ContinuousActions[0] != 0f | actions.ContinuousActions[1] != 0f)
         {
@@ -61,9 +68,9 @@ public class dragAndShootAgent : Agent
         }
 
         // abstain from moving objects if 0
-        if (actions.DiscreteActions[0] != 0)
+        if (discrete[0] != 0)
         {
-            GameObject objectToMove = foundObjects[actions.DiscreteActions[0] - 1].gameObject;
+            GameObject objectToMove = foundObjects[discrete[0] - 1].gameObject;
 
             // for now, don't move crate
             if (objectToMove != bucket_object)
@@ -81,7 +88,7 @@ public class dragAndShootAgent : Agent
             }
         }
 
-        if (actions.DiscreteActions[1] == 1)
+        if (discrete[1] == 1)
         {
             giveRewards();
             EndEpisode();
@@ -103,24 +110,24 @@ public class dragAndShootAgent : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
-        ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
-        string latestNote = ActivityLogger.getLatestNote();
-        if (latestNote != null)
-        {
-            string[] inputs = latestNote.Split('_');
-            float[] cont = new float[6];
-            for (int i = 0; i <= 3; i++)
-            {
-                cont[i] = float.Parse(inputs[i]);
-            }
+        // ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
+        // string latestNote = ActivityLogger.getLatestNote();
+        // if (latestNote != null)
+        // {
+        //     string[] inputs = latestNote.Split('_');
+        //     float[] cont = new float[6];
+        //     for (int i = 0; i <= 3; i++)
+        //     {
+        //         cont[i] = float.Parse(inputs[i]);
+        //     }
 
-            continuousActions[0] = cont[0];
-            continuousActions[1] = cont[1];
-            continuousActions[2] = cont[2];
-            continuousActions[3] = cont[3];
-            discreteActions[0] = int.Parse(inputs[4]);
-            discreteActions[1] = int.Parse(inputs[5]);
-        }
+        //     continuousActions[0] = cont[0];
+        //     continuousActions[1] = cont[1];
+        //     continuousActions[2] = cont[2];
+        //     continuousActions[3] = cont[3];
+        //     discreteActions[0] = int.Parse(inputs[4]);
+        //     discreteActions[1] = int.Parse(inputs[5]);
+        // }
     }
 
     public override void CollectObservations(VectorSensor sensor)
