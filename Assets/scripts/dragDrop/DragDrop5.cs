@@ -55,9 +55,11 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
             // move pedestal while the ball is being placed
             if (ball.GetComponent<customProperties>().inSetup)
             {
-                Vector2 dir = mousePosition - ball.transform.position;
-                dir *= dragSpeed;
-                ball.velocity = dir;
+                // Vector2 dir = mousePosition - ball.transform.position;
+                // dir *= dragSpeed;
+                // ball.velocity = dir;
+                float new_x = Mathf.Clamp(mousePosition.x, EnvironmentVariables.minX, EnvironmentVariables.maxX);
+                ball.MovePosition(new Vector2(new_x, ball.position.y));
 
                 // detach pedestal and get ready to shoot
                 if (Input.GetMouseButtonUp(0))

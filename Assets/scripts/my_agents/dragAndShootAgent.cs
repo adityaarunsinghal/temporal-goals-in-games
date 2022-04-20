@@ -14,10 +14,6 @@ public class dragAndShootAgent : Agent
     private GameObject wall_object;
     private GameObject bottom_wall_object;
     private int numActionsTaken;
-    private float min_X = -5.33f;
-    private float max_X = 2.58f;
-    private float min_Y = -4.52f;
-    private float max_Y = 4.04f;
     private float reward = 0f;
     public bool saveLogs = false;
     public float contValueScale = 100f;
@@ -50,8 +46,7 @@ public class dragAndShootAgent : Agent
         }
 
         // randomize crate position
-        crate_object.transform.position = new Vector3(Random.Range(min_X, max_X),
-                                            Random.Range(min_Y, max_Y), 0);
+        crate_object.transform.position = new Vector3(Random.Range(EnvironmentVariables.minX, EnvironmentVariables.maxX), Random.Range(EnvironmentVariables.minY, EnvironmentVariables.maxY), 0);
 
     }
 
@@ -60,17 +55,17 @@ public class dragAndShootAgent : Agent
         // abstain from placing or shooting if place value is 0 in X or Y
         if (actions.ContinuousActions[0] != 0f | actions.ContinuousActions[1] != 0f)
         {
-            Vector3 placeBall = new Vector3(actions.ContinuousActions[0] * contValueScale,
+            Vector3 placeOrShootBall = new Vector3(actions.ContinuousActions[0] * contValueScale,
                                                     actions.ContinuousActions[1] * contValueScale, 0);
-            ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(placeBall);
+            ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(placeOrShootBall);
 
-            // abstain from shooting if shoot value is 0 in X or Y
-            if (actions.ContinuousActions[2] != 0f | actions.ContinuousActions[3] != 0f)
-            {
-                Vector3 shootBall = new Vector3(actions.ContinuousActions[2] * contValueScale,
-                                                        actions.ContinuousActions[3] * contValueScale, 0);
-                ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(shootBall);
-            }
+            // // abstain from shooting if shoot value is 0 in X or Y
+            // if (actions.ContinuousActions[2] != 0f | actions.ContinuousActions[3] != 0f)
+            // {
+            //     Vector3 shootBall = new Vector3(actions.ContinuousActions[2] * contValueScale,
+            //                                             actions.ContinuousActions[3] * contValueScale, 0);
+            //     ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(shootBall);
+            // }
 
             numActionsTaken++;
         }
@@ -203,7 +198,7 @@ public class dragAndShootAgent : Agent
 
     public bool isOutOfBox(Vector3 pos)
     {
-        if (pos[0] < min_X | pos[0] > max_X | pos[1] < min_Y | pos[1] > max_Y)
+        if (pos[0] < EnvironmentVariables.minX | pos[0] > EnvironmentVariables.maxX | pos[1] < EnvironmentVariables.minY | pos[1] > EnvironmentVariables.maxY)
         {
             return true;
         }

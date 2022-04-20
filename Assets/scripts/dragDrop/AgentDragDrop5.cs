@@ -25,21 +25,31 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
         // don't allow interactions if ball is untouchable
         if (alwaysAccessibleBall.GetComponent<customProperties>().touchable)
         {
+            UnityEngine.Debug.Log("Ball is untouchable");
             // move pedestal while the ball is being placed
             if (alwaysAccessibleBall.GetComponent<customProperties>().inSetup)
             {
+                UnityEngine.Debug.Log("Ball is in setup mode");
                 // directly moveable for agent
-                alwaysAccessibleBall.MovePosition(alwaysAccessibleBall.transform.position - new Vector3(mousePosition[0], 0, 0));
+                Vector3 toMoveTo = alwaysAccessibleBall.transform.position - 
+                                        new Vector3(mousePosition[0], 0, 0);
+                alwaysAccessibleBall.MovePosition(toMoveTo);
+                alwaysAccessibleBall.GetComponentsInChildren<Rigidbody2D>()[0].MovePosition(toMoveTo);
+                UnityEngine.Debug.Log(string.Format("Ball and pedestal are placed at {0}, {1}", 
+                                        toMoveTo[0], toMoveTo[1]));
 
                 // detach pedestal and get ready to shoot
                 {
-                    alwaysAccessibleBall.velocity = Vector2.zero;
+                    Retry.stabilize(alwaysAccessibleBall.GetComponent<Rigidbody2D>());
+                    UnityEngine.Debug.Log("Ball velocity turned zero");
                     Retry.putOutSetup();
+                    UnityEngine.Debug.Log("Ball put out of setup");
                 }
             }
             else
             {
-                // not in setup phase, so use mouse distance to shoot ball
+                UnityEngine.Debug.Log("Ball not in setup mode");
+                // not in setup mode, so use mouse distance to shoot ball
                 Vector2 dir = alwaysAccessibleBall.transform.position - mousePosition;
                 dir *= throwSpeed;
                 alwaysAccessibleBall.velocity = dir;
@@ -49,6 +59,7 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
 
                 // player should only be able to shoot once before resetting
                 alwaysAccessibleBall.GetComponent<customProperties>().makeUntouchable();
+                UnityEngine.Debug.Log("Ball made untouchable");
             }
         }
     }

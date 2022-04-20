@@ -70,6 +70,8 @@
      <Compile Include="Assets/scripts/obsolete/PausableStopwatch.cs" />
      <Compile Include="Assets/scripts/customButtons/buttonScripts/obsolete/FreezeButton1.cs" />
      <Compile Include="Assets/scripts/dragDrop/AgentDragDrop.cs" />
+     <Compile Include="Assets/scripts/dragDrop/DragDropLinear.cs" />
+     <Compile Include="Assets/scripts/EnvironmentVariables.cs" />
      <None Include="Assets/packageSpecific/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/packageSpecific/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/packageSpecific/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
