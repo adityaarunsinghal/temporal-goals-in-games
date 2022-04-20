@@ -34,27 +34,27 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
                 Rigidbody2D pedestal = alwaysAccessibleBall.GetComponentsInChildren<Rigidbody2D>()[0];
                 if (pedestal)
                 {
-                    pedestal.MovePosition(new Vector2(new_x, pedestal.position.y));
+                    pedestal.transform.position = new Vector2(new_x, pedestal.position.y);
                 }
                 Retry.stabilize(alwaysAccessibleBall.GetComponent<Rigidbody2D>());
                 Retry.putOutSetup();
                 UnityEngine.Debug.Log("Ball put out of setup");
             }
-            // else
-            // {
-            //     UnityEngine.Debug.Log("Ball not in setup mode");
-            //     // not in setup mode, so use mouse distance to shoot ball
-            //     Vector2 dir = alwaysAccessibleBall.transform.position - mousePosition;
-            //     dir *= throwSpeed;
-            //     alwaysAccessibleBall.velocity = dir;
+            else
+            {
+                UnityEngine.Debug.Log("Ball not in setup mode");
+                // not in setup mode, so use mouse distance to shoot ball
+                Vector2 dir = alwaysAccessibleBall.transform.position - mousePosition;
+                dir *= throwSpeed;
+                alwaysAccessibleBall.velocity = dir;
 
-            //     // Save this shoot
-            //     ActivityLogger.saveShootVelocity(dir);
+                // Save this shoot
+                ActivityLogger.saveShootVelocity(dir);
 
-            //     // player should only be able to shoot once before resetting
-            //     alwaysAccessibleBall.GetComponent<customProperties>().makeUntouchable();
-            //     UnityEngine.Debug.Log("Ball made untouchable");
-            // }
+                // player should only be able to shoot once before resetting
+                alwaysAccessibleBall.GetComponent<customProperties>().makeUntouchable();
+                UnityEngine.Debug.Log("Ball made untouchable");
+            }
         }
     }
 
