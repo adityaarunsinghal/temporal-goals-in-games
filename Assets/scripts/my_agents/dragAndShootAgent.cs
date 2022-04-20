@@ -53,11 +53,11 @@ public class dragAndShootAgent : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         // artificial discrete actions for gym env
-        ActionSegment<int> discrete = new ActionSegment<int>();
+        int[] discrete = new int[2];
         // between 0 and 5 inclusive for choosing object
-        discrete[0] = Mathf.RoundToInt(actions.ContinuousActions[4] * 5);
+        discrete[0] = Mathf.RoundToInt(Mathf.Abs(actions.ContinuousActions[4]) * 5.49f);
         // 0 or 1 for resetting
-        discrete[1] = Mathf.RoundToInt(actions.ContinuousActions[5]);
+        discrete[1] = Mathf.RoundToInt(Mathf.Abs(actions.ContinuousActions[5]));
 
         // abstain from placing or shooting if place value is 0 in X or Y
         if (actions.ContinuousActions[0] != 0f | actions.ContinuousActions[1] != 0f)
