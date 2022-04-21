@@ -15,7 +15,7 @@ public class ActivityLogger : MonoBehaviour
     private static DragDrop[] foundObjects;
     private static TMP_InputField runNameInput;
     public static bool saveMode = true;
-    public static bool saveAllBallPos = false;
+    public static bool saveAllBallPos = true;
 
     public static void startLogging()
     {
@@ -44,9 +44,6 @@ public class ActivityLogger : MonoBehaviour
         {
             save.foundObjectsTags.Add(foundObjects[i].gameObject.tag);
         }
-
-        // store custom env variables
-        saveEnvironmentVariables();
 
         localDate = System.DateTime.Now;
     }
@@ -194,6 +191,9 @@ public class ActivityLogger : MonoBehaviour
 
         // mark end of recording
         save.lastStepNum = captureNum;
+        
+        // store custom env variables
+        saveEnvironmentVariables();
 
         string savePath = Path.Combine(dir_path, name);
 
