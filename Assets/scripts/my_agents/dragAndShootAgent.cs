@@ -59,35 +59,7 @@ public class dragAndShootAgent : Agent
         // 0 or 1 for resetting
         discrete[1] = Mathf.RoundToInt(Mathf.Abs(actions.ContinuousActions[5]));
 
-        // abstain from placing or shooting if place value is 0 in X or Y
-        if (actions.ContinuousActions[0] != 0f | actions.ContinuousActions[1] != 0f)
-        {
-            Vector3 mousePosition = new Vector3(actions.ContinuousActions[0] * contValueScale, actions.ContinuousActions[1] * contValueScale, 0);
-            ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(mousePosition);
-            numActionsTaken++;
-        }
-
-        // abstain from moving objects if 0
-        if (discrete[0] != 0)
-        {
-            GameObject objectToMove = foundObjects[discrete[0] - 1].gameObject;
-
-            // for now, don't move crate
-            if (objectToMove != bucket_object)
-            {
-                Vector3 placeObject = new Vector3(actions.ContinuousActions[2] * contValueScale, actions.ContinuousActions[3] * contValueScale, 0);
-
-                // learn to place things inside the bounds, if placing at all
-                if (isOutOfBox(placeObject))
-                {
-                    reward -= 0.5f;
-                }
-
-                objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
-                numActionsTaken++;
-            }
-        }
-
+        // if resetting, don't do anything else
         if (discrete[1] == 1)
         {
             giveRewards();
@@ -95,13 +67,44 @@ public class dragAndShootAgent : Agent
             // agent tried to setup
             Retry.OnButtonPress();
         }
-
-        if (wall_object.GetComponent<FlagCollision>().collidedWith == ball_object &
-        wall_object.GetComponent<FlagCollision>().childCollider == bottom_wall_object)
+        else
         {
-            UnityEngine.Debug.Log("Episode Ended!");
-            wall_object.GetComponent<FlagCollision>().reset();
-            EndEpisode();
+            // abstain from placing or shooting if place value is 0 in X or Y
+            if (actions.ContinuousActions[0] != 0f | actions.ContinuousActions[1] != 0f)
+            {
+                Vector3 mousePosition = new Vector3(actions.ContinuousActions[0] * contValueScale, actions.ContinuousActions[1] * contValueScale, 0);
+                ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(mousePosition);
+                numActionsTaken++;
+            }
+
+            // abstain from moving objects if 0
+            if (discrete[0] != 0)
+            {
+                GameObject objectToMove = foundObjects[discrete[0] - 1].gameObject;
+
+                // for now, don't move bucket
+                if (objectToMove != bucket_object)
+                {
+                    Vector3 placeObject = new Vector3(actions.ContinuousActions[2] * contValueScale, actions.ContinuousActions[3] * contValueScale, 0);
+
+                    // learn to place things inside the bounds, if placing at all
+                    if (isOutOfBox(placeObject))
+                    {
+                        reward -= 0.5f;
+                    }
+
+                    objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
+                    numActionsTaken++;
+                }
+            }
+
+            if (wall_object.GetComponent<FlagCollision>().collidedWith == ball_object &
+            wall_object.GetComponent<FlagCollision>().childCollider == bottom_wall_object)
+            {
+                UnityEngine.Debug.Log("Episode Ended!");
+                wall_object.GetComponent<FlagCollision>().reset();
+                EndEpisode();
+            }
         }
 
         UnityEngine.Debug.Log((string)actionsToString(actions));
@@ -139,8 +142,12 @@ public class dragAndShootAgent : Agent
             sensor.AddObservation(positions[objectNum].x);
             sensor.AddObservation(positions[objectNum].y);
         }
+
+        // TODO: I need it to get observations ALL the time, not just once per action
         sensor.AddObservation(ball_object.transform.position.x);
         sensor.AddObservation(ball_object.transform.position.y);
+
+        // technically the agent should know this itself
         sensor.AddObservation(Retry.isInSetup);
     }
 
