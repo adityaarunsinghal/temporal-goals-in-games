@@ -181,7 +181,7 @@ public class dragAndShootAgent : Agent
         reward -= dist / 10f;
 
         // get there as quickly as possible
-        reward -= numActionsTaken / 100f;
+        reward -= numActionsTaken / 50f;
 
         if (DestroyCounter.destroyedCount > 0)
         {
