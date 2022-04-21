@@ -21,6 +21,7 @@ public class dragAndShootAgent : Agent
     public void Start()
     {
         AgentStatus.active = true;
+        ActivityLogger.saveAllBallPos = true;
         UnityEngine.Debug.Log("Agent is Active!");
         ActivityLogger.saveMode = saveLogs;
         foundObjects = ActivityLogger.getFoundObjects();
@@ -29,6 +30,7 @@ public class dragAndShootAgent : Agent
         crate_object = GameObject.FindGameObjectsWithTag("crate")[0];
         wall_object = GameObject.FindGameObjectsWithTag("wall")[0];
         bottom_wall_object = GameObject.FindGameObjectsWithTag("bottomWall")[0];
+        ball_object.GetComponent<DragDropManager>().onAgentDragDrop5();
     }
 
     public override void OnEpisodeBegin()
@@ -63,9 +65,9 @@ public class dragAndShootAgent : Agent
         if (discrete[1] == 1)
         {
             giveRewards();
-            EndEpisode();
             // agent tried to setup
             Retry.OnButtonPress();
+            EndEpisode();
         }
         else
         {

@@ -106,6 +106,15 @@ public class PlayPrevious : MonoBehaviour
             }
         }
 
+        if (shootNum < shootsCount)
+        {
+            if (stepNum == save.velocitiesCT[shootNum])
+            {
+                // detach from pedestal everytime a shoot was attempted
+                Retry.putOutSetup();
+            }
+        }
+        
         if (ballSnapNum < ballSnapsCount)
         {
             if (stepNum == save.ballPositionsCT[ballSnapNum])
@@ -152,9 +161,6 @@ public class PlayPrevious : MonoBehaviour
         {
             if (stepNum == save.velocitiesCT[shootNum])
             {
-                // detach from pedestal everytime a shoot was attempted
-                Retry.putOutSetup();
-
                 GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
                 if (ball)
                 {

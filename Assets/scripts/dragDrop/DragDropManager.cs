@@ -15,6 +15,10 @@ public class DragDropManager : MonoBehaviour
         gameObject.AddComponent<DragDrop>();
     }
 
+    public void offDragDrop1()
+    {
+        Destroy(GetComponent<DragDrop>());
+    }
     public void onDragDrop5()
     {
         dragDrop5 = GetComponent<DragDrop5>();
@@ -27,8 +31,16 @@ public class DragDropManager : MonoBehaviour
         dragDrop5.enabled = false;
     }
 
-    public void offDragDrop1()
+    public void onAgentDragDrop5()
     {
-        Destroy(GetComponent<DragDrop>());
+        dragDrop5 = GetComponent<AgentDragDrop5>();
+        dragDrop5.enabled = true;
     }
+
+    public void offAgentDragDrop5()
+    {
+        dragDrop5 = GetComponent<AgentDragDrop5>();
+        dragDrop5.enabled = false;
+    }
+
 }

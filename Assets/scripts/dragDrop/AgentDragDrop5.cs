@@ -6,16 +6,15 @@ using TMPro;
 public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
 {
 
-    void Start()
+    protected override void Start()
     {
-        if (AgentStatus.active)
-        {
-            GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>().text = "Agent";
-        }
+        alwaysAccessibleBall = GetComponent<Rigidbody2D>();
+        shootVelocity = null;
+        ActivityLogger.startLogging();
     }
-    void Update()
+    protected override void Update()
     {
-
+        // do nothing and override normal dragdrop5
     }
 
     public void artificialBallInteraction(Vector3 mousePosition)
@@ -44,32 +43,20 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
                 dir *= throwSpeed;
                 alwaysAccessibleBall.velocity = dir;
 
-                // Save this shoot
-                ActivityLogger.saveShootVelocity(dir);
+                // Save this shoot in the next fixed update
+                shootVelocity = dir;
 
                 // player should only be able to shoot once before resetting
                 alwaysAccessibleBall.GetComponent<customProperties>().makeUntouchable();
             }
         }
     }
-
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        // no need to add to logs if agent is not the one interacting
-        if (AgentStatus.active)
+        if (shootVelocity != null)
         {
-            if (ActivityLogger.saveAllBallPos)
-            {
-                ActivityLogger.saveBallPosition(alwaysAccessibleBall.transform.position);
-            }
-            else
-            {
-                // save only setup time ball positions for replay
-                if (Retry.isInSetup)
-                {
-                    ActivityLogger.saveBallPosition(ball.transform.position);
-                }
-            }
+            ActivityLogger.saveShootVelocity((Vector3)shootVelocity);
+            shootVelocity = null;
         }
     }
 }

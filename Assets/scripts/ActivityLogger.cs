@@ -178,6 +178,11 @@ public class ActivityLogger : MonoBehaviour
 
     public static void saveLogs()
     {
+        if (AgentStatus.active)
+        {
+            runNameInput.text = "Agent";
+        }
+
         // name by current time
         string name = string.Format("logs_{0}_{1}.json", localDate.ToString("yyyy_MM_dd_HH_mm_ss"), runNameInput.text.Replace(" ", "_"));
 

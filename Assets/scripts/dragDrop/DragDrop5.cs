@@ -8,16 +8,14 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     Vector3 mousePosition;
     protected float dragSpeed = 8;
     protected float throwSpeed = 10;
-    Vector3 lastPosition;
     LineRenderer line;
     Vector3[] linePos;
-    Vector3? shootVelocity;
-    protected long captureNum;
+    protected Vector3? shootVelocity;
     protected Rigidbody2D alwaysAccessibleBall;
 
     // TODO: Also give pos of walls in state trace
 
-    void Start()
+    protected virtual void Start()
     {
         // for some things
         alwaysAccessibleBall = GetComponent<Rigidbody2D>();
@@ -25,7 +23,6 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
 
         // make the system work on a clock cycle for easier replay?
         // Time.captureFramerate = 50; 
-        captureNum = 0;
         ActivityLogger.startLogging();
         linePos = new Vector3[2];
         line = GetComponent<LineRenderer>();
@@ -33,7 +30,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
         line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
     }
 
-    void Update()
+    protected virtual void Update()
     {
         // track mouse
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -100,7 +97,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
         }
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (ActivityLogger.saveAllBallPos)
         {
