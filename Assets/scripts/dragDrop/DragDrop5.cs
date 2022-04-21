@@ -114,10 +114,10 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                     ActivityLogger.saveBallPosition(ball.transform.position);
                 }
             }
-
-            // but always save where objects are
-            ActivityLogger.saveObjectPositions();
         }
+        
+        // but always save where objects are
+        ActivityLogger.saveObjectPositions();
     }
 
     private void updatePowerLine(Vector3 start, Vector3 end, float width)

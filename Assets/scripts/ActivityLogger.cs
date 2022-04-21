@@ -108,6 +108,11 @@ public class ActivityLogger : MonoBehaviour
         save.objectPositionsCT.Add(captureNum);
     }
 
+    public static void saveResetTime()
+    {
+        save.resetCT.Add(captureNum);
+    }
+
     public static void saveEnvironmentVariables()
     {
         save.boxMinX = EnvironmentVariables.minX;

@@ -28,7 +28,7 @@ public class FreshStart : MonoBehaviour
 
     public static void softReset()
     {
-        Retry.putInSetup();
+        Retry.OnButtonPress();
         DragDrop[] foundObjects = ActivityLogger.getFoundObjects();
         Vector3[] initPos = ActivityLogger.getInitialObjectPositions();
         for (int objectNum = 0; objectNum < foundObjects.Length; objectNum++)

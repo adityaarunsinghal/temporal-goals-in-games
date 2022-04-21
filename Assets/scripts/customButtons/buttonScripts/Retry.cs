@@ -28,6 +28,7 @@ public class Retry : MonoBehaviour
     public static void OnButtonPress()
     {
         putInSetup();
+        ActivityLogger.saveResetTime();
     }
 
     public static void putInSetup() // hardcoded settings for pedestal and ball

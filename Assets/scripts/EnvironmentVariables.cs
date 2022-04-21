@@ -24,5 +24,8 @@ public class EnvironmentVariables: MonoBehaviour
         maxX = rightWall.transform.position.x - offset;
         minY = bottomWall.transform.position.y + offset;
         maxY = topWall.transform.position.y - offset;
+
+        // delete later
+        Debug.Log(minX);
     }
 }

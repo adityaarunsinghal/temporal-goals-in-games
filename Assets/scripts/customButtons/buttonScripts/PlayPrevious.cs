@@ -17,12 +17,15 @@ public class PlayPrevious : MonoBehaviour
     private int shootsCount;
     private int objectsCount;
     private int notesCount;
+    private int resetCount;
     private int ballSnapsCount;
     private int objectSnapsCount;
     private int objectSnapNum;
     private int ballSnapNum;
     private int shootNum;
     private int noteNum;
+    private int resetNum;
+
     private List<string> printNotes;
     private bool inPlayback = false;
 
@@ -70,12 +73,14 @@ public class PlayPrevious : MonoBehaviour
         shootsCount = save.velocities.Count;
         objectsCount = save.foundObjectsTags.Count;
         notesCount = save.notes.Count;
+        resetCount = save.resetCT.Count;
         ballSnapsCount = save.ballPositions.Count;
         objectSnapsCount = save.objectPositions.Count / objectsCount;
         objectSnapNum = 0;
         ballSnapNum = 0;
         shootNum = 0;
         noteNum = 0;
+        resetNum = 0;
 
         captureNum = 0;
         inPlayback = true;
@@ -115,15 +120,20 @@ public class PlayPrevious : MonoBehaviour
             }
         }
 
+        if (resetNum < resetCount)
+        {
+            if (stepNum == save.resetCT[resetNum])
+            {
+                Retry.putInSetup();
+                resetNum++;
+            }
+        }
 
         if (ballSnapNum < ballSnapsCount)
         {
             if (stepNum == save.ballPositionsCT[ballSnapNum])
             {
-                // attach to pedestal
-                Retry.putInSetup();
-
-                // place ball
+                // transform ball position
                 GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
                 if (ball)
                 {
@@ -138,29 +148,28 @@ public class PlayPrevious : MonoBehaviour
             }
         }
 
-        // no need to use physics of shoot if every single ball pos was saved
-        if (!ActivityLogger.saveAllBallPos)
+        if (shootNum < shootsCount)
         {
-            if (shootNum < shootsCount)
+            if (stepNum == save.velocitiesCT[shootNum])
             {
-                if (stepNum == save.velocitiesCT[shootNum])
+                // detach from pedestal everytime a shoot was attempted
+                Retry.putOutSetup();
+
+                GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
+                if (ball)
                 {
-
-                    // detach from pedestal
-                    Retry.putOutSetup();
-
-                    GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
-                    if (ball)
+                    // no need to use physics of shoot if every single ball pos was saved
+                    if (!ActivityLogger.saveAllBallPos)
                     {
                         ball.GetComponent<Rigidbody2D>().velocity = save.velocities[shootNum];
                     }
-                    else
-                    {
-                        UnityEngine.Debug.Log("Object with tag not found: ball");
-                    }
-
-                    shootNum++;
                 }
+                else
+                {
+                    UnityEngine.Debug.Log("Object with tag not found: ball");
+                }
+
+                shootNum++;
             }
         }
 
