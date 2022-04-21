@@ -43,19 +43,19 @@ behaviors:
     self_play: null
     behavioral_cloning: null
 env_settings:
-  env_path: null
+  env_path: ../Builds/MLAgent_View_21April22_server.app
   env_args: null
   base_port: 5005
   num_envs: 1
   num_areas: 1
-  seed: -1
+  seed: 42
   max_lifetime_restarts: 10
   restarts_rate_limit_n: 1
   restarts_rate_limit_period_s: 60
 engine_settings:
   width: 84
   height: 84
-  quality_level: 5
+  quality_level: 0
   time_scale: 1.0
   target_frame_rate: -1
   capture_frame_rate: 60
