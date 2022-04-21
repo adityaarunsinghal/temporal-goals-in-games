@@ -11,6 +11,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     Vector3 lastPosition;
     LineRenderer line;
     Vector3[] linePos;
+    Vector3? shootVelocity;
     protected long captureNum;
     protected Rigidbody2D alwaysAccessibleBall;
 
@@ -20,6 +21,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     {
         // for some things
         alwaysAccessibleBall = GetComponent<Rigidbody2D>();
+        shootVelocity = null;
 
         // make the system work on a clock cycle for easier replay?
         // Time.captureFramerate = 50; 
@@ -87,8 +89,8 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                     dir *= throwSpeed;
                     ball.velocity = dir;
 
-                    // Save this shoot
-                    ActivityLogger.saveShootVelocity(dir);
+                    // Save this shoot in the next fixed update
+                    shootVelocity = dir;
 
                     // player should only be able to shoot once before resetting
                     ball.GetComponent<customProperties>().makeUntouchable();
@@ -115,7 +117,13 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                 }
             }
         }
-        
+
+        if (shootVelocity!=null)
+        {
+            ActivityLogger.saveShootVelocity((Vector3) shootVelocity);
+            shootVelocity = null;
+        }
+
         // but always save where objects are
         ActivityLogger.saveObjectPositions();
     }

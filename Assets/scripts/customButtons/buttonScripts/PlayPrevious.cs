@@ -97,29 +97,6 @@ public class PlayPrevious : MonoBehaviour
     {
         timeText.text = "Playback Step: " + stepNum + "/" + save.lastStepNum;
 
-        if (objectSnapNum < objectSnapsCount)
-        {
-            if (stepNum == save.objectPositionsCT[objectSnapNum])
-            {
-
-                // place all objects 
-                for (int objectNum = 0; objectNum < objectsCount; objectNum++)
-                {
-                    GameObject obj = GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0];
-                    if (obj)
-                    {
-                        obj.transform.position = save.objectPositions[(objectSnapNum * objectsCount) + objectNum];
-                    }
-                    else
-                    {
-                        UnityEngine.Debug.Log("Object with tag not found: " + save.foundObjectsTags[objectNum]);
-                    }
-
-                }
-                objectSnapNum++;
-            }
-        }
-
         if (resetNum < resetCount)
         {
             if (stepNum == save.resetCT[resetNum])
@@ -145,6 +122,29 @@ public class PlayPrevious : MonoBehaviour
                 }
 
                 ballSnapNum++;
+            }
+        }
+
+        if (objectSnapNum < objectSnapsCount)
+        {
+            if (stepNum == save.objectPositionsCT[objectSnapNum])
+            {
+
+                // place all objects 
+                for (int objectNum = 0; objectNum < objectsCount; objectNum++)
+                {
+                    GameObject obj = GameObject.FindGameObjectsWithTag(save.foundObjectsTags[objectNum])[0];
+                    if (obj)
+                    {
+                        obj.transform.position = save.objectPositions[(objectSnapNum * objectsCount) + objectNum];
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("Object with tag not found: " + save.foundObjectsTags[objectNum]);
+                    }
+
+                }
+                objectSnapNum++;
             }
         }
 

@@ -15,7 +15,7 @@ public class ActivityLogger : MonoBehaviour
     private static DragDrop[] foundObjects;
     private static TMP_InputField runNameInput;
     public static bool saveMode = true;
-    public static bool saveAllBallPos = true;
+    public static bool saveAllBallPos = false;
 
     public static void startLogging()
     {
