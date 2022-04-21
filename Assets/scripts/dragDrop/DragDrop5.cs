@@ -12,9 +12,15 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     LineRenderer line;
     Vector3[] linePos;
     protected long captureNum;
+    protected Rigidbody2D alwaysAccessibleBall;
+
+    // TODO: Also give pos of walls in state trace
 
     void Start()
     {
+        // for some things
+        alwaysAccessibleBall = GetComponent<Rigidbody2D>();
+
         // make the system work on a clock cycle for easier replay?
         // Time.captureFramerate = 50; 
         captureNum = 0;
@@ -94,17 +100,24 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
 
     void FixedUpdate()
     {
-        if (ball)
+        if (ActivityLogger.saveAllBallPos)
         {
-            if (Retry.isInSetup)
+            ActivityLogger.saveBallPosition(alwaysAccessibleBall.transform.position);
+        }
+        else
+        {
+            if (ball)
             {
                 // save only setup time ball positions for replay
-                ActivityLogger.saveBallPosition(ball.transform.position);
+                if (Retry.isInSetup)
+                {
+                    ActivityLogger.saveBallPosition(ball.transform.position);
+                }
             }
-        }
 
-        // but always save where objects are
-        ActivityLogger.saveObjectPositions();
+            // but always save where objects are
+            ActivityLogger.saveObjectPositions();
+        }
     }
 
     private void updatePowerLine(Vector3 start, Vector3 end, float width)

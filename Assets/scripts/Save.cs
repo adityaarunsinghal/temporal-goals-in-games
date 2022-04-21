@@ -14,6 +14,7 @@ public class Save
     public List<long> objectPositionsCT = new List<long>();
     public List<long> notesCT = new List<long>();
     public List<string> foundObjectsTags = new List<string>();
+    public float boxMaxX, boxMinX, boxMaxY, boxMinY;
     public long lastStepNum = 0;
 
 }

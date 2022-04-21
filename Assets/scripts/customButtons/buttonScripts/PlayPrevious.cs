@@ -138,26 +138,29 @@ public class PlayPrevious : MonoBehaviour
             }
         }
 
-
-        if (shootNum < shootsCount)
+        // no need to use physics of shoot if every single ball pos was saved
+        if (!ActivityLogger.saveAllBallPos)
         {
-            if (stepNum == save.velocitiesCT[shootNum])
+            if (shootNum < shootsCount)
             {
-
-                // detach from pedestal
-                Retry.putOutSetup();
-
-                GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
-                if (ball)
+                if (stepNum == save.velocitiesCT[shootNum])
                 {
-                    ball.GetComponent<Rigidbody2D>().velocity = save.velocities[shootNum];
-                }
-                else
-                {
-                    UnityEngine.Debug.Log("Object with tag not found: ball");
-                }
 
-                shootNum++;
+                    // detach from pedestal
+                    Retry.putOutSetup();
+
+                    GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
+                    if (ball)
+                    {
+                        ball.GetComponent<Rigidbody2D>().velocity = save.velocities[shootNum];
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("Object with tag not found: ball");
+                    }
+
+                    shootNum++;
+                }
             }
         }
 

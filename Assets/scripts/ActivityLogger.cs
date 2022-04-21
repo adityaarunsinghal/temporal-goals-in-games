@@ -15,6 +15,7 @@ public class ActivityLogger : MonoBehaviour
     private static DragDrop[] foundObjects;
     private static TMP_InputField runNameInput;
     public static bool saveMode = true;
+    public static bool saveAllBallPos = true;
 
     public static void startLogging()
     {
@@ -43,6 +44,9 @@ public class ActivityLogger : MonoBehaviour
         {
             save.foundObjectsTags.Add(foundObjects[i].gameObject.tag);
         }
+
+        // store custom env variables
+        saveEnvironmentVariables();
 
         localDate = System.DateTime.Now;
     }
@@ -104,6 +108,14 @@ public class ActivityLogger : MonoBehaviour
         save.objectPositionsCT.Add(captureNum);
     }
 
+    public static void saveEnvironmentVariables()
+    {
+        save.boxMinX = EnvironmentVariables.minX;
+        save.boxMaxX = EnvironmentVariables.maxX;
+        save.boxMinY = EnvironmentVariables.minY;
+        save.boxMaxY = EnvironmentVariables.maxY;
+    }
+
     public static Vector3[] getLatestObjectPositions()
     {
         int objectsCount = getObjectsCount();
@@ -156,7 +168,7 @@ public class ActivityLogger : MonoBehaviour
 
     public static void addOldNotesCT(int n)
     {
-        for (int i=0; i<n; i++)
+        for (int i = 0; i < n; i++)
         {
             save.notesCT.Add(captureNum);
         }

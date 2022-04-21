@@ -5,11 +5,9 @@ using TMPro;
 
 public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
 {
-    private Rigidbody2D alwaysAccessibleBall;
 
     void Start()
     {
-        alwaysAccessibleBall = GetComponent<Rigidbody2D>();
         if (AgentStatus.active)
         {
             GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>().text = "Agent";
@@ -29,7 +27,7 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
             if (alwaysAccessibleBall.GetComponent<customProperties>().inSetup)
             {
                 float new_x = Mathf.Clamp(mousePosition.x, EnvironmentVariables.minX, EnvironmentVariables.maxX);
-                alwaysAccessibleBall.MovePosition(new Vector2(new_x, 
+                alwaysAccessibleBall.MovePosition(new Vector2(new_x,
                                     alwaysAccessibleBall.position.y));
                 Rigidbody2D pedestal = alwaysAccessibleBall.GetComponentsInChildren<Rigidbody2D>()[0];
                 if (pedestal)
@@ -38,11 +36,9 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
                 }
                 Retry.stabilize(alwaysAccessibleBall.GetComponent<Rigidbody2D>());
                 Retry.putOutSetup();
-                UnityEngine.Debug.Log("Ball put out of setup");
             }
             else
             {
-                UnityEngine.Debug.Log("Ball not in setup mode");
                 // not in setup mode, so use mouse distance to shoot ball
                 Vector2 dir = alwaysAccessibleBall.transform.position - mousePosition;
                 dir *= throwSpeed;
@@ -53,7 +49,6 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
 
                 // player should only be able to shoot once before resetting
                 alwaysAccessibleBall.GetComponent<customProperties>().makeUntouchable();
-                UnityEngine.Debug.Log("Ball made untouchable");
             }
         }
     }
@@ -63,10 +58,17 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
         // no need to add to logs if agent is not the one interacting
         if (AgentStatus.active)
         {
-            if (Retry.isInSetup)
+            if (ActivityLogger.saveAllBallPos)
+            {
+                ActivityLogger.saveBallPosition(alwaysAccessibleBall.transform.position);
+            }
+            else
             {
                 // save only setup time ball positions for replay
-                ActivityLogger.saveBallPosition(alwaysAccessibleBall.transform.position);
+                if (Retry.isInSetup)
+                {
+                    ActivityLogger.saveBallPosition(ball.transform.position);
+                }
             }
         }
     }
