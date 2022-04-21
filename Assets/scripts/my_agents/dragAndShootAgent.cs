@@ -61,6 +61,13 @@ public class dragAndShootAgent : Agent
         // 0 or 1 for resetting
         discrete[1] = Mathf.RoundToInt(Mathf.Abs(actions.ContinuousActions[5]));
 
+        // scaled continuous actions
+        float[] continuous = new float[4];
+        continuous[0] = actions.ContinuousActions[0] * contValueScale;
+        continuous[1] = actions.ContinuousActions[1] * contValueScale;
+        continuous[2] = actions.ContinuousActions[2] * contValueScale;
+        continuous[3] = actions.ContinuousActions[3] * contValueScale;
+
         // if resetting, don't do anything else
         if (discrete[1] == 1)
         {
@@ -74,7 +81,7 @@ public class dragAndShootAgent : Agent
             // abstain from placing or shooting if place value is 0 in X or Y
             if (actions.ContinuousActions[0] != 0f | actions.ContinuousActions[1] != 0f)
             {
-                Vector3 mousePosition = new Vector3(actions.ContinuousActions[0] * contValueScale, actions.ContinuousActions[1] * contValueScale, 0);
+                Vector3 mousePosition = new Vector3(continuous[0], continuous[1], 0);
                 ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(mousePosition);
                 numActionsTaken++;
             }
@@ -87,7 +94,7 @@ public class dragAndShootAgent : Agent
                 // for now, don't move bucket
                 if (objectToMove != bucket_object)
                 {
-                    Vector3 placeObject = new Vector3(actions.ContinuousActions[2] * contValueScale, actions.ContinuousActions[3] * contValueScale, 0);
+                    Vector3 placeObject = new Vector3(continuous[2], continuous[3], 0);
 
                     // learn to place things inside the bounds, if placing at all
                     if (isOutOfBox(placeObject))
@@ -109,7 +116,7 @@ public class dragAndShootAgent : Agent
             }
         }
 
-        UnityEngine.Debug.Log((string)actionsToString(actions));
+        UnityEngine.Debug.Log((string)actionsToString(continuous, discrete));
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -153,17 +160,18 @@ public class dragAndShootAgent : Agent
         sensor.AddObservation(Retry.isInSetup);
     }
 
-    private string actionsToString(ActionBuffers actions)
+    private string actionsToString(float[] continuous, int[] discrete)
     {
         string ret = "Continuous Actions: ";
-        foreach (float x in actions.ContinuousActions)
+        foreach (float x in continuous)
         {
             ret += (Mathf.Round(x * 1000) * 0.001).ToString() + " ";
         }
+
         ret += ":: Discrete Actions: ";
-        foreach (int x in actions.DiscreteActions)
+        foreach (int x in discrete)
         {
-            ret += x.ToString() + " ";
+            ret += x + " ";
         }
 
         return ret;
