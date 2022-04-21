@@ -54,9 +54,11 @@
      <Compile Include="Assets/scripts/customProperties.cs" />
      <Compile Include="Assets/scripts/NoteSystem.cs" />
      <Compile Include="Assets/scripts/dragDrop/DragDrop4.cs" />
+     <Compile Include="Assets/scripts/EnvironmentVariables.cs" />
      <Compile Include="Assets/scripts/my_agents/dragAndShootAgent.cs" />
      <Compile Include="Assets/scripts/dragDrop/DragDrop3.cs" />
      <Compile Include="Assets/scripts/obsolete/objectsCacher.cs" />
+     <Compile Include="Assets/scripts/dragDrop/DragDropLinear.cs" />
      <Compile Include="Assets/scripts/dragDrop/AgentDragDrop5.cs" />
      <Compile Include="Assets/scripts/DestroyCounter.cs" />
      <Compile Include="Assets/scripts/customButtons/RemoveButtonNameChanger.cs" />
@@ -70,8 +72,6 @@
      <Compile Include="Assets/scripts/obsolete/PausableStopwatch.cs" />
      <Compile Include="Assets/scripts/customButtons/buttonScripts/obsolete/FreezeButton1.cs" />
      <Compile Include="Assets/scripts/dragDrop/AgentDragDrop.cs" />
-     <Compile Include="Assets/scripts/dragDrop/DragDropLinear.cs" />
-     <Compile Include="Assets/scripts/EnvironmentVariables.cs" />
      <None Include="Assets/packageSpecific/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/packageSpecific/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/packageSpecific/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
@@ -693,8 +693,17 @@
     <Reference Include="Unity.ML-Agents">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.ML-Agents.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Barracuda.ONNX">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Barracuda.ONNX.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda.iOSBLAS">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Barracuda.iOSBLAS.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda.BurstBLAS">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Barracuda.BurstBLAS.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
@@ -716,6 +725,9 @@
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Barracuda.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
@@ -789,38 +801,20 @@
     <Reference Include="Unity.2D.Common.Editor">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Barracuda.Editor">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Barracuda.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Barracuda.MacBLAS">
+        <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.Barracuda.MacBLAS.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ML-Agents.Editor">
         <HintPath>/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Library/ScriptAssemblies/Unity.ML-Agents.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Barracuda.ONNX.csproj">
-      <Project>{8284d27c-4b8b-19dd-cdb9-38e15f3779ad}</Project>
-      <Name>Unity.Barracuda.ONNX</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.iOSBLAS.csproj">
-      <Project>{71284dc7-6107-0e6e-b6c4-4c9eca8407a8}</Project>
-      <Name>Unity.Barracuda.iOSBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.BurstBLAS.csproj">
-      <Project>{8afdc7ec-db3a-010d-bade-718080d5e82b}</Project>
-      <Name>Unity.Barracuda.BurstBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.csproj">
-      <Project>{4275c424-7f8b-fc7e-108c-d29c87d3a494}</Project>
-      <Name>Unity.Barracuda</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.Editor.csproj">
-      <Project>{bf64a8af-65c3-56f9-0b03-5899a7e1c4b8}</Project>
-      <Name>Unity.Barracuda.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.MacBLAS.csproj">
-      <Project>{30655b33-70df-4492-342d-94fc33104573}</Project>
-      <Name>Unity.Barracuda.MacBLAS</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
