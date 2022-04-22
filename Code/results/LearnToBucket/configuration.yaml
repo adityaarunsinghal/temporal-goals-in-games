@@ -43,7 +43,7 @@ behaviors:
     self_play: null
     behavioral_cloning: null
 env_settings:
-  env_path: ../Builds/MLAgent_View_21April22_server.app
+  env_path: SERVER_BUILD
   env_args: null
   base_port: 5005
   num_envs: 1
@@ -56,10 +56,10 @@ engine_settings:
   width: 84
   height: 84
   quality_level: 0
-  time_scale: 1.0
+  time_scale: 20
   target_frame_rate: -1
   capture_frame_rate: 60
-  no_graphics: false
+  no_graphics: true
 environment_parameters: null
 checkpoint_settings:
   run_id: LearnToBucket

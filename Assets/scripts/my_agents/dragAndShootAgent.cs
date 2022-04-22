@@ -9,12 +9,7 @@ public class dragAndShootAgent : Agent
 {
     private DragDrop[] foundObjects;
     private GameObject ball_object;
-    private GameObject bucket_object;
-    private GameObject crate_object;
-    private GameObject wall_object;
-    private GameObject bottom_wall_object;
     private int numActionsTaken;
-    private float reward = 0f;
     public bool saveLogs = false;
     public float contValueScale = 100f;
 
@@ -26,17 +21,12 @@ public class dragAndShootAgent : Agent
         ActivityLogger.saveMode = saveLogs;
         foundObjects = ActivityLogger.getFoundObjects();
         ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
-        bucket_object = GameObject.FindGameObjectsWithTag("bucket")[0];
-        crate_object = GameObject.FindGameObjectsWithTag("crate")[0];
-        wall_object = GameObject.FindGameObjectsWithTag("wall")[0];
-        bottom_wall_object = GameObject.FindGameObjectsWithTag("bottomWall")[0];
         ball_object.GetComponent<DragDropManager>().onAgentDragDrop5();
     }
 
     public override void OnEpisodeBegin()
     {
         numActionsTaken = 0;
-        reward = 0f;
 
         if (DestroyCounter.destroyedCount > 0)
         {
@@ -46,10 +36,6 @@ public class dragAndShootAgent : Agent
         {
             FreshStart.softReset();
         }
-
-        // randomize bucket position
-        bucket_object.transform.position = new Vector3(Random.Range(EnvironmentVariables.minX, EnvironmentVariables.maxX), Random.Range(EnvironmentVariables.minY, EnvironmentVariables.maxY), 0);
-
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -71,10 +57,7 @@ public class dragAndShootAgent : Agent
         // if resetting, don't do anything else
         if (discrete[1] == 1)
         {
-            giveRewards();
-            // agent tried to setup
             Retry.OnButtonPress();
-            EndEpisode();
         }
         else
         {
@@ -90,56 +73,13 @@ public class dragAndShootAgent : Agent
             if (discrete[0] != 0)
             {
                 GameObject objectToMove = foundObjects[discrete[0] - 1].gameObject;
-
-                // for now, don't move bucket
-                if (objectToMove != bucket_object)
-                {
-                    Vector3 placeObject = new Vector3(continuous[2], continuous[3], 0);
-
-                    // learn to place things inside the bounds, if placing at all
-                    if (isOutOfBox(placeObject))
-                    {
-                        reward -= 0.5f;
-                    }
-
-                    objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
-                    numActionsTaken++;
-                }
-            }
-
-            if (wall_object.GetComponent<FlagCollision>().collidedWith == ball_object &
-            wall_object.GetComponent<FlagCollision>().childCollider == bottom_wall_object)
-            {
-                UnityEngine.Debug.Log("Episode Ended!");
-                wall_object.GetComponent<FlagCollision>().reset();
-                EndEpisode();
+                Vector3 placeObject = new Vector3(continuous[2], continuous[3], 0);
+                objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
+                numActionsTaken++;
             }
         }
 
         UnityEngine.Debug.Log((string)actionsToString(continuous, discrete));
-    }
-
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
-        // ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
-        // string latestNote = ActivityLogger.getLatestNote();
-        // if (latestNote != null)
-        // {
-        //     string[] inputs = latestNote.Split('_');
-        //     float[] cont = new float[6];
-        //     for (int i = 0; i <= 3; i++)
-        //     {
-        //         cont[i] = float.Parse(inputs[i]);
-        //     }
-
-        //     continuousActions[0] = cont[0];
-        //     continuousActions[1] = cont[1];
-        //     continuousActions[2] = cont[2];
-        //     continuousActions[3] = cont[3];
-        //     discreteActions[0] = int.Parse(inputs[4]);
-        //     discreteActions[1] = int.Parse(inputs[5]);
-        // }
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -175,40 +115,5 @@ public class dragAndShootAgent : Agent
         }
 
         return ret;
-    }
-
-    public void giveRewards()
-    {
-        float dist = 0f;
-        float x2, y2, x, y;
-
-        // try to be close to bucket : arbitrary goal
-        x = ball_object.transform.position[0] - bucket_object.transform.position[0];
-        y = ball_object.transform.position[1] - bucket_object.transform.position[1];
-        x2 = x * x;
-        y2 = y * y;
-        dist = Mathf.Sqrt(x2 + y2);
-        reward -= dist / 10f;
-
-        // get there as quickly as possible
-        reward -= numActionsTaken / 10f;
-
-        if (DestroyCounter.destroyedCount > 0)
-        {
-            // penalize destruction
-            reward -= DestroyCounter.destroyedCount / 10f;
-            UnityEngine.Debug.Log(string.Format("Destroyed {0} objects", DestroyCounter.destroyedCount));
-        }
-        SetReward(reward);
-        UnityEngine.Debug.Log(string.Format("Got {0} Reward", reward));
-    }
-
-    public bool isOutOfBox(Vector3 pos)
-    {
-        if (pos[0] < EnvironmentVariables.minX | pos[0] > EnvironmentVariables.maxX | pos[1] < EnvironmentVariables.minY | pos[1] > EnvironmentVariables.maxY)
-        {
-            return true;
-        }
-        return false;
     }
 }

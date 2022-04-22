@@ -2,39 +2,39 @@
     "name": "root",
     "metadata": {
         "timer_format_version": "0.1.0",
-        "start_time_seconds": "1650564912",
+        "start_time_seconds": "1650635040",
         "python_version": "3.8.2 (default, Mar 26 2020, 10:43:30) \n[Clang 4.0.1 (tags/RELEASE_401/final)]",
-        "command_line_arguments": "/opt/anaconda3/envs/introml_conda/bin/mlagents-learn configs/train.yaml --env ../Builds/MLAgent_View_21April22_server.app --run-id=LearnToBucket --num-envs=1 --seed=42 --quality-level=0 --time-scale=1 --resume",
+        "command_line_arguments": "/opt/anaconda3/envs/introml_conda/bin/mlagents-learn configs/train.yaml --env=SERVER_BUILD --run-id=LearnToBucket --num-envs=1 --seed=42 --quality-level=0 --no-graphics --resume",
         "mlagents_version": "0.28.0",
         "mlagents_envs_version": "0.28.0",
         "communication_protocol_version": "1.5.0",
         "pytorch_version": "1.8.1",
         "numpy_version": "1.20.3",
-        "end_time_seconds": "1650564915"
+        "end_time_seconds": "1650635042"
     },
-    "total": 2.9139726770000003,
+    "total": 2.125251445,
     "count": 1,
-    "self": 0.015596208000000722,
+    "self": 0.015550369000000064,
     "children": {
         "run_training.setup": {
-            "total": 0.19632393599999998,
+            "total": 0.11863090900000017,
             "count": 1,
-            "self": 0.19632393599999998
+            "self": 0.11863090900000017
         },
         "TrainerController.start_learning": {
-            "total": 2.702052533,
+            "total": 1.9910701669999997,
             "count": 1,
-            "self": 0.00012818700000050143,
+            "self": 0.00022468899999950054,
             "children": {
                 "TrainerController._reset_env": {
-                    "total": 2.7018139349999997,
+                    "total": 1.990762561,
                     "count": 1,
-                    "self": 2.7018139349999997
+                    "self": 1.990762561
                 },
                 "TrainerController._save_models": {
-                    "total": 0.00011041099999964388,
+                    "total": 8.291700000029323e-05,
                     "count": 1,
-                    "self": 0.00011041099999964388
+                    "self": 8.291700000029323e-05
                 }
             }
         }
