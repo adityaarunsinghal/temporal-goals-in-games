@@ -36,7 +36,7 @@ public class bucketingAgent : Agent
     public override void OnEpisodeBegin()
     {
         numActionsTaken = 0;
-        reward = 0f;
+        reward = 1f;
 
         if (DestroyCounter.destroyedCount > 0)
         {
@@ -99,7 +99,7 @@ public class bucketingAgent : Agent
                     // learn to place things inside the bounds, if placing at all
                     if (isOutOfBox(placeObject))
                     {
-                        reward -= 0.5f;
+                        reward -= 0.05f;
                     }
 
                     objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
@@ -188,10 +188,10 @@ public class bucketingAgent : Agent
         x2 = x * x;
         y2 = y * y;
         dist = Mathf.Sqrt(x2 + y2);
-        reward -= dist / 10f;
+        reward -= dist / 100f;
 
         // get there as quickly as possible
-        reward -= numActionsTaken / 10f;
+        reward -= numActionsTaken / 20f;
 
         if (DestroyCounter.destroyedCount > 0)
         {
@@ -199,6 +199,7 @@ public class bucketingAgent : Agent
             reward -= DestroyCounter.destroyedCount / 10f;
             UnityEngine.Debug.Log(string.Format("Destroyed {0} objects", DestroyCounter.destroyedCount));
         }
+        reward = Mathf.Clamp(reward, -1f, 1f);
         SetReward(reward);
         UnityEngine.Debug.Log(string.Format("Got {0} Reward", reward));
     }

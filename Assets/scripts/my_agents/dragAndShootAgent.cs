@@ -49,10 +49,10 @@ public class dragAndShootAgent : Agent
 
         // scaled continuous actions
         float[] continuous = new float[4];
-        continuous[0] = actions.ContinuousActions[0] * contValueScale;
-        continuous[1] = actions.ContinuousActions[1] * contValueScale;
-        continuous[2] = actions.ContinuousActions[2] * contValueScale;
-        continuous[3] = actions.ContinuousActions[3] * contValueScale;
+        continuous[0] = Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f) * contValueScale;
+        continuous[1] = Mathf.Clamp(actions.ContinuousActions[1], -1f, 1f) * contValueScale;
+        continuous[2] = Mathf.Clamp(actions.ContinuousActions[2], -1f, 1f) * contValueScale;
+        continuous[3] = Mathf.Clamp(actions.ContinuousActions[3], -1f, 1f) * contValueScale;
 
         // if resetting, don't do anything else
         if (discrete[1] == 1)
@@ -95,6 +95,9 @@ public class dragAndShootAgent : Agent
         // TODO: I need it to get observations ALL the time, not just once per action
         sensor.AddObservation(ball_object.transform.position.x);
         sensor.AddObservation(ball_object.transform.position.y);
+
+        // keeping track of if ball is moving or not
+        sensor.AddObservation(ball_object.GetComponent<Rigidbody2D>().velocity);
 
         // technically the agent should know this itself
         sensor.AddObservation(Retry.isInSetup);
