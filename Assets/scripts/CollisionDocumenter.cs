@@ -6,6 +6,10 @@ public class CollisionDocumenter : MonoBehaviour
 {
     public bool saveCollisions = true;
     private GameObject ball_object;
+    public void Start()
+    {
+        ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
