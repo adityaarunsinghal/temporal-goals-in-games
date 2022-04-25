@@ -43,8 +43,12 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
                 dir *= throwSpeed;
                 alwaysAccessibleBall.velocity = dir;
 
-                // Save this shoot in the next fixed update
-                shootVelocity = dir;
+                if (!ActivityLogger.saveAllBallVel)
+                {
+                    // Save this shoot in the next fixed update
+                    shootVelocity = dir;
+                }
+                ActivityLogger.saveShootTime();
 
                 // player should only be able to shoot once before resetting
                 alwaysAccessibleBall.GetComponent<customProperties>().makeUntouchable();
@@ -53,10 +57,17 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
     }
     protected override void FixedUpdate()
     {
-        if (shootVelocity != null)
+        if (ActivityLogger.saveAllBallVel)
         {
-            ActivityLogger.saveShootVelocity((Vector3)shootVelocity);
-            shootVelocity = null;
+            ActivityLogger.saveVelocity(alwaysAccessibleBall.velocity);
+        }
+        else
+        {
+            if (shootVelocity != null)
+            {
+                ActivityLogger.saveVelocity((Vector3)shootVelocity);
+                shootVelocity = null;
+            }
         }
     }
 }

@@ -86,8 +86,13 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
                     dir *= throwSpeed;
                     ball.velocity = dir;
 
-                    // Save this shoot in the next fixed update
-                    shootVelocity = dir;
+                    if (!ActivityLogger.saveAllBallVel)
+                    {
+                        // Save this shoot in the next fixed update
+                        shootVelocity = dir;
+                    }
+                    // TODO: maybe this should happen in fixed update too
+                    ActivityLogger.saveShootTime();
 
                     // player should only be able to shoot once before resetting
                     ball.GetComponent<customProperties>().makeUntouchable();
@@ -115,10 +120,17 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
             }
         }
 
-        if (shootVelocity!=null)
+        if (ActivityLogger.saveAllBallVel)
         {
-            ActivityLogger.saveShootVelocity((Vector3) shootVelocity);
-            shootVelocity = null;
+            ActivityLogger.saveVelocity(alwaysAccessibleBall.velocity);
+        }
+        else
+        {
+            if (shootVelocity != null)
+            {
+                ActivityLogger.saveVelocity((Vector3)shootVelocity);
+                shootVelocity = null;
+            }
         }
 
         // but always save where objects are

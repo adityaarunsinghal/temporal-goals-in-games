@@ -7,10 +7,13 @@ public class Save
 {
     public List<Vector3> velocities = new List<Vector3>();
     public List<Vector3> ballPositions = new List<Vector3>();
+     public List<string> ballCollisions = new List<string>();
     public List<Vector3> objectPositions = new List<Vector3>();
     public List<string> notes = new List<string>();
     public List<long> velocitiesCT = new List<long>();
+    public List<long> shootsCT = new List<long>();
     public List<long> ballPositionsCT = new List<long>();
+    public List<long> ballCollisionsCT = new List<long>();
     public List<long> objectPositionsCT = new List<long>();
     public List<long> notesCT = new List<long>();
     public List<long> resetCT = new List<long>();

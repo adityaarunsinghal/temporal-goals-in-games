@@ -14,18 +14,10 @@ public class PlayPrevious : MonoBehaviour
     private long captureNum = 0;
     public TMP_Text timeText;
     private Save save;
-    private int shootsCount;
-    private int objectsCount;
-    private int notesCount;
-    private int resetCount;
-    private int ballSnapsCount;
-    private int objectSnapsCount;
-    private int objectSnapNum;
-    private int ballSnapNum;
-    private int shootNum;
-    private int noteNum;
-    private int resetNum;
-
+    private int shootsCount, resetCount, objectsCount, notesCount;
+    private int ballSnapsCount, objectSnapsCount;
+    private int objectSnapNum, ballSnapNum;
+    private int resetNum, outOfResetNum, noteNum, shootNum;
     private List<string> printNotes;
     private bool inPlayback = false;
 
@@ -70,7 +62,7 @@ public class PlayPrevious : MonoBehaviour
 
         UnityEngine.Debug.Log("Playing back from logs in Real Time");
 
-        shootsCount = save.velocities.Count;
+        shootsCount = save.shootsCT.Count;
         objectsCount = save.foundObjectsTags.Count;
         notesCount = save.notes.Count;
         resetCount = save.resetCT.Count;
@@ -81,6 +73,7 @@ public class PlayPrevious : MonoBehaviour
         shootNum = 0;
         noteNum = 0;
         resetNum = 0;
+        outOfResetNum = 0;
 
         captureNum = 0;
         inPlayback = true;
@@ -106,15 +99,16 @@ public class PlayPrevious : MonoBehaviour
             }
         }
 
-        if (shootNum < shootsCount)
+        if (outOfResetNum < shootsCount)
         {
-            if (stepNum == save.velocitiesCT[shootNum])
+            if (stepNum == save.shootsCT[outOfResetNum])
             {
                 // detach from pedestal everytime a shoot was attempted
                 Retry.putOutSetup();
+                outOfResetNum ++;
             }
         }
-        
+
         if (ballSnapNum < ballSnapsCount)
         {
             if (stepNum == save.ballPositionsCT[ballSnapNum])
@@ -157,25 +151,30 @@ public class PlayPrevious : MonoBehaviour
             }
         }
 
-        if (shootNum < shootsCount)
+        // no need to simulate shoots if every single velocity was saved
+        if (!ActivityLogger.saveAllBallVel)
         {
-            if (stepNum == save.velocitiesCT[shootNum])
+            if (shootNum < shootsCount)
             {
-                GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
-                if (ball)
+                if (stepNum == save.velocitiesCT[shootNum])
                 {
-                    // no need to use physics of shoot if every single ball pos was saved
-                    if (!ActivityLogger.saveAllBallPos)
+                    GameObject ball = GameObject.FindGameObjectsWithTag("ball")[0];
+                    if (ball)
                     {
-                        ball.GetComponent<Rigidbody2D>().velocity = save.velocities[shootNum];
+                        // no need to use physics of shoot if every single ball pos was saved
+                        if (!ActivityLogger.saveAllBallPos)
+                        {
+                            ball.GetComponent<Rigidbody2D>().velocity = save.velocities[shootNum];
+                        }
                     }
-                }
-                else
-                {
-                    UnityEngine.Debug.Log("Object with tag not found: ball");
-                }
+                    else
+                    {
+                        UnityEngine.Debug.Log("Object with tag not found: ball");
+                    }
 
-                shootNum++;
+                    shootNum++;
+                    outOfResetNum++;
+                }
             }
         }
 

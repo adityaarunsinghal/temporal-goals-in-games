@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 240985182}
   - component: {fileID: 240985181}
   m_Layer: 0
-  m_Name: RetryButtonScriptHolder (1)
+  m_Name: RetryButtonScriptHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3955,7 +3955,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 712708324}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.54869556
+  m_Size: 0.70053375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4969,13 +4969,14 @@ GameObject:
   - component: {fileID: 1544951006}
   - component: {fileID: 1544951010}
   - component: {fileID: 1544951009}
+  - component: {fileID: 1544951011}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1544951006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5065,6 +5066,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e877f28c47438479691656cdc8d2b896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1544951011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544951005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!1 &1645867765
 GameObject:
   m_ObjectHideFlags: 0

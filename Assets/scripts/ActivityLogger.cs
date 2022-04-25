@@ -16,6 +16,7 @@ public class ActivityLogger : MonoBehaviour
     private static TMP_InputField runNameInput;
     public static bool saveMode = true;
     public static bool saveAllBallPos = true;
+    public static bool saveAllBallVel = true;
 
     public static void startLogging()
     {
@@ -69,6 +70,12 @@ public class ActivityLogger : MonoBehaviour
         save.ballPositionsCT.Add(captureNum);
     }
 
+    public static void saveBallCollision(string tag)
+    {
+        save.ballCollisions.Add(tag);
+        save.ballCollisionsCT.Add(captureNum);
+    }
+
     public static Vector3? getLatestBallPosition()
     {
         if (save.ballPositions.Count > 0)
@@ -81,10 +88,15 @@ public class ActivityLogger : MonoBehaviour
         }
     }
 
-    public static void saveShootVelocity(Vector3 shootVelocity)
+    public static void saveVelocity(Vector3 velocity)
     {
-        save.velocities.Add(shootVelocity);
+        save.velocities.Add(velocity);
         save.velocitiesCT.Add(captureNum);
+    }
+
+    public static void saveShootTime()
+    {
+        save.shootsCT.Add(captureNum);
     }
 
     public static Vector3 getLatestShootVelocity()
@@ -196,7 +208,7 @@ public class ActivityLogger : MonoBehaviour
 
         // mark end of recording
         save.lastStepNum = captureNum;
-        
+
         // store custom env variables
         saveEnvironmentVariables();
 
