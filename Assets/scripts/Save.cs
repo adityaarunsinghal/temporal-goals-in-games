@@ -7,7 +7,7 @@ public class Save
 {
     public List<Vector3> velocities = new List<Vector3>();
     public List<Vector3> ballPositions = new List<Vector3>();
-     public List<string> ballCollisions = new List<string>();
+     public List<int> ballCollisions = new List<int>();
     public List<Vector3> objectPositions = new List<Vector3>();
     public List<string> notes = new List<string>();
     public List<long> velocitiesCT = new List<long>();
@@ -18,6 +18,7 @@ public class Save
     public List<long> notesCT = new List<long>();
     public List<long> resetCT = new List<long>();
     public List<string> foundObjectsTags = new List<string>();
+    public List<string> foundCollidersTags = new List<string>();
     public float boxMaxX, boxMinX, boxMaxY, boxMinY;
     public long lastStepNum = 0;
 

@@ -21,6 +21,7 @@ TagManager:
   - bottomWall
   - leftWall
   - rightWall
+  - topWall
   layers:
   - Default
   - TransparentFX

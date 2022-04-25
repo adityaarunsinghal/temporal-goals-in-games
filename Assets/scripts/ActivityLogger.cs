@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -13,6 +14,8 @@ public class ActivityLogger : MonoBehaviour
     private static System.DateTime localDate;
     private static Save save;
     private static DragDrop[] foundObjects;
+    private static CollisionDocumenter[] foundColliders;
+    private static int oldNumCollisions;
     private static TMP_InputField runNameInput;
     public static bool saveMode = true;
     public static bool saveAllBallPos = true;
@@ -20,7 +23,10 @@ public class ActivityLogger : MonoBehaviour
 
     public static void startLogging()
     {
-        foundObjects = GameObject.FindObjectsOfType<DragDrop>();
+        foundObjects = GameObject.FindObjectsOfType<DragDrop>().OrderBy(x=>x.gameObject.tag).ToArray();
+        foundColliders = GameObject.FindObjectsOfType<CollisionDocumenter>().OrderBy(x=>x.gameObject.tag).ToArray();
+        oldNumCollisions = 0;
+
         save = new Save();
         runNameInput = GameObject.FindGameObjectWithTag("runNameInput").GetComponent<TMP_InputField>();
         captureNum = 0;
@@ -45,6 +51,10 @@ public class ActivityLogger : MonoBehaviour
         {
             save.foundObjectsTags.Add(foundObjects[i].gameObject.tag);
         }
+        for (int i = 0; i < foundColliders.Length; i++)
+        {
+            save.foundCollidersTags.Add(foundColliders[i].gameObject.tag);
+        }
 
         localDate = System.DateTime.Now;
     }
@@ -64,15 +74,21 @@ public class ActivityLogger : MonoBehaviour
         return save.foundObjectsTags;
     }
 
+    public static List<string> getFoundColliderTags()
+    {
+        return save.foundCollidersTags;
+    }
+
     public static void saveBallPosition(Vector3 ballPosition)
     {
         save.ballPositions.Add(ballPosition);
         save.ballPositionsCT.Add(captureNum);
     }
 
-    public static void saveBallCollision(string tag)
+    public static void saveBallCollision(CollisionDocumenter taggedCollider)
     {
-        save.ballCollisions.Add(tag);
+        int idxOfCollidedObj = System.Array.IndexOf(foundColliders, taggedCollider);
+        save.ballCollisions.Add(idxOfCollidedObj);
         save.ballCollisionsCT.Add(captureNum);
     }
 
@@ -85,6 +101,19 @@ public class ActivityLogger : MonoBehaviour
         else
         {
             return null;
+        }
+    }
+
+    public static int getNewCollision()
+    {
+        if (save.ballCollisions.Count > oldNumCollisions)
+        {
+            oldNumCollisions = save.ballCollisions.Count;
+            return save.ballCollisions[save.ballCollisions.Count-1];
+        }
+        else
+        {
+            return -1;
         }
     }
 

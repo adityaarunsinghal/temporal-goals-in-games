@@ -99,6 +99,9 @@ public class dragAndShootAgent : Agent
         // keeping track of if ball is moving or not
         sensor.AddObservation(ball_object.GetComponent<Rigidbody2D>().velocity);
 
+        // Gives -1 if no new collisions else idx of the collider objects
+        sensor.AddObservation(ActivityLogger.getNewCollision());
+
         // technically the agent should know this itself
         sensor.AddObservation(Retry.isInSetup);
     }

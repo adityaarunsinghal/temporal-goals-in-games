@@ -19,8 +19,8 @@ public class CollisionDocumenter : MonoBehaviour
             {
                 if (collision.gameObject == ball_object)
                 {
-                    ActivityLogger.saveBallCollision(this.tag);
-                    Debug.Log(string.Format("Hit {0}", this.tag));
+                    ActivityLogger.saveBallCollision(this);
+                    Debug.Log(string.Format("Hit {0}", this));
                 }
             }
         }
