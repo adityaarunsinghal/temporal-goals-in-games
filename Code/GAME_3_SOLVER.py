@@ -2,28 +2,28 @@ from PlaceAndShootGym import *
 from mlagents_envs.environment import UnityEnvironment
 from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
 
-# crate in the middle and bucket on floor for bounce and bucket game
-GAME_2_SETUP = [[0, 0, 0, 0.8, Action.objectTagToActionVal("crate"), 0],
-                [0, 0, -0.85, -0.9, Action.objectTagToActionVal("bucket"), 0],
+GAME_3_SETUP = [[0, 0, 0.96, 0.6, Action.objectTagToActionVal("corner"), 0],
+                [0, 0, 0.80, 0.575, Action.objectTagToActionVal("crate"), 0],
                 [0, 0, 0, 0, 0, 1]]
 
 
-def GAME_2_REWARD(obsVec: List[Obs]) -> bool:
+def GAME_3_REWARD(obsVec: List[Obs]) -> bool:
     """
-    Custom Reward Fn:
-    hits crate and goes in bucket
+    lands and rests on top of the made up platform on the corner
     """
-    hitCrate = False
-    for each_obs in obsVec:
-        if each_obs.collidedWith == "crate":
-            hitCrate = True
-            break
-    return hitCrate and endsInBucket(obsVec)
+    ballPos = obsVec[-1].ballPos
+    ballVel = obsVec[-1].ballVel
+    corner = obsVec[-1].objPos["corner"]
+    crate = obsVec[-1].objPos["crate"]
+
+    if ballPos.y>corner.y or ballPos.y>crate.y:
+        if ballVel.x<=VEL_THRESHOLD and ballVel.y<=VEL_THRESHOLD:
+            return True
+    return False
 
 
-# no setting up on bucket!
-GAME_2_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
-GAME_2_TRANSFORMER.ban_mouse_position_x = (-1, -0.8)
+GAME_3_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
+GAME_3_TRANSFORMER
 
 print("MADE ALL THE CLASSES")
 
@@ -36,17 +36,17 @@ unity_env = UnityEnvironment(
 # Start interacting with the environment.
 unity_env.reset()
 gym_env = UnityToGymWrapper(unity_env, allow_multiple_obs=False)
-env = PlaceAndShootGym(gym_env, reward_fn=GAME_2_REWARD,
-                       actionTransformer=GAME_2_TRANSFORMER,
+env = PlaceAndShootGym(gym_env, reward_fn=GAME_3_REWARD,
+                       actionTransformer=GAME_3_TRANSFORMER,
                        announce_actions=True)
 
 print("GYM READY")
 
-env.setup(GAME_2_SETUP)
+env.setup(GAME_3_SETUP)
 
 step_size = 0.1
 print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
 env.isPlayable(step_size)
-env.save("/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Code/results/GAME_2_SOLVED.joblib")
+env.save("/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Code/results/GAME_3_SOLVED.joblib")
 
 print(f"SAVED RUN!")

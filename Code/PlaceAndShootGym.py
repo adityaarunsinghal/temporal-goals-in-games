@@ -15,6 +15,7 @@ objectOrder = ["bucket", "corner", "crate", "gear", "triangle"]
 colliderOrder = ["bottomWall", "bucket", "corner", "crate", "gear",
                  "leftWall", "pedestal", "rightWall", "topWall", "triangle"]
 
+VEL_THRESHOLD = 0.001
 
 class Obs():
     def __init__(self, raw_obs):
@@ -161,7 +162,7 @@ class PlaceAndShootGym(UnityToGymWrapper):
         self.reward_fn = reward_fn
         self.actionTransformer = actionTransformer
         # unsure if this is always true
-        self.velTresh = 0.001
+        self.velTresh = VEL_THRESHOLD
         self.lastObsVec = None
         self.announce_actions = announce_actions
         self.winning_shots = []

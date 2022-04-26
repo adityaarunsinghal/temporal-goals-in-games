@@ -20,7 +20,6 @@ def GAME_2_REWARD(obsVec: List[Obs]) -> bool:
             break
     return hitCrate and endsInBucket(obsVec)
 
-
 # no setting up on bucket!
 GAME_2_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
 GAME_2_TRANSFORMER.ban_mouse_position_x = (-1, -0.8)
@@ -31,7 +30,7 @@ SERVER_BUILD = "../Builds/Gym_View_25April22_server.app"
 channel = EngineConfigurationChannel()
 channel.set_configuration_parameters(time_scale=50, quality_level=0)
 unity_env = UnityEnvironment(
-    file_name=SERVER_BUILD, seed=1, side_channels=[channel], worker_id=3)
+    file_name=SERVER_BUILD, seed=1, side_channels=[channel], worker_id=2)
 
 # Start interacting with the environment.
 unity_env.reset()
@@ -47,6 +46,6 @@ env.setup(GAME_2_SETUP)
 step_size = 0.1
 print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
 env.isPlayable(step_size)
-env.save("/Users/aditya/Documents/GitHub/game_creation_research/Object Physics Sandbox/Code/results/GAME_2_SOLVED.joblib")
+env.save("results/GAME_2_SOLVED.joblib")
 
 print(f"SAVED RUN!")
