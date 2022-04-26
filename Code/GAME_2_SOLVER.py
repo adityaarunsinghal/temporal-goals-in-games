@@ -1,6 +1,4 @@
 from PlaceAndShootGym import *
-from mlagents_envs.environment import UnityEnvironment
-from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
 
 # crate in the middle and bucket on floor for bounce and bucket game
 GAME_2_SETUP = [[0, 0, 0, 0.8, Action.objectTagToActionVal("crate"), 0],
@@ -24,29 +22,28 @@ def GAME_2_REWARD(obsVec: List[Obs]) -> bool:
 GAME_2_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
 GAME_2_TRANSFORMER.ban_mouse_position_x = (-1, -0.8)
 
-print("MADE ALL THE CLASSES")
+if __name__=="__main__":
+    SERVER_BUILD = "/scratch/as11919/temporal-goals-in-games/Builds/Gym_View_26April22_Linux.x86_64"
+    channel = EngineConfigurationChannel()
+    channel.set_configuration_parameters(time_scale=50, quality_level=0)
+    unity_env = UnityEnvironment(
+        file_name=SERVER_BUILD, seed=1, side_channels=[channel], worker_id=2)
 
-SERVER_BUILD = "/scratch/as11919/temporal-goals-in-games/Builds/Gym_View_26April22_Linux.x86_64"
-channel = EngineConfigurationChannel()
-channel.set_configuration_parameters(time_scale=50, quality_level=0)
-unity_env = UnityEnvironment(
-    file_name=SERVER_BUILD, seed=1, side_channels=[channel], worker_id=2)
+    # Start interacting with the environment.
+    unity_env.reset()
+    gym_env = UnityToGymWrapper(unity_env, allow_multiple_obs=False)
+    env = PlaceAndShootGym(gym_env, reward_fn=GAME_2_REWARD,
+                        actionTransformer=GAME_2_TRANSFORMER,
+                        announce_actions=False)
 
-# Start interacting with the environment.
-unity_env.reset()
-gym_env = UnityToGymWrapper(unity_env, allow_multiple_obs=False)
-env = PlaceAndShootGym(gym_env, reward_fn=GAME_2_REWARD,
-                       actionTransformer=GAME_2_TRANSFORMER,
-                       announce_actions=False)
+    print("GYM READY")
 
-print("GYM READY")
+    env.setup(GAME_2_SETUP)
 
-env.setup(GAME_2_SETUP)
+    step_size = 0.05
+    print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
+    env.isPlayable(step_size)
+    env.save("/scratch/as11919/temporal-goals-in-games/Code/results/GAME_2_SOLVED.joblib")
 
-step_size = 0.05
-print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
-env.isPlayable(step_size)
-env.save("/scratch/as11919/temporal-goals-in-games/Code/results/GAME_2_SOLVED.joblib")
-
-print(f"SAVED RUN!")
-env.close()
+    print(f"SAVED RUN!")
+    env.close()

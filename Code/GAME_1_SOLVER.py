@@ -1,13 +1,10 @@
 from PlaceAndShootGym import *
-from mlagents_envs.environment import UnityEnvironment
-from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
 
 GAME_1_SETUP = [[0, 0, -0.55, 0.6, Action.objectTagToActionVal("triangle"), 0],
                 [0, 0, -0.55, 0.1, Action.objectTagToActionVal("corner"), 0],
                 [0, 0, -0.55, -0.4, Action.objectTagToActionVal("crate"), 0],
                 [0, 0, -0.85, -0.91, Action.objectTagToActionVal("bucket"), 0],
                 [0, 0, 0, 0, 0, 1]]
-
 
 def GAME_1_REWARD(obsVec: List[Obs]) -> int:
     if not endsInBucket(obsVec):
@@ -28,33 +25,31 @@ def GAME_1_REWARD(obsVec: List[Obs]) -> int:
         if top(pos, each_obs.objPos["triangle"]): return 1
     return 0
 
-
 GAME_1_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
 GAME_1_TRANSFORMER.ban_mouse_position_x = (-1, -0.5)
 
-print("MADE ALL THE CLASSES")
+if __name__=="__main__":
+    SERVER_BUILD = "/scratch/as11919/temporal-goals-in-games/Builds/Gym_View_26April22_Linux.x86_64"
+    channel = EngineConfigurationChannel()
+    channel.set_configuration_parameters(time_scale=50, quality_level=0)
+    unity_env = UnityEnvironment(
+        file_name=SERVER_BUILD, seed=1, side_channels=[channel], worker_id=1)
 
-SERVER_BUILD = "/scratch/as11919/temporal-goals-in-games/Builds/Gym_View_26April22_Linux.x86_64"
-channel = EngineConfigurationChannel()
-channel.set_configuration_parameters(time_scale=50, quality_level=0)
-unity_env = UnityEnvironment(
-    file_name=SERVER_BUILD, seed=1, side_channels=[channel], worker_id=1)
+    # Start interacting with the environment.
+    unity_env.reset()
+    gym_env = UnityToGymWrapper(unity_env, allow_multiple_obs=False)
+    env = PlaceAndShootGym(gym_env, reward_fn=GAME_1_REWARD,
+                        actionTransformer=GAME_1_TRANSFORMER,
+                        announce_actions=False)
 
-# Start interacting with the environment.
-unity_env.reset()
-gym_env = UnityToGymWrapper(unity_env, allow_multiple_obs=False)
-env = PlaceAndShootGym(gym_env, reward_fn=GAME_1_REWARD,
-                       actionTransformer=GAME_1_TRANSFORMER,
-                       announce_actions=False)
+    print("GYM READY")
 
-print("GYM READY")
+    env.setup(GAME_1_SETUP)
 
-env.setup(GAME_1_SETUP)
+    step_size = 0.05
+    print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
+    env.isPlayable(step_size)
+    env.save("/scratch/as11919/temporal-goals-in-games/Code/results/GAME_1_SOLVED.joblib")
 
-step_size = 0.05
-print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
-env.isPlayable(step_size)
-env.save("/scratch/as11919/temporal-goals-in-games/Code/results/GAME_1_SOLVED.joblib")
-
-print(f"SAVED RUN!")
-env.close()
+    print(f"SAVED RUN!")
+    env.close()
