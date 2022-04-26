@@ -54,6 +54,7 @@ public class dragAndShootAgent : Agent
         continuous[1] = (Mathf.Clamp(actions.ContinuousActions[1], -1f, 1f) * contValueScale);
         continuous[2] = (Mathf.Clamp(actions.ContinuousActions[2], -1f, 1f) * contValueScale);
         continuous[3] = (Mathf.Clamp(actions.ContinuousActions[3], -1f, 1f) * contValueScale);
+        // Debug.Log(actions.ContinuousActions[0]);
 
         // if resetting, don't do anything else
         if (discrete[1] == 1)
@@ -65,7 +66,7 @@ public class dragAndShootAgent : Agent
             // abstain from placing or shooting if place value is 0 in X or Y
             if (continuous[0] != 0f | continuous[1] != 0f)
             {
-                Vector3 mousePosition = new Vector3(continuous[0], continuous[1], 0);
+                Vector3 mousePosition = new Vector3(continuous[0], continuous[1], 1);
                 ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(mousePosition);
                 numActionsTaken++;
             }
@@ -74,7 +75,7 @@ public class dragAndShootAgent : Agent
             if (discrete[0] != 0)
             {
                 GameObject objectToMove = foundObjects[discrete[0] - 1].gameObject;
-                Vector3 placeObject = new Vector3(continuous[2], continuous[3], 0);
+                Vector3 placeObject = new Vector3(continuous[2], continuous[3], 1);
                 objectToMove.GetComponent<AgentDragDrop>().setPosition(placeObject);
                 numActionsTaken++;
             }

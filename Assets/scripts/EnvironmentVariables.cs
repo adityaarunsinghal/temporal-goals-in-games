@@ -26,7 +26,7 @@ public class EnvironmentVariables : MonoBehaviour
         maxX = rightWall.transform.position.x - wallThickness;
         minY = bottomWall.transform.position.y + wallThickness;
         maxY = topWall.transform.position.y - wallThickness;
-        float box_radius = (maxX - minX)/2f;
+        box_radius = (maxX - minX)/2f;
         // UnityEngine.Debug.Log((maxX, minX, maxY, minY, box_radius));
     }
 }
