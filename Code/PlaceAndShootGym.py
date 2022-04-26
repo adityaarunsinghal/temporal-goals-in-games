@@ -263,8 +263,10 @@ class PlaceAndShootGym(UnityToGymWrapper):
         self.gym_env.close()
 
     def save(self, path):
+        temp = self.gym_env
         self.gym_env = None
         joblib.dump(self, path)
+        self.gym_env = temp
 
 
 def endsInBucket(obsVec: List[Obs]) -> bool:

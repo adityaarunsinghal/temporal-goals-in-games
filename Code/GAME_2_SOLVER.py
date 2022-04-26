@@ -26,7 +26,7 @@ GAME_2_TRANSFORMER.ban_mouse_position_x = (-1, -0.8)
 
 print("MADE ALL THE CLASSES")
 
-SERVER_BUILD = "../Builds/Gym_View_25April22_server.app"
+SERVER_BUILD = "/scratch/as11919/temporal-goals-in-games/Builds/Gym_View_26April22_Linux.x86_64"
 channel = EngineConfigurationChannel()
 channel.set_configuration_parameters(time_scale=50, quality_level=0)
 unity_env = UnityEnvironment(
@@ -37,15 +37,16 @@ unity_env.reset()
 gym_env = UnityToGymWrapper(unity_env, allow_multiple_obs=False)
 env = PlaceAndShootGym(gym_env, reward_fn=GAME_2_REWARD,
                        actionTransformer=GAME_2_TRANSFORMER,
-                       announce_actions=True)
+                       announce_actions=False)
 
 print("GYM READY")
 
 env.setup(GAME_2_SETUP)
 
-step_size = 0.1
+step_size = 1
 print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
 env.isPlayable(step_size)
-env.save("results/GAME_2_SOLVED.joblib")
+env.save("/scratch/as11919/temporal-goals-in-games/Code/results/GAME_2_SOLVED.joblib")
 
 print(f"SAVED RUN!")
+env.close()
