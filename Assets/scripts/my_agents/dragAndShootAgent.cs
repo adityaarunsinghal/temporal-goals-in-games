@@ -11,7 +11,7 @@ public class dragAndShootAgent : Agent
     private GameObject ball_object;
     private int numActionsTaken;
     public bool saveLogs = false;
-    public float contValueScale = 100f;
+    public float contValueScale;
 
     public void Start()
     {
@@ -22,6 +22,7 @@ public class dragAndShootAgent : Agent
         foundObjects = ActivityLogger.getFoundObjects();
         ball_object = GameObject.FindGameObjectsWithTag("ball")[0];
         ball_object.GetComponent<DragDropManager>().onAgentDragDrop5();
+        contValueScale = EnvironmentVariables.box_radius;
     }
 
     public override void OnEpisodeBegin()
@@ -49,10 +50,10 @@ public class dragAndShootAgent : Agent
 
         // scaled continuous actions
         float[] continuous = new float[4];
-        continuous[0] = Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f) * contValueScale;
-        continuous[1] = Mathf.Clamp(actions.ContinuousActions[1], -1f, 1f) * contValueScale;
-        continuous[2] = Mathf.Clamp(actions.ContinuousActions[2], -1f, 1f) * contValueScale;
-        continuous[3] = Mathf.Clamp(actions.ContinuousActions[3], -1f, 1f) * contValueScale;
+        continuous[0] = (Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f) * contValueScale);
+        continuous[1] = (Mathf.Clamp(actions.ContinuousActions[1], -1f, 1f) * contValueScale);
+        continuous[2] = (Mathf.Clamp(actions.ContinuousActions[2], -1f, 1f) * contValueScale);
+        continuous[3] = (Mathf.Clamp(actions.ContinuousActions[3], -1f, 1f) * contValueScale);
 
         // if resetting, don't do anything else
         if (discrete[1] == 1)
@@ -62,7 +63,7 @@ public class dragAndShootAgent : Agent
         else
         {
             // abstain from placing or shooting if place value is 0 in X or Y
-            if (actions.ContinuousActions[0] != 0f | actions.ContinuousActions[1] != 0f)
+            if (continuous[0] != 0f | continuous[1] != 0f)
             {
                 Vector3 mousePosition = new Vector3(continuous[0], continuous[1], 0);
                 ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(mousePosition);

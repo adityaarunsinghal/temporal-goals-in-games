@@ -19,9 +19,9 @@ public class Retry : MonoBehaviour
         ball = ball_object.GetComponent<Rigidbody2D>();
         pedestal = pedestal_object.GetComponent<Rigidbody2D>();
         // initial position of ball on screen
-        absolutePositionBall = new Vector3(-1.35f, -4.12f, 0.0f);
+        absolutePositionBall = new Vector3(0f, -3.9f, 1f);
         // under wherever the ball is
-        relativePositionPedestal = new Vector3(0.0f, -0.58f, 0.0f);
+        relativePositionPedestal = new Vector3(0.0f, -0.6f, 0f);
         // makeJoint();
         putInSetup();
     }
