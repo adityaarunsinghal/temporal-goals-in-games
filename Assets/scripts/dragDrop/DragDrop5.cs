@@ -8,8 +8,8 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
     Vector3 mousePosition;
     protected float dragSpeed = 8;
     protected float throwSpeed = 10;
-    LineRenderer line;
-    Vector3[] linePos;
+    protected LineRenderer line;
+    protected Vector3[] linePos;
     protected Vector3? shootVelocity;
     protected Rigidbody2D alwaysAccessibleBall;
 
@@ -137,7 +137,7 @@ public class DragDrop5 : MonoBehaviour // Elastic Shooting Property
         ActivityLogger.saveObjectPositions();
     }
 
-    private void updatePowerLine(Vector3 start, Vector3 end, float width)
+    protected void updatePowerLine(Vector3 start, Vector3 end, float width)
     // just draws the line over and over
     {
         linePos[0] = start;

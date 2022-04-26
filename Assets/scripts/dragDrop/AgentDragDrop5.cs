@@ -5,12 +5,16 @@ using TMPro;
 
 public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
 {
+    public float shootScale = 1f;
 
     protected override void Start()
     {
         alwaysAccessibleBall = GetComponent<Rigidbody2D>();
         shootVelocity = null;
         ActivityLogger.startLogging();
+        linePos = new Vector3[2];
+        line = GetComponent<LineRenderer>();
+        line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
     }
     protected override void Update()
     {
@@ -38,6 +42,7 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
             }
             else
             {
+                updatePowerLine(alwaysAccessibleBall.transform.position, mousePosition, 0.07f);
                 // not in setup mode, so use mouse distance to shoot ball
                 Vector2 dir = alwaysAccessibleBall.transform.position - mousePosition;
                 dir *= throwSpeed;
@@ -69,5 +74,14 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
                 shootVelocity = null;
             }
         }
+    }
+
+    public void erasePowerLine()
+    {
+        Vector3[] zero = new Vector3[2]{Vector3.zero, Vector3.zero};
+        line.SetPositions(zero);
+        line.startWidth = 0;
+        line.endWidth = 0;
+        line.useWorldSpace = true;
     }
 }

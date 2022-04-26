@@ -60,6 +60,7 @@ public class dragAndShootAgent : Agent
         if (discrete[1] == 1)
         {
             Retry.OnButtonPress();
+            ball_object.GetComponent<AgentDragDrop5>().erasePowerLine();
         }
         else
         {
