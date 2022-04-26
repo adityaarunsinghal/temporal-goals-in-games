@@ -1,6 +1,7 @@
 import copy
 import json
 import numpy as np
+from tqdm import tqdm
 import joblib
 from mlagents_envs.environment import UnityEnvironment
 from collections import namedtuple
@@ -208,7 +209,7 @@ class PlaceAndShootGym(UnityToGymWrapper):
     def isPlayable(self, step_size=0.1):
         winning_shots = []
         num_tries = 0
-        for place_mouse_x in np.arange(-1.0, 1.0, step_size):
+        for place_mouse_x in tqdm(np.arange(-1.0, 1.0, step_size)):
             for shoot_mouse_x in np.arange(-1.0, 1.0, step_size):
                 for shoot_mouse_y in np.arange(-1.0, 1.0, step_size):
                     num_tries += 1
