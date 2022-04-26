@@ -314,7 +314,7 @@ print("GYM READY")
 
 env.setup(GAME_2_SETUP)
 
-step_size = 1
+step_size = 0.1
 print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
 shots, tries = env.isPlayable(step_size)
 
