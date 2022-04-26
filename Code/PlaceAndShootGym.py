@@ -157,7 +157,8 @@ class ActionTransformer():
 
 
 class PlaceAndShootGym(UnityToGymWrapper):
-    def __init__(self, gym_env, reward_fn, actionTransformer=ActionTransformer(), announce_actions=True):
+    def __init__(self, gym_env, reward_fn, actionTransformer=ActionTransformer(), 
+                announce_actions=True):
         self.gym_env = gym_env
         self.reward_fn = reward_fn
         self.actionTransformer = actionTransformer
@@ -166,6 +167,7 @@ class PlaceAndShootGym(UnityToGymWrapper):
         self.lastObsVec = None
         self.announce_actions = announce_actions
         self.winning_shots = []
+        self.setup_array = [[0,0,0,0,0,1]]
 
     def step(self, action, allow_empty=True, quiet=False):
         """
@@ -201,6 +203,7 @@ class PlaceAndShootGym(UnityToGymWrapper):
         Setup steps must be a sequence of actions that end with a reset of the ball
         """
         assert actionVec[-1][-1] == 1
+        self.setup_array = actionVec
         for each_raw_action in actionVec:
             if checkWithTransformer:
                 each_action = self.actionTransformer.transform(
