@@ -26,7 +26,7 @@ def GAME_NULL_REWARD(obsVec: List[Obs]) -> bool:
         if x_limit<=any_obs.ballPos.x<=x_limit+0.2 and y_limit<=any_obs.ballPos.y<=y_limit+0.2:
             count += 1
     percentage = count/len(obsVec)
-    return percentage>required_percentage
+    return percentage
 
 
 GAME_NULL_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
@@ -50,7 +50,7 @@ if __name__=="__main__":
 
     env.setup(GAME_NULL_SETUP)
 
-    step_size = 0.05
+    step_size = 0.1053
     print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
     env.isPlayable(step_size)
     env.save("/scratch/as11919/temporal-goals-in-games/Code/results/GAME_NULL_SOLVED.joblib")
