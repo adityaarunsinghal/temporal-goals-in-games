@@ -3,6 +3,7 @@ import json
 import joblib
 import numpy as np
 from tqdm import tqdm
+from gym import spaces
 from typing import List
 from collections import namedtuple
 from gym_unity.envs import UnityToGymWrapper
@@ -159,17 +160,24 @@ class ActionTransformer():
 class PlaceAndShootGym(UnityToGymWrapper):
     def __init__(self, gym_env, reward_fn, actionTransformer=ActionTransformer(), 
                 announce_actions=True):
+        
+        OBS_LEN = 16
+        ACTION_LEN = 6
+        obs_low_bounds = np.array([-np.inf] * OBS_LEN)
+        obs_high_bounds = np.array([np.inf] * OBS_LEN)
+        self._action_space = spaces.Box(low = -1, high = 1, shape = (ACTION_LEN,), dtype=np.float32)
+        self._observation_space = spaces.Box(low = obs_low_bounds, high = obs_high_bounds, shape = (OBS_LEN,), dtype=np.float32)
+
         self.gym_env = gym_env
         self.reward_fn = reward_fn
         self.actionTransformer = actionTransformer
-        # unsure if this is always true
         self.velTresh = VEL_THRESHOLD
-        self.lastObsVec = None
+        self.lastObsVec = [Obs([0.0]*OBS_LEN)]
         self.announce_actions = announce_actions
         self.winning_shots = []
         self.setup_array = [[0,0,0,0,0,1]]
 
-    def step(self, action, allow_empty=True, quiet=False):
+    def step(self, action, allow_empty=False, quiet=False):
         """
         Step is defined as doing something ball has stopped
         """
@@ -179,7 +187,8 @@ class PlaceAndShootGym(UnityToGymWrapper):
         if not action.transformed:
             action = self.actionTransformer.transform(action)
         if action.isEmpty() and not allow_empty:
-            return (None, None, None, None)
+            # return blanks
+            return (self.lastObsVec[-1].toArray(), 0, False, {})
 
         obsVec = []
 
@@ -198,19 +207,22 @@ class PlaceAndShootGym(UnityToGymWrapper):
         self.lastObsVec = obsVec
         return (obsVec[-1].toArray(), reward, done, info)
 
-    def setup(self, actionVec, checkWithTransformer=False) -> bool:
+    def setup(self, actionVec, checkWithTransformer=False):
         """
         Setup steps must be a sequence of actions that end with a reset of the ball
         """
         assert actionVec[-1][-1] == 1
         self.setup_array = actionVec
+        lastObs = self.gym_env.reset()
         for each_raw_action in actionVec:
             if checkWithTransformer:
                 each_action = self.actionTransformer.transform(
                     Action(each_raw_action))
             else:
                 each_action = Action(each_raw_action)
-            self.gym_env.step(each_action.toArray())
+            lastObs, _, _, _ = self.gym_env.step(each_action.toArray())
+        self.lastObsVec = [Obs(lastObs)]
+        return lastObs
 
     def getRewards(self, obsVec: List[Obs]) -> float:
         return float(self.reward_fn(obsVec))
@@ -259,11 +271,14 @@ class PlaceAndShootGym(UnityToGymWrapper):
         self.num_tries = len(all_tries)
         return self.winning_shots
 
-    def reset(self):
-        self.gym_env.reset()
+    def reset(self, fresh = False):
+        if not fresh:
+            return self.setup(self.setup_array)
+        else:
+            return self.gym_env.reset()
 
     def close(self):
-        self.gym_env.close()
+        return self.gym_env.close()
 
     def save(self, path):
         temp = self.gym_env
@@ -291,4 +306,4 @@ def endsInBucket(obsVec: List[Obs]) -> bool:
 
 
 NO_OBJECT_INTERACTION = ActionTransformer(
-    ban_object=["crate", "bucket", "corner", "gear", "triangle"], default_action=Action([-0.001, 0, 0, 0, 0, 0]))
+    ban_object=["crate", "bucket", "corner", "gear", "triangle"], default_action=Action([-0.000001, 0, 0, 0, 0, 0]))

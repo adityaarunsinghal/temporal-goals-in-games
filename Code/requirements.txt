@@ -1,1 +1,5 @@
 gym_unity
+tensorflow
+stable-baselines
+mlagents_envs
+tqdm
