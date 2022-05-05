@@ -306,4 +306,4 @@ def endsInBucket(obsVec: List[Obs]) -> bool:
 
 
 NO_OBJECT_INTERACTION = ActionTransformer(
-    ban_object=["crate", "bucket", "corner", "gear", "triangle"], default_action=Action([0, -0.95, 0, 0, 0, 0]))
+    ban_object=["crate", "bucket", "corner", "gear", "triangle"], default_action=Action([0, 1, 0, 0, 0, 0]))
