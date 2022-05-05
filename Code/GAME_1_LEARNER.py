@@ -1,13 +1,13 @@
+import os
 from GAME_1_SOLVER import *
 from stable_baselines import PPO2
 from stable_baselines.bench.monitor import Monitor
+from stable_baselines.common.callbacks import CheckpointCallback
 from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
 from mlagents_envs.environment import UnityEnvironment
 
 import warnings
-warnings.filterwarnings("ignore", message=r"Passing", category=FutureWarning)
-warnings.filterwarnings("ignore", message=r"WARNING:tensorflow")
-warnings.filterwarnings("ignore", category=UserWarning)
+warnings.filterwarnings("ignore")
 
 
 if __name__ == "__main__":
@@ -22,18 +22,18 @@ if __name__ == "__main__":
     gym_env = UnityToGymWrapper(unity_env, allow_multiple_obs=False)
     env = PlaceAndShootGym(gym_env, reward_fn=GAME_1_REWARD,
                            actionTransformer=GAME_1_TRANSFORMER,
-                           announce_actions=False)
+                           announce_actions=True)
 
     print("GYM READY")
 
     env.setup(GAME_1_SETUP)
 
     run_name = "/scratch/as11919/temporal-goals-in-games/Code/results/GAME_1/PPO2_GAME_1"
-    monitored_env = Monitor(env=env, filename=run_name,
-                            allow_early_resets=True)
-
-    ppo = PPO2(policy='MlpPolicy', env=monitored_env)
-    model = ppo.learn(total_timesteps=64000)
+    monitored_env = Monitor(env = env, filename= run_name, allow_early_resets = True)
+    ppo = PPO2(policy = 'MlpPolicy', env = monitored_env, tensorboard_log=os.path.join(os.path.dirname(run_name), "tensorboard/"))
+    checkpoint_callback = CheckpointCallback(save_freq=50000, save_path=os.path.join(os.path.dirname(run_name), "checkpoints/"),
+                                            name_prefix='rl_model')
+    model = ppo.learn(total_timesteps=1000000, callback=checkpoint_callback)
     model.save(run_name)
 
     print(f"SAVED RUN!")
