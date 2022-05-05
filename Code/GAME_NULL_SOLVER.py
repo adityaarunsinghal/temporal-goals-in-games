@@ -50,7 +50,7 @@ if __name__=="__main__":
 
     env.setup(GAME_NULL_SETUP)
 
-    step_size = 0.1053
+    step_size = 0.05
     print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
     env.isPlayable(step_size)
     env.save("/scratch/as11919/temporal-goals-in-games/Code/results/GAME_NULL_SOLVED.joblib")

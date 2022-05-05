@@ -1,5 +1,6 @@
+gym
 gym_unity
-tensorflow
+tensorflow==1.15
 stable-baselines
 mlagents_envs
 tqdm
