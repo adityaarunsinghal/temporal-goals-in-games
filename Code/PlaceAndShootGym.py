@@ -159,7 +159,7 @@ class ActionTransformer():
 
 class PlaceAndShootGym(UnityToGymWrapper):
     def __init__(self, gym_env, reward_fn, actionTransformer=ActionTransformer(), 
-                announce_actions=True):
+                announce_actions=True, allow_empty=False, empty_cost = -1):
         
         OBS_LEN = 16
         ACTION_LEN = 6
@@ -176,8 +176,10 @@ class PlaceAndShootGym(UnityToGymWrapper):
         self.announce_actions = announce_actions
         self.winning_shots = []
         self.setup_array = [[0,0,0,0,0,1]]
+        self.allow_empty = allow_empty
+        self.empty_cost = empty_cost
 
-    def step(self, action, allow_empty=False, quiet=False):
+    def step(self, action, quiet=False):
         """
         Step is defined as doing something ball has stopped
         """
@@ -186,9 +188,9 @@ class PlaceAndShootGym(UnityToGymWrapper):
 
         if not action.transformed:
             action = self.actionTransformer.transform(action)
-        if action.isEmpty() and not allow_empty:
+        if action.isEmpty() and not self.allow_empty:
             # return blanks
-            return (self.lastObsVec[-1].toArray(), 0, False, {})
+            return (self.lastObsVec[-1].toArray(), self.empty_cost, False, {})
 
         obsVec = []
 
@@ -306,4 +308,4 @@ def endsInBucket(obsVec: List[Obs]) -> bool:
 
 
 NO_OBJECT_INTERACTION = ActionTransformer(
-    ban_object=["crate", "bucket", "corner", "gear", "triangle"], default_action=Action([0, 1, 0, 0, 0, 0]))
+    ban_object=["crate", "bucket", "corner", "gear", "triangle"])

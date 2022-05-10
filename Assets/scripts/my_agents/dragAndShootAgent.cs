@@ -64,7 +64,7 @@ public class dragAndShootAgent : Agent
         }
         else
         {
-            // abstain from placing or shooting if place value is 0 in X or Y
+            // abstain from placing or shooting if place value is 0 in X AND Y
             if (continuous[0] != 0f | continuous[1] != 0f)
             {
                 Vector3 mousePosition = new Vector3(continuous[0], continuous[1], 1);

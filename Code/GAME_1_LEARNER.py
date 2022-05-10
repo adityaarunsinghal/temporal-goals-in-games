@@ -30,9 +30,11 @@ if __name__ == "__main__":
 
     run_name = "/scratch/as11919/temporal-goals-in-games/Code/results/GAME_1/PPO2_GAME_1"
     monitored_env = Monitor(env = env, filename= run_name, allow_early_resets = True)
-    ppo = PPO2(policy = 'MlpPolicy', env = monitored_env, tensorboard_log=os.path.join(os.path.dirname(run_name), "tensorboard/"))
-    checkpoint_callback = CheckpointCallback(save_freq=50000, save_path=os.path.join(os.path.dirname(run_name), "checkpoints/"),
-                                            name_prefix='rl_model')
+    ppo = PPO2(policy = 'MlpPolicy', env = monitored_env, 
+                tensorboard_log=os.path.join(os.path.dirname(run_name), "tensorboard/"))
+    checkpoint_callback = CheckpointCallback(save_freq=50000, 
+                            save_path=os.path.join(os.path.dirname(run_name), "checkpoints/"),
+                            name_prefix='rl_model')
     model = ppo.learn(total_timesteps=1000000, callback=checkpoint_callback)
     model.save(run_name)
 
