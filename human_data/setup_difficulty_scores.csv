@@ -1,4 +1,4 @@
-id, name, game_num, score
+id, name, game_num,difficulty
 1, Ingrid,1,6
 1, Ingrid,2,7
 1, Ingrid,3,7
@@ -14,3 +14,8 @@ id, name, game_num, score
 3,Nav,3,4
 3,Nav,4,8
 3,Nav,5,4
+4,Adi,1,5
+4,Adi,2,8
+4,Adi,3,9
+4,Adi,4,3
+4,Adi,5,8
