@@ -1,6 +1,11 @@
 id, name, game_num, score
-1, Ingrid, 1, 6
-1, Ingrid, 2, 7
-1, Ingrid, 3, 7
-1, Ingrid, 4, 6
-1, Ingrid, 5, 9 
+1, Ingrid,1,6
+1, Ingrid,2,7
+1, Ingrid,3,7
+1, Ingrid,4,6
+1, Ingrid,5,9
+2,Chhavi,1,6
+2,Chhavi,2,7
+2,Chhavi,3,4
+2,Chhavi,4,4
+2,Chhavi,5,8
