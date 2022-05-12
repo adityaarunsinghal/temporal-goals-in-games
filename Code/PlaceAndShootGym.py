@@ -264,6 +264,7 @@ class PlaceAndShootGym(UnityToGymWrapper):
 
                     place_action = self.actionTransformer.transform(
                         Action([place_mouse_x, 0, 0, 0, 0, 0]))
+                    # shooting is immune to banning of mouse position
                     shoot_action = self.actionTransformer.transform(
                         Action([shoot_mouse_x, shoot_mouse_y, 0, 0, 0, 0], force=True))
 

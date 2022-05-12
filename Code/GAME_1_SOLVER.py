@@ -31,7 +31,7 @@ def GAME_1_REWARD(obsVec: List[Obs]) -> int:
     return 0
 
 GAME_1_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
-GAME_1_TRANSFORMER.ban_mouse_position_x = (-1, -0.5)
+GAME_1_TRANSFORMER.ban_mouse_position_x = (-1, -0.34)
 
 if __name__=="__main__":
     SERVER_BUILD = "/scratch/as11919/temporal-goals-in-games/Builds/Gym_View_26April22_Linux.x86_64"

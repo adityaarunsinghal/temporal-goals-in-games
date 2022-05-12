@@ -3,7 +3,7 @@ from PlaceAndShootGym import *
 GAME_5_SETUP = [[0, 0, -0.85, -0.9, Action.objectTagToActionVal("bucket"), 0],
                 [0, 0, 0, 0, 0, 1]]
 
-def GAME_4_REWARD(obsVec: List[Obs]) -> bool:
+def GAME_5_REWARD(obsVec: List[Obs]) -> bool:
     
     hits=0
     for each_obs in obsVec:
@@ -13,8 +13,8 @@ def GAME_4_REWARD(obsVec: List[Obs]) -> bool:
         
     return hits
     
-GAME_4_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
-
+GAME_5_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
+GAME_5_TRANSFORMER.ban_mouse_position_x = (-1, -0.34)
 
 if __name__=="__main__":
     SERVER_BUILD = "/scratch/as11919/temporal-goals-in-games/Builds/Gym_View_26April22_Linux.x86_64"
@@ -26,18 +26,18 @@ if __name__=="__main__":
     # Start interacting with the environment.
     unity_env.reset()
     gym_env = UnityToGymWrapper(unity_env, allow_multiple_obs=False)
-    env = PlaceAndShootGym(gym_env, reward_fn=GAME_4_REWARD,
-                        actionTransformer=GAME_4_TRANSFORMER,
+    env = PlaceAndShootGym(gym_env, reward_fn=GAME_5_REWARD,
+                        actionTransformer=GAME_5_TRANSFORMER,
                         announce_actions=False)
 
     print("GYM READY")
 
-    env.setup(GAME_4_SETUP)
+    env.setup(GAME_5_SETUP)
 
     step_size = 0.05
     print(f"CHECKING PLAYABILITY AT step_size: {step_size}")
     env.isPlayable(step_size)
-    env.save("/scratch/as11919/temporal-goals-in-games/Code/results/GAME_4_SOLVED.joblib")
+    env.save("/scratch/as11919/temporal-goals-in-games/Code/results/GAME_5_SOLVED.joblib")
 
     print(f"SAVED RUN!")
     env.close()
