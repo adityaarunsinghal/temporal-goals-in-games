@@ -12,6 +12,9 @@ public class dragAndShootAgent : Agent
     private int numActionsTaken;
     public bool saveLogs = false;
     public float contValueScale;
+    // need this mouse scale because when catapulting ball,
+    // putting mouse outside the box should be allowed
+    private float mouseScale = 1.5f;
 
     public void Start()
     {
@@ -67,7 +70,7 @@ public class dragAndShootAgent : Agent
             // abstain from placing or shooting if place value is 0 in X AND Y
             if (continuous[0] != 0f | continuous[1] != 0f)
             {
-                Vector3 mousePosition = new Vector3(continuous[0], continuous[1], 1);
+                Vector3 mousePosition = new Vector3(continuous[0] * mouseScale, continuous[1] * mouseScale, 1);
                 ball_object.GetComponent<AgentDragDrop5>().artificialBallInteraction(mousePosition);
                 numActionsTaken++;
             }

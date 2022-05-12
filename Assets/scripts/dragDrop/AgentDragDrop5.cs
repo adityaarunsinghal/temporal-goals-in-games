@@ -29,13 +29,13 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
             // move pedestal while the ball is being placed
             if (alwaysAccessibleBall.GetComponent<customProperties>().inSetup)
             {
-                float new_x = Mathf.Clamp(mousePosition.x, EnvironmentVariables.minX, EnvironmentVariables.maxX);
-                alwaysAccessibleBall.MovePosition(new Vector2(new_x,
+                float clamped_x = Mathf.Clamp(mousePosition.x, EnvironmentVariables.minX, EnvironmentVariables.maxX);
+                alwaysAccessibleBall.MovePosition(new Vector2(clamped_x,
                                     alwaysAccessibleBall.position.y));
                 Rigidbody2D pedestal = alwaysAccessibleBall.GetComponentsInChildren<Rigidbody2D>()[0];
                 if (pedestal)
                 {
-                    pedestal.transform.position = new Vector2(new_x, pedestal.position.y);
+                    pedestal.transform.position = new Vector2(clamped_x, pedestal.position.y);
                 }
                 Retry.stabilize(alwaysAccessibleBall.GetComponent<Rigidbody2D>());
                 Retry.putOutSetup();
@@ -44,6 +44,7 @@ public class AgentDragDrop5 : DragDrop5 // Elastic Shooting Property
             {
                 updatePowerLine(alwaysAccessibleBall.transform.position, mousePosition, 0.07f);
                 // not in setup mode, so use mouse distance to shoot ball
+                // no clamping mouse pos if shooting
                 Vector2 dir = alwaysAccessibleBall.transform.position - mousePosition;
                 dir *= throwSpeed;
                 alwaysAccessibleBall.velocity = dir;

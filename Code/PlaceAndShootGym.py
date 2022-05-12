@@ -18,6 +18,13 @@ colliderOrder = ["bottomWall", "bucket", "corner", "crate", "gear",
 
 VEL_THRESHOLD = 0.001
 
+CONT_VALUE_SCALE = 4.5
+MAX_X = 4.5
+MAX_Y = 4.5
+MIN_X = -4.5
+MIN_Y = -4.5
+MOUSE_SCALE = 1.5
+
 class Obs():
     def __init__(self, raw_obs):
         """
@@ -71,8 +78,8 @@ class Action():
         self.objY = raw_action[3]
         self.rawObjVal = raw_action[4]
         self.objIdx = self.mapActionValToDiscreteIdx(self.rawObjVal)
-        if self.objIdx >= 0:
-            self.objName = objectOrder[self.objIdx]
+        if self.objIdx != 0:
+            self.objName = objectOrder[self.objIdx - 1]
         else:
             self.objName = None
         self.reset = bool(raw_action[5])
@@ -86,7 +93,7 @@ class Action():
         return str(self.toArray())
 
     def isEmpty(self):
-        return sum(self.toArray(raw=False)) == 0.0
+        return all([each==0 for each in self.toArray(raw=False)])
 
     def toArray(self, raw=True):
         if raw:
@@ -99,13 +106,30 @@ class Action():
         self.objIdx = self.objectTagToActionVal(name)
         self.objName = name
 
+    def describe(self):
+        desc = ""
+        if self.reset:
+            desc += f"\nBall was reset and no other value matters."
+        else:
+            true_mouse_x = self.mouseX*CONT_VALUE_SCALE*MOUSE_SCALE
+            true_mouse_y = self.mouseY*CONT_VALUE_SCALE*MOUSE_SCALE
+            true_obj_x = self.objX*CONT_VALUE_SCALE
+            true_obj_y = self.objY*CONT_VALUE_SCALE
+            desc += f"\nAgent put mouse at world pos ({round(true_mouse_x, 3)}, {round(true_mouse_y, 3)})"
+            if true_mouse_x>MAX_X or true_mouse_x<MIN_X:
+                desc += f"\nIf in placement mode, that was clipped to to be within {(MAX_X, MAX_Y)}"
+            if self.objName:
+                desc += f"\nThen the {self.objName} was placed at ({round(true_obj_x, 3)}, {round(true_obj_y, 3)})"
+            else:
+                desc += f"\nNo object interaction in this action"
+        print(desc + "\n")
+
     @staticmethod
     def mapActionValToDiscreteIdx(value):
         assert -1 <= value <= 1
         value = abs(value)
         value *= 5.49
         value = round(value)
-        value = value - 1
         return value
 
     @staticmethod
@@ -190,6 +214,8 @@ class PlaceAndShootGym(UnityToGymWrapper):
             action = self.actionTransformer.transform(action)
         if action.isEmpty() and not self.allow_empty:
             # return blanks
+            if self.announce_actions and not quiet:
+                print("Empty Action was skipped")
             return (self.lastObsVec[-1].toArray(), self.empty_cost, False, {})
 
         obsVec = []
