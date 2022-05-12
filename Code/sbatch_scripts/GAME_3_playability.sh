@@ -9,7 +9,7 @@
 #SBATCH --cpus-per-task=4 
 #SBATCH --ntasks-per-node=1
 #SBATCH --mem=64G
-#SBATCH --time=10:00:00
+#SBATCH --time=23:00:00
 #SBATCH --mail-type=ALL
 #SBATCH -c 8
 #SBATCH --mail-user=adis@nyu.edu

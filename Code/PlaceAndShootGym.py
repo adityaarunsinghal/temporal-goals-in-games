@@ -280,15 +280,13 @@ class PlaceAndShootGym(UnityToGymWrapper):
                     # place pedestal
                     if self.announce_actions:
                         print("Place:")
-                    raw_obs, reward, _done, _info = self.step(
-                        place_action, allow_empty=False)
+                    raw_obs, reward, _done, _info = self.step(place_action)
 
                     # shoot ball
                     if self.announce_actions:
                         print("Shoot:")
                     # force True because shooting should be allowed to utilize those banned float values
-                    raw_obs, reward, _done, _info = self.step(
-                        shoot_action, allow_empty=False)
+                    raw_obs, reward, _done, _info = self.step(shoot_action)
 
                     if reward and reward > 0:
                         print(f"Game is playable!")
