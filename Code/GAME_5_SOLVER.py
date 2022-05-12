@@ -1,9 +1,6 @@
 from PlaceAndShootGym import *
 
-GAME_4_SETUP = [[0, 0, -2.600778/CONT_VALUE_SCALE, 3.299083/CONT_VALUE_SCALE, Action.objectTagToActionVal("triangle"), 0],
-                [0, 0, -3.832676/CONT_VALUE_SCALE, -0.528815/CONT_VALUE_SCALE, Action.objectTagToActionVal("corner"), 0],
-                [0, 0, 0.457935/CONT_VALUE_SCALE, -0.114176/CONT_VALUE_SCALE, Action.objectTagToActionVal("crate"), 0],
-                [0, 0, -1.537139/CONT_VALUE_SCALE, 1.340065/CONT_VALUE_SCALE, Action.objectTagToActionVal("gear"), 0],
+GAME_5_SETUP = [[0, 0, -0.85, -0.9, Action.objectTagToActionVal("bucket"), 0],
                 [0, 0, 0, 0, 0, 1]]
 
 def GAME_4_REWARD(obsVec: List[Obs]) -> bool:

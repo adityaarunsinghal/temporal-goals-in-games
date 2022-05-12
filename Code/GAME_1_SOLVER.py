@@ -7,6 +7,7 @@ GAME_1_SETUP = [[0, 0, -0.55, 0.6, Action.objectTagToActionVal("triangle"), 0],
                 [0, 0, 0, 0, 0, 1]]
 
 def GAME_1_REWARD(obsVec: List[Obs]) -> int:
+    # nothing matters unless ends in bucket
     if not endsInBucket(obsVec):
         return 0
     def top(pos, triangle):
@@ -19,10 +20,14 @@ def GAME_1_REWARD(obsVec: List[Obs]) -> int:
         return pos.y<crate.y
     for each_obs in obsVec:
         pos = each_obs.ballPos
-        if bottom(pos, each_obs.objPos["crate"]): return 4
-        if mid2(pos, each_obs.objPos["crate"], each_obs.objPos["corner"]): return 3
-        if mid1(pos, each_obs.objPos["corner"], each_obs.objPos["triangle"]): return 2
-        if top(pos, each_obs.objPos["triangle"]): return 1
+        # only check y when x is in line with all objects
+        if pos.x != -0.55:
+            pass
+        # return highest value first if true
+        if top(pos, each_obs.objPos["triangle"]): return 4
+        if mid1(pos, each_obs.objPos["corner"], each_obs.objPos["triangle"]): return 3
+        if mid2(pos, each_obs.objPos["crate"], each_obs.objPos["corner"]): return 2
+        if bottom(pos, each_obs.objPos["crate"]): return 1
     return 0
 
 GAME_1_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
