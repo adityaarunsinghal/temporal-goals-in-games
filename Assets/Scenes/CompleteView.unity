@@ -2746,6 +2746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71dc18c9bf3c54fba978398c190547ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootScale: 1
 --- !u!114 &780853706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4039,7 +4040,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 712708324}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.5486955
+  m_Size: 0.99893767
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5136,7 +5137,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  saveLogs: 0
+  saveLogs: 1
   contValueScale: 0
 --- !u!114 &1544951007
 MonoBehaviour:

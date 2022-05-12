@@ -34,7 +34,7 @@ GAME_1_TRANSFORMER = copy.deepcopy(NO_OBJECT_INTERACTION)
 GAME_1_TRANSFORMER.ban_mouse_position_x = (-1, -0.34)
 
 if __name__=="__main__":
-    SERVER_BUILD = "/scratch/as11919/temporal-goals-in-games/Builds/Gym_View_26April22_Linux.x86_64"
+    SERVER_BUILD = "/scratch/as11919/temporal-goals-in-games/Builds/Gym_View_12May22_Linux.x86_64"
     channel = EngineConfigurationChannel()
     channel.set_configuration_parameters(time_scale=50, quality_level=0)
     unity_env = UnityEnvironment(
