@@ -1,21 +1,21 @@
-id, name, game_num,difficulty
-1, Ingrid,1,6
-1, Ingrid,2,7
-1, Ingrid,3,7
-1, Ingrid,4,6
-1, Ingrid,5,9
-2,Chhavi,1,6
-2,Chhavi,2,7
-2,Chhavi,3,4
-2,Chhavi,4,4
-2,Chhavi,5,8
-3,Nav,1,3
-3,Nav,2,4
-3,Nav,3,4
-3,Nav,4,8
-3,Nav,5,4
-4,Adi,1,5
-4,Adi,2,8
-4,Adi,3,9
-4,Adi,4,3
-4,Adi,5,8
+id,name,game_num,difficulty
+1,Ingrid,GAME_1,6
+1,Ingrid,GAME_2,7
+1,Ingrid,GAME_3,7
+1,Ingrid,GAME_4,6
+1,Ingrid,GAME_5,9
+2,Chhavi,GAME_1,6
+2,Chhavi,GAME_2,7
+2,Chhavi,GAME_3,4
+2,Chhavi,GAME_4,4
+2,Chhavi,GAME_5,8
+3,Nav,GAME_1,3
+3,Nav,GAME_2,4
+3,Nav,GAME_3,4
+3,Nav,GAME_4,8
+3,Nav,GAME_5,4
+4,Adi,GAME_1,5
+4,Adi,GAME_2,8
+4,Adi,GAME_3,9
+4,Adi,GAME_4,3
+4,Adi,GAME_5,8
