@@ -44,3 +44,8 @@ id,name,game_num,difficulty
 9,Curi,GAME_3,9
 9,Curi,GAME_4,7
 9,Curi,GAME_5,3
+10,Tamas,GAME_1,7
+10,Tamas,GAME_2,4
+10,Tamas,GAME_3,7
+10,Tamas,GAME_4,8
+10,Tamas,GAME_5,4
